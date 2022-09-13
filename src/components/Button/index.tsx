@@ -1,23 +1,21 @@
-import React from 'react'
-import './Button.scss'
+import React from "react";
+import "./Button.scss";
 
-const Button = ({ type="primary", children, onClick }: ButtonProps) => {
-    return (
-        <button 
-            onClick={onClick} 
-            className={`btn ${type === 'danger' ? 'btn--danger' : 'btn--primary'}`}
-        >
-            {children}
-        </button>
-    )
+interface ButtonProps
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "type"> {
+  type?: "primary" | "danger";
 }
 
-export default Button
+const Button = ({
+  type = "primary",
+  children,
+  ...props
+}: React.PropsWithChildren<ButtonProps>) => {
+  return (
+    <button {...props} className={`btn btn--${type}`}>
+      {children}
+    </button>
+  );
+};
 
-interface ButtonProps {
-    type?: ButtonType;
-    children?: React.ReactNode;
-    onClick?: () => void;
-}
-
-type ButtonType = 'primary' | 'danger' 
+export default Button;
