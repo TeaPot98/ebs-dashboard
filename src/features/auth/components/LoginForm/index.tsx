@@ -1,5 +1,5 @@
-import Button from "../Button";
-import InputField from "../InputFIeld";
+import Button from "../../../../components/Button";
+import InputField from "../../../../components/InputFIeld";
 
 const LoginForm = () => {
   return (

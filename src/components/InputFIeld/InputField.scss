@@ -1,15 +1,10 @@
 .input-field {
   border-radius: 8px;
   border: none;
-  background-color: lightgray;
+  background-color: rgb(236, 236, 236);
   padding: 8px;
-  
-  &:focus {
-    outline: none;
-  }
-}
 
-.input-field--name {
-  background: url(https://www.svgrepo.com/show/309837/person.svg) no-repeat 15px 15px;
-  padding-left: 30px;
+  &:focus {
+    outline: 2px solid #5570f1;
+  }
 }

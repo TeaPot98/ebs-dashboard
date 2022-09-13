@@ -1,0 +1,27 @@
+.menu {
+  position: sticky;
+  box-sizing: border-box;
+  top: 0;
+  bottom: 0;
+  min-width: 200px;
+  height: 100%;
+  padding: 8px;
+
+  &__header {
+    height: 80px;
+    display: flex;
+    gap: 10px;
+    justify-content: start;
+    align-items: center;
+    color: darkgray;
+
+    img {
+      height: 40px;
+    }
+  }
+
+  &__body {
+    list-style-type: none;
+    padding: 0;
+  }
+}
