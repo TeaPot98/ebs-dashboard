@@ -2,6 +2,7 @@ import "../UserCard/UserCard.scss";
 import React, { useState } from "react";
 
 import { Button, ConfirmationModal, Modal } from "components";
+import UserForm from "features/users/UserForm";
 
 const UserTableItem = ({ user }: { user: number }) => {
   const [editModalOpen, setEditModalOpen] = useState(false);
@@ -26,7 +27,7 @@ const UserTableItem = ({ user }: { user: number }) => {
             onClose={() => setEditModalOpen(false)}
             title="Edit user"
           >
-            A form for editing user
+            <UserForm />
           </Modal>
           <ConfirmationModal
             title="Remove user"

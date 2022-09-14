@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import { UserAvatar, Button, Modal } from "components";
 import "./TopBar.scss";
+import UserForm from "features/users/UserForm";
 
 const TopBar = () => {
   const [userModalOpen, setUserModalOpen] = useState(false);
@@ -39,7 +40,7 @@ const TopBar = () => {
           title="Edit user"
           actions={<Button onClick={saveNewUser}>Save</Button>}
         >
-          A form for editing user
+          <UserForm />
         </Modal>
         <UserAvatar />
         <span>John Doe</span>
