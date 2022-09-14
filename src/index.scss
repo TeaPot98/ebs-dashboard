@@ -1,3 +1,12 @@
+@mixin set-color($color) {
+  color: $color;
+  &:hover,
+  &:visited,
+  &:focus {
+    color: $color;
+  }
+}
+
 html {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -47,20 +56,11 @@ body {
 }
 
 a {
-  color: #5570f1;
+  @include set-color(#5570f1);
   text-decoration: none;
 
   &:hover {
     text-decoration: underline;
-  }
-}
-
-@mixin set-color($color) {
-  color: $color;
-  &:hover,
-  &:visited,
-  &:focus {
-    color: $color;
   }
 }
 

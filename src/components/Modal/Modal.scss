@@ -8,27 +8,35 @@
   right: 0;
   bottom: 0;
   background-color: rgba($color: #000000, $alpha: 0.5);
-}
 
-.modal__window {
-  width: 100px;
-  background-color: white;
-  padding: 16px;
-  border-radius: 16px;
-}
+  &__window {
+    background-color: white;
+    padding: 8px;
+    border-radius: 16px;
+  }
 
-.modal__title {
-  line-height: 8px;
-}
+  &__title {
+    line-height: 0;
+    font-size: 16px;
+  }
 
-.modal__header {
-}
+  &__header {
+    padding: 0px 8px;
+    height: 10px;
+  }
 
-.modal_footer {
-  display: flex;
-  padding: 24px 0px;
-}
+  &__content {
+    padding: 8px;
+  }
 
-.modal--closed {
-  display: none;
+  &__footer {
+    display: flex;
+    justify-content: end;
+    gap: 4px;
+    padding: 8px 0px 0px;
+  }
+
+  &--closed {
+    display: none;
+  }
 }

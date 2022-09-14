@@ -1,0 +1,28 @@
+.table {
+  width: 100%;
+  // overflow-y: auto;
+  display: grid;
+  box-sizing: border-box;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.col-1 {
+  grid-template-columns: 1fr;
+}
+
+.col-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.col-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.col-4 {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.col-5 {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}

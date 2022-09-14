@@ -2,14 +2,20 @@ import Button from "../Button";
 import "./Modal.scss";
 
 interface ModalProps {
-  title: string;
-  children: React.ReactNode;
+  title?: string;
   open: boolean;
   setOpen?: string;
+  actions?: React.ReactNode;
   onClose: () => void;
 }
 
-const Modal = ({ title, children, open, onClose }: ModalProps) => {
+const Modal = ({
+  title = "",
+  children,
+  open,
+  actions,
+  onClose,
+}: React.PropsWithChildren<ModalProps>) => {
   return (
     <div
       className={`modal ${!open && "modal--closed"}`}
@@ -24,7 +30,8 @@ const Modal = ({ title, children, open, onClose }: ModalProps) => {
         </div>
         <div className="modal__content">{children}</div>
         <div className="modal__footer">
-          <Button onClick={onClose}>Close Modal</Button>
+          {actions}
+          <Button onClick={onClose}>Cancel</Button>
         </div>
       </div>
     </div>
