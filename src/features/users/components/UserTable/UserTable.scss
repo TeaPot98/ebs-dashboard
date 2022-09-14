@@ -1,0 +1,22 @@
+.table {
+  width: 100%;
+  thead {
+    background-color: whitesmoke;
+    color: gray;
+    text-align: left;
+  }
+
+  th {
+    box-sizing: border-box;
+    padding: 8px;
+  }
+
+  tbody {
+    background-color: white;
+  }
+
+  td {
+    height: 40px;
+    border-bottom: 1px solid whites;
+  }
+}

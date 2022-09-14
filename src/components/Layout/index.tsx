@@ -1,6 +1,4 @@
-import DashboardContainer from "../DashboardContainer";
-import SideMenu from "../SideMenu";
-import TopBar from "../TopBar";
+import { TopBar, SideMenu, DashboardContainer } from "components";
 import "./Layout.scss";
 
 const Layout = () => {
@@ -15,4 +13,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export { Layout };

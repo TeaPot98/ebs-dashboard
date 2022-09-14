@@ -25,4 +25,4 @@ const DashboardContainer = () => {
   return <div className="container">{renderContent()}</div>;
 };
 
-export default DashboardContainer;
+export { DashboardContainer };

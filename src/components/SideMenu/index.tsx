@@ -1,5 +1,5 @@
 import "./SideMenu.scss";
-import MenuItem from "../MenuItem";
+import { MenuItem } from "components";
 
 const SideMenu = () => {
   return (
@@ -32,4 +32,4 @@ const SideMenu = () => {
   );
 };
 
-export default SideMenu;
+export { SideMenu };

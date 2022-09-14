@@ -4,4 +4,4 @@ const UserAvatar = () => {
   return <div className="avatar">JD</div>;
 };
 
-export default UserAvatar;
+export { UserAvatar };

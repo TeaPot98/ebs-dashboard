@@ -1,16 +1,16 @@
-import Table from "../../../components/Table";
-import NewUserButton from "../components/NewUserButton";
+import { Grid } from "components";
 import UserCard from "../components/UserCard";
+import { UsersTable } from "../components/UserTable";
 
 const Users = () => {
   return (
     <>
-      <NewUserButton />
-      <Table columns={1}>
+      {/* <Grid columns={1}>
         {Array.from(Array(10).keys()).map((post, i) => (
           <UserCard key={i} />
         ))}
-      </Table>
+      </Grid> */}
+      <UsersTable />
     </>
   );
 };

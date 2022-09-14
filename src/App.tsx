@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Button from "./components/Button";
-import Modal from "./components/Modal";
-import InputField from "./components/InputFIeld";
-import LoginForm from "./features/auth/components/LoginForm";
-import RegistrationForm from "./features/auth/components/RegistrationForm";
-import Layout from "./components/Layout";
+import { Layout } from "components";
 import AuthPage from "./features/auth/pages/AuthPage";
 
 function App() {

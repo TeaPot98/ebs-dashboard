@@ -1,4 +1,4 @@
-import Button from "../Button";
+import { Button } from "components";
 import "./Modal.scss";
 
 interface ModalProps {
@@ -38,4 +38,4 @@ const Modal = ({
   );
 };
 
-export default Modal;
+export { Modal };

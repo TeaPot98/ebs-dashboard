@@ -1,6 +1,4 @@
-import React from "react";
-import Button from "../Button";
-import Modal from "../Modal";
+import { Modal, Button } from "components";
 
 interface ConfirmationModalProps {
   onClose: () => void;
@@ -32,4 +30,4 @@ const ConfirmationModal = ({
   );
 };
 
-export default ConfirmationModal;
+export { ConfirmationModal };

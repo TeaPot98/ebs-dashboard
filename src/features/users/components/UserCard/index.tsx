@@ -1,9 +1,6 @@
-import "./UserCard.scss";
-import UserAvatar from "../../../../components/UserAvatar";
-import Button from "../../../../components/Button";
-import Modal from "../../../../components/Modal";
 import { useState } from "react";
-import ConfirmationModal from "../../../../components/ConfirmationModal";
+import "./UserCard.scss";
+import { Button, ConfirmationModal, Modal, UserAvatar } from "components";
 
 const UserCard = () => {
   const [editModalOpen, setEditModalOpen] = useState(false);

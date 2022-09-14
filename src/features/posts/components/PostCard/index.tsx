@@ -1,4 +1,4 @@
-import UserAvatar from "../../../../components/UserAvatar";
+import { UserAvatar } from "components";
 import "./PostCard.scss";
 
 const PostCard = () => {

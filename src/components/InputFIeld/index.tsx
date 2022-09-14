@@ -9,4 +9,4 @@ const InputField = ({ type = "text", ...props }: InputFieldProps) => {
   return <input className="input-field" {...props} />;
 };
 
-export default InputField;
+export { InputField };

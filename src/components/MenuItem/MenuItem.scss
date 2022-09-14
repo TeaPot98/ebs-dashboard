@@ -7,7 +7,8 @@
   gap: 8px;
   color: black;
 
-  &:hover {
+  &:hover,
+  &--active {
     background-color: #5570f1;
     color: white;
     cursor: pointer;

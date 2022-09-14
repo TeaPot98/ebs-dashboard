@@ -11,4 +11,4 @@ const Checkbox = ({ labelText, id, ...props }: CheckboxProps) => {
   );
 };
 
-export default Checkbox;
+export { Checkbox };

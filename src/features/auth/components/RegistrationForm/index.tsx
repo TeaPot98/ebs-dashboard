@@ -1,7 +1,4 @@
-import InputField from "../../../../components/InputFIeld";
-import Checkbox from "../../../../components/Checkbox";
-import Button from "../../../../components/Button";
-import Select from "../../../../components/Select";
+import { Button, Checkbox, InputField, Select } from "components";
 
 const RegistrationForm = () => {
   return (
