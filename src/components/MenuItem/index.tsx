@@ -8,11 +8,13 @@ const MenuItem = ({
   route,
 }: React.PropsWithChildren<MenuItemProps>) => {
   return (
-    <li className="menu-item">
-      {/* <Link to={route}>{children}</Link> */}
-      <img src={icon} />
-      {children}
-    </li>
+    <Link to={route}>
+      <li className="menu-item">
+        {/* <Link to={route}>{children}</Link> */}
+        <img src={icon} />
+        {children}
+      </li>
+    </Link>
   );
 };
 

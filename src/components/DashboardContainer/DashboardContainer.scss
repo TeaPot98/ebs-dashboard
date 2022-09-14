@@ -1,5 +1,7 @@
 .container {
   height: 100%;
   width: 100%;
-  background-color: lightblue;
+  overflow: auto;
+  border-radius: 16px 0 0 0;
+  background-color: lightgray;
 }

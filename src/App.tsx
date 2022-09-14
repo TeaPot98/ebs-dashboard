@@ -24,6 +24,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Layout />} />
+          <Route path="/users" element={<Layout />} />
+          <Route path="/posts" element={<Layout />} />
           <Route path="/login" element={<AuthPage type="login" />} />
           <Route path="/register" element={<AuthPage type="register" />} />
         </Routes>

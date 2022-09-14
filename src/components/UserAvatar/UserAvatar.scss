@@ -1,0 +1,12 @@
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 30px;
+  min-height: 30px;
+  aspect-ratio: 1;
+  background-color: lightpink;
+  border-radius: 50%;
+  font-size: 100%;
+  color: white;
+}
