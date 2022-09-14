@@ -1,10 +1,22 @@
 .menu-item {
   padding: 8px;
   border-radius: 8px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
 
   &:hover {
     background-color: #5570f1;
     color: white;
     cursor: pointer;
+
+    img {
+      filter: invert(100%);
+    }
+  }
+
+  img {
+    height: 20px;
   }
 }

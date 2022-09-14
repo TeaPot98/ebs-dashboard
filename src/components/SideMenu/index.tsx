@@ -9,9 +9,24 @@ const SideMenu = () => {
         <h1>Metrix</h1>
       </div>
       <ul className="menu__body">
-        <MenuItem route="/">Dashboard</MenuItem>
-        <MenuItem route="/users">Users</MenuItem>
-        <MenuItem route="/posts">Posts</MenuItem>
+        <MenuItem
+          icon="https://cdn-icons-png.flaticon.com/512/2948/2948037.png"
+          route="/"
+        >
+          Dashboard
+        </MenuItem>
+        <MenuItem
+          icon="https://cdn-icons-png.flaticon.com/512/615/615075.png"
+          route="/users"
+        >
+          Users
+        </MenuItem>
+        <MenuItem
+          icon="https://cdn-icons-png.flaticon.com/512/3131/3131446.png"
+          route="/posts"
+        >
+          Posts
+        </MenuItem>
       </ul>
     </div>
   );

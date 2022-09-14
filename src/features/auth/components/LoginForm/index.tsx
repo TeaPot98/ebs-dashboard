@@ -12,7 +12,7 @@ const LoginForm = () => {
       <InputField type="password" placeholder="Password" />
       <div className="auth-form__footer">
         <p>
-          Don't have an account ? <a href="#">Sign Up</a>
+          Don't have an account ? <a href="/register">Sign Up</a>
         </p>
         <Button>Login</Button>
       </div>
