@@ -1,7 +1,7 @@
 import UserTableItem from "../UserTableItem";
 import "./UserTable.scss";
 
-const UsersTable = () => {
+const UserTable = () => {
   return (
     <table cellSpacing="0" className="table">
       <thead>
@@ -17,11 +17,11 @@ const UsersTable = () => {
       </thead>
       <tbody>
         {Array.from(Array(10).keys()).map((user) => (
-          <UserTableItem user={user} />
+          <UserTableItem key={user} user={user} />
         ))}
       </tbody>
     </table>
   );
 };
 
-export { UsersTable };
+export { UserTable };

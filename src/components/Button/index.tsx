@@ -9,10 +9,11 @@ interface ButtonProps
 const Button = ({
   type = "primary",
   children,
+  className,
   ...props
 }: React.PropsWithChildren<ButtonProps>) => {
   return (
-    <button {...props} className={`btn btn--${type}`}>
+    <button {...props} className={`btn btn--${type} ${className}`}>
       {children}
     </button>
   );

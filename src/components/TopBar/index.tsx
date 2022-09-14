@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 import { UserAvatar, Button, Modal } from "components";
 import "./TopBar.scss";
@@ -22,6 +22,25 @@ const TopBar = () => {
     }
   };
 
+  const renderCreateButton = () => {
+    switch (location.pathname) {
+      case "/":
+        return;
+      case "/users":
+        return (
+          <Button onClick={() => setUserModalOpen(true)}>Add new user</Button>
+        );
+      case "/posts":
+        return (
+          <Link to="create">
+            <Button>Create new post</Button>
+          </Link>
+        );
+      default:
+        return "Dashboard";
+    }
+  };
+
   const saveNewUser = () => {
     console.log("New user saved");
     setUserModalOpen(false);
@@ -31,9 +50,7 @@ const TopBar = () => {
     <div className="top-bar">
       <h2>{renderPageName()}</h2>
       <div className="top-bar__user-container">
-        {location.pathname === "/users" && (
-          <Button onClick={() => setUserModalOpen(true)}>Add new user</Button>
-        )}
+        {renderCreateButton()}
         <Modal
           open={userModalOpen}
           onClose={() => setUserModalOpen(false)}

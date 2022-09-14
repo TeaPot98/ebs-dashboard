@@ -1,8 +1,11 @@
-.input-field {
-  border-radius: 8px;
-  border: none;
+.text-area {
+  resize: none;
+  height: 100px;
   background-color: whitesmoke;
+  border-radius: 8px;
+  border: 0px;
   padding: 8px;
+  font-family: inherit;
 
   &:focus,
   &:active {

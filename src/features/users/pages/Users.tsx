@@ -1,6 +1,6 @@
 import { Grid } from "components";
 import UserCard from "../components/UserCard";
-import { UsersTable } from "../components/UserTable";
+import { UserTable } from "../components/UserTable";
 
 const Users = () => {
   return (
@@ -10,7 +10,7 @@ const Users = () => {
           <UserCard key={i} />
         ))}
       </Grid> */}
-      <UsersTable />
+      <UserTable />
     </>
   );
 };

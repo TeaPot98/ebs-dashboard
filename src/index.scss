@@ -27,7 +27,7 @@ body {
   height: 100%;
 }
 
-.auth-form {
+.form {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -72,4 +72,10 @@ a {
   grid-template-columns: 1fr 1fr;
   padding: 8px;
   gap: 8px;
+}
+
+.back-button {
+  position: absolute;
+  top: 8px;
+  left: 8px;
 }

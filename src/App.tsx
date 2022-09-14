@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Layout } from "components";
 import AuthPage from "./features/auth/pages/AuthPage";
+import NewPost from "features/posts/pages/NewPost";
+import { NoMatch } from "components/NoMatch";
 
 function App() {
   const [open, setOpen] = useState(false);
@@ -21,8 +23,10 @@ function App() {
           <Route path="/" element={<Layout />} />
           <Route path="/users" element={<Layout />} />
           <Route path="/posts" element={<Layout />} />
+          <Route path="/posts/create" element={<NewPost />} />
           <Route path="/login" element={<AuthPage type="login" />} />
           <Route path="/register" element={<AuthPage type="register" />} />
+          <Route path="*" element={<NoMatch />} />
         </Routes>
       </Router>
     </div>

@@ -1,9 +1,14 @@
 import { Button, Checkbox, InputField, Select } from "components";
 
 const RegistrationForm = () => {
+  const handleRegistration = (event: React.SyntheticEvent) => {
+    event.preventDefault();
+    console.log("Signed Up !");
+  };
+
   return (
-    <form className="auth-form">
-      <div className="auth-form__header">
+    <form className="form">
+      <div className="form__header">
         <h4>Get Started</h4>
         <p>Create your free account</p>
       </div>
@@ -21,11 +26,11 @@ const RegistrationForm = () => {
         id="agreement"
         labelText="I agree with personal data processing"
       />
-      <div className="auth-form__footer">
+      <div className="form__footer">
         <p>
           Already have an account ? <a href="/login">Login</a>
         </p>
-        <Button>Sign Up</Button>
+        <Button onClick={handleRegistration}>Sign Up</Button>
       </div>
     </form>
   );

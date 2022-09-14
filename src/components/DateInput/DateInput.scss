@@ -1,8 +1,10 @@
-.input-field {
+.date-input {
   border-radius: 8px;
   border: none;
   background-color: whitesmoke;
   padding: 8px;
+  font-family: inherit;
+  color: gray;
 
   &:focus,
   &:active {
