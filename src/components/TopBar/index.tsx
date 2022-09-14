@@ -3,7 +3,7 @@ import { useLocation, Link } from "react-router-dom";
 
 import { UserAvatar, Button, Modal } from "components";
 import "./TopBar.scss";
-import UserForm from "features/users/UserForm";
+import UserForm from "features/users/components/UserForm";
 
 const TopBar = () => {
   const [userModalOpen, setUserModalOpen] = useState(false);

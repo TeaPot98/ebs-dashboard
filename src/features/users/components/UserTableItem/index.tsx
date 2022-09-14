@@ -2,7 +2,7 @@ import "../UserCard/UserCard.scss";
 import React, { useState } from "react";
 
 import { Button, ConfirmationModal, Modal } from "components";
-import UserForm from "features/users/UserForm";
+import UserForm from "../UserForm";
 
 const UserTableItem = ({ user }: { user: number }) => {
   const [editModalOpen, setEditModalOpen] = useState(false);
@@ -26,6 +26,16 @@ const UserTableItem = ({ user }: { user: number }) => {
             open={editModalOpen}
             onClose={() => setEditModalOpen(false)}
             title="Edit user"
+            actions={
+              <Button
+                onClick={() => {
+                  console.log("User saved!");
+                  setEditModalOpen(false);
+                }}
+              >
+                Save
+              </Button>
+            }
           >
             <UserForm />
           </Modal>

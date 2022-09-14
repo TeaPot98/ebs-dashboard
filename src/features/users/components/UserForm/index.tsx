@@ -2,7 +2,7 @@ import { Select, InputField } from "components";
 
 const UserForm = () => {
   return (
-    <form className="auth-form">
+    <form className="form">
       <InputField placeholder="Name" />
       <InputField placeholder="Surname" />
       <InputField type="email" placeholder="Email address" />
