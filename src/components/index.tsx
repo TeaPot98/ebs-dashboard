@@ -11,3 +11,4 @@ export * from "./Select";
 export * from "./SideMenu";
 export * from "./TopBar";
 export * from "./UserAvatar";
+export * from "./NoMatch";

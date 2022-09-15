@@ -6,7 +6,7 @@ interface InputFieldProps
 }
 
 const InputField = ({ type = "text", ...props }: InputFieldProps) => {
-  return <input className="input-field" {...props} />;
+  return <input type={type} className="input-field" {...props} />;
 };
 
 export { InputField };

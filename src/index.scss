@@ -44,6 +44,13 @@ body {
   &__footer {
     text-align: center;
   }
+
+  &__error {
+    color: red;
+    font-size: 14px;
+    line-height: 0;
+    text-align: center;
+  }
 }
 
 .auth-page {
@@ -60,7 +67,7 @@ a {
   text-decoration: none;
 
   &:hover {
-    text-decoration: underline;
+    text-decoration: none;
   }
 }
 
