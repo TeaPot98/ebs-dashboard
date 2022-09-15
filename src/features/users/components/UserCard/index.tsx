@@ -9,7 +9,7 @@ const UserCard = () => {
   return (
     <div className="user-card">
       <div className="user-card__info">
-        <UserAvatar />
+        <UserAvatar name="John" surname="Doe" />
         <span>John Doe</span>
       </div>
       <div className="user-card__buttons">

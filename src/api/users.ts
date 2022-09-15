@@ -20,10 +20,19 @@ const loginUser = async (userCredentials: UserCredentials) => {
       throw new Error("Incorrect email or password!");
     }
     console.log(response.data);
-    return response;
+    return response.data;
   } catch (error) {
     throw error;
   }
 };
 
-export { registerUser, loginUser };
+const getUser = async (userId: string) => {
+  try {
+    const response = await axios.get(`http://localhost:3001/users/${userId}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export { registerUser, loginUser, getUser };

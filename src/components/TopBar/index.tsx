@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useLocation, Link } from "react-router-dom";
 
 import { UserAvatar, Button, Modal } from "components";
 import "./TopBar.scss";
 import UserForm from "features/users/components/UserForm";
+import { UserContext } from "context/UserContext";
 
 const TopBar = () => {
   const [userModalOpen, setUserModalOpen] = useState(false);
   const location = useLocation();
+  const { user } = useContext(UserContext);
 
   const renderPageName = () => {
     switch (location.pathname) {
@@ -59,8 +61,10 @@ const TopBar = () => {
         >
           <UserForm />
         </Modal>
-        <UserAvatar />
-        <span>John Doe</span>
+        <UserAvatar name={user.name} surname={user.surname} />
+        <span>
+          {user.name} {user.surname}
+        </span>
       </div>
     </div>
   );

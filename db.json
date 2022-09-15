@@ -4,33 +4,9 @@
       "id": 1,
       "title": "json-server",
       "author": "typicode"
-    },
-    {
-      "name": "Vlad",
-      "email": "example@gmail.com",
-      "role": "administrator",
-      "gender": "male",
-      "id": 2
     }
   ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  },
   "users": [
-    {
-      "name": "Vlad",
-      "email": "example@gmail.com",
-      "role": "administrator",
-      "gender": "male",
-      "id": 1
-    },
     {
       "name": "Vlad",
       "surname": "Trifautan",
@@ -39,6 +15,15 @@
       "gender": "none",
       "role": "moderator",
       "id": 2
+    },
+    {
+      "name": "John",
+      "surname": "Doe",
+      "email": "ex@gmail.com",
+      "password": "test123",
+      "gender": "none",
+      "role": "moderator",
+      "id": 3
     }
   ]
 }

@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Button, Checkbox, InputField, Select } from "components";
 import { User } from "types";
 import { registerUser } from "api/users";
+import { UserContext } from "context/UserContext";
 
 const RegistrationForm = () => {
+  const { setUser } = useContext(UserContext);
+
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
@@ -30,6 +33,7 @@ const RegistrationForm = () => {
       // agreement: agreement,
     };
     registerUser(user);
+    setUser(user);
     navigate("/");
     console.log(user);
   };
@@ -96,7 +100,6 @@ const RegistrationForm = () => {
         id="gender"
         name="gender"
         value={gender}
-        defaultValue="none"
         onChange={handleGenderChange}
         labelText="Gender"
       >

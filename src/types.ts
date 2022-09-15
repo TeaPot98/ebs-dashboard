@@ -5,7 +5,7 @@ export interface User {
   email: string;
   gender: "male" | "female" | "none";
   role: "administrator" | "moderator";
-  password: string;
+  password?: string;
 }
 
 export interface UserRegistration extends User {
@@ -16,4 +16,9 @@ export interface UserRegistration extends User {
 export interface UserCredentials {
   email: string;
   password: string;
+}
+
+export interface UserContextType {
+  user: User;
+  setUser: (user: User) => void;
 }

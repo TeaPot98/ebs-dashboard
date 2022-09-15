@@ -1,11 +1,14 @@
 import { loginUser } from "api/users";
 import { Button, InputField } from "components";
-import React, { useState } from "react";
+import { UserContext } from "context/UserContext";
+import userReducer from "context/userReducer";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserCredentials } from "types";
 
 const LoginForm = () => {
   const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -17,9 +20,10 @@ const LoginForm = () => {
       password: password,
     };
     try {
-      await loginUser(userCredentials);
+      const loggedUser = await loginUser(userCredentials);
+      console.log(loggedUser[0]);
+      setUser(loggedUser[0]);
       navigate("/");
-      console.log("Login !");
     } catch (error: any) {
       setErrorMessage(error.message);
       console.error(error);

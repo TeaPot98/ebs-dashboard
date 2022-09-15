@@ -24,7 +24,7 @@ const PostCard = () => {
         </p>
       </div>
       <div className="post__footer">
-        <UserAvatar />
+        <UserAvatar name="John" surname="Doe" />
         <span className="post__author">
           By <span>John Doe</span>
         </span>
