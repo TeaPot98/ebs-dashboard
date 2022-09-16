@@ -24,6 +24,15 @@
       "gender": "none",
       "role": "moderator",
       "id": 3
+    },
+    {
+      "name": "Alexandru",
+      "surname": "Ion",
+      "email": "third@gmail.com",
+      "password": "test123",
+      "gender": "none",
+      "role": "moderator",
+      "id": 4
     }
   ]
 }

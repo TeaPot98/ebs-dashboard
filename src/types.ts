@@ -1,5 +1,5 @@
 export interface User {
-  id?: number;
+  id: number;
   name: string;
   surname: string;
   email: string;
@@ -8,10 +8,7 @@ export interface User {
   password?: string;
 }
 
-export interface UserRegistration extends User {
-  passConfirmation: string;
-  agreement: boolean;
-}
+export type UserRegistration = Omit<User, "id">;
 
 export interface UserCredentials {
   email: string;
@@ -19,6 +16,6 @@ export interface UserCredentials {
 }
 
 export interface UserContextType {
-  user: User;
-  setUser: (user: User) => void;
+  user: User | undefined;
+  setUser: (user: User | undefined) => void;
 }

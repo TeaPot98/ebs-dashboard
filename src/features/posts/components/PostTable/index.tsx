@@ -1,6 +1,8 @@
+import Table from "components/Table";
+
 const PostTable = () => {
   return (
-    <table cellSpacing="0" className="table">
+    <Table cellSpacing="0">
       <thead>
         <tr>
           <th>ID</th>
@@ -19,7 +21,7 @@ const PostTable = () => {
           </tr>
         ))}
       </tbody>
-    </table>
+    </Table>
   );
 };
 

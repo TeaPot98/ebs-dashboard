@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Button, Checkbox, InputField, Select } from "components";
-import { User } from "types";
+import { User, UserRegistration } from "types";
 import { registerUser } from "api/users";
 import { UserContext } from "context/UserContext";
 
@@ -19,23 +19,22 @@ const RegistrationForm = () => {
   const [agreement, setAgreement] = useState(false);
   const navigate = useNavigate();
 
-  const handleRegistration = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleRegistration = async (
+    event: React.FormEvent<HTMLFormElement>
+  ) => {
     event.preventDefault();
     console.log(event.target);
-    const user: User = {
+    const user: UserRegistration = {
       name: name,
       surname: surname,
       email: email,
       password: password,
-      // passConfirmation: passConfirmation,
       gender: "none",
       role: "moderator",
-      // agreement: agreement,
     };
-    registerUser(user);
-    setUser(user);
+    const loggedUser = await registerUser(user);
+    setUser(loggedUser);
     navigate("/");
-    console.log(user);
   };
 
   const handleNameChange = (event: React.FormEvent<HTMLInputElement>) => {

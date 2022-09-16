@@ -1,9 +1,9 @@
+import Table from "components/Table";
 import UserTableItem from "../UserTableItem";
-import "./UserTable.scss";
 
 const UserTable = () => {
   return (
-    <table cellSpacing="0" className="table">
+    <Table cellSpacing="0">
       <thead>
         <tr>
           <th>ID</th>
@@ -20,7 +20,7 @@ const UserTable = () => {
           <UserTableItem key={user} user={user} />
         ))}
       </tbody>
-    </table>
+    </Table>
   );
 };
 

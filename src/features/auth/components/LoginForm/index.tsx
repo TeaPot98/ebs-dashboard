@@ -21,7 +21,6 @@ const LoginForm = () => {
     };
     try {
       const loggedUser = await loginUser(userCredentials);
-      console.log(loggedUser[0]);
       setUser(loggedUser[0]);
       navigate("/");
     } catch (error: any) {

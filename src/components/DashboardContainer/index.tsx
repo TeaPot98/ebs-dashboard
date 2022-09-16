@@ -7,7 +7,7 @@ import "./DashboardContainer.scss";
 
 const DashboardContainer = () => {
   const location = useLocation();
-  console.log(location.pathname);
+  // console.log(location.pathname);
 
   const renderContent = () => {
     switch (location.pathname) {

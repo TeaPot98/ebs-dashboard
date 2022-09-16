@@ -1,11 +1,14 @@
 import axios from "axios";
 
-import { User, UserCredentials } from "types";
+import { User, UserCredentials, UserRegistration } from "types";
 
-const registerUser = async (user: User) => {
+const registerUser = async (user: UserRegistration) => {
   try {
-    const response = await axios.post("http://localhost:3001/users", user);
-    return response;
+    const response = await axios.post<User>(
+      "http://localhost:3001/users",
+      user
+    );
+    return response.data;
   } catch (error) {
     console.error(error);
   }
@@ -13,7 +16,7 @@ const registerUser = async (user: User) => {
 
 const loginUser = async (userCredentials: UserCredentials) => {
   try {
-    const response = await axios.get(
+    const response = await axios.get<User[]>(
       `http://localhost:3001/users?email=${userCredentials.email}&password=${userCredentials.password}`
     );
     if (response.data.length === 0) {
@@ -28,7 +31,9 @@ const loginUser = async (userCredentials: UserCredentials) => {
 
 const getUser = async (userId: string) => {
   try {
-    const response = await axios.get(`http://localhost:3001/users/${userId}`);
+    const response = await axios.get<User>(
+      `http://localhost:3001/users/${userId}`
+    );
     return response.data;
   } catch (error) {
     console.error(error);

@@ -61,10 +61,14 @@ const TopBar = () => {
         >
           <UserForm />
         </Modal>
-        <UserAvatar name={user.name} surname={user.surname} />
-        <span>
-          {user.name} {user.surname}
-        </span>
+        {user && (
+          <>
+            <UserAvatar name={user.name} surname={user.surname} />
+            <span>
+              {user.name} {user.surname}
+            </span>
+          </>
+        )}
       </div>
     </div>
   );
