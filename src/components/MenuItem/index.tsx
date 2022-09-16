@@ -2,6 +2,11 @@ import { Link, useLocation } from "react-router-dom";
 
 import "./MenuItem.scss";
 
+interface MenuItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
+  icon?: string;
+  route: string;
+}
+
 const MenuItem = ({
   icon,
   children,
@@ -16,7 +21,6 @@ const MenuItem = ({
           route === location.pathname && "menu-item--active"
         }`}
       >
-        {/* <Link to={route}>{children}</Link> */}
         <img src={icon} />
         {children}
       </li>
@@ -25,8 +29,3 @@ const MenuItem = ({
 };
 
 export { MenuItem };
-
-interface MenuItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
-  icon?: string;
-  route: string;
-}

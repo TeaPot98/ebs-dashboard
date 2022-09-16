@@ -1,4 +1,4 @@
-import { InputField, Button } from "components";
+import { Input, Button } from "components";
 import DateInput from "components/DateInput";
 import TextArea from "components/TextArea";
 
@@ -10,9 +10,9 @@ const PostForm = () => {
 
   return (
     <form className="form">
-      <InputField placeholder="Title" />
+      <Input placeholder="Title" />
       <TextArea placeholder="Description" />
-      <InputField placeholder="Image URL" />
+      <Input placeholder="Image URL" />
       <DateInput />
       <Button onClick={handleSubmit}>Create</Button>
     </form>

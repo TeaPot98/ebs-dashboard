@@ -5,7 +5,7 @@ interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
 const Checkbox = ({ labelText, id, ...props }: CheckboxProps) => {
   return (
     <div>
-      <input {...props} type="checkbox" />
+      <input id={id} {...props} type="checkbox" />
       <label htmlFor={id}>{labelText}</label>
     </div>
   );

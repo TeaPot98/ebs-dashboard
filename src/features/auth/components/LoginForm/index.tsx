@@ -1,5 +1,5 @@
 import { loginUser } from "api/users";
-import { Button, InputField } from "components";
+import { Button, Input } from "components";
 import { UserContext } from "context/UserContext";
 import useSetState from "hooks/useSetState";
 import React, { useContext, useState } from "react";
@@ -39,7 +39,7 @@ const LoginForm = () => {
         <h4>Welcome back!</h4>
         <p>Login to your account</p>
       </div>
-      <InputField
+      <Input
         id="email"
         name="email"
         value={login.email}
@@ -47,7 +47,7 @@ const LoginForm = () => {
         placeholder="Email Address"
         required
       />
-      <InputField
+      <Input
         id="password"
         name="password"
         value={login.password}

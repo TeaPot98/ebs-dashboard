@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Button, Checkbox, InputField, Select } from "components";
+import { Button, Checkbox, Input, Select } from "components";
 import { UserRegistration } from "types";
 import { registerUser } from "api/users";
 import { UserContext } from "context/UserContext";
@@ -47,7 +47,7 @@ const RegistrationForm = () => {
         <h4>Get Started</h4>
         <p>Create your free account</p>
       </div>
-      <InputField
+      <Input
         id="name"
         name="name"
         onChange={(event) => setRegister({ name: event.target.value })}
@@ -55,7 +55,7 @@ const RegistrationForm = () => {
         placeholder="Name"
         required
       />
-      <InputField
+      <Input
         id="surname"
         name="surname"
         onChange={(event) => setRegister({ surname: event.target.value })}
@@ -63,7 +63,7 @@ const RegistrationForm = () => {
         placeholder="Surname"
         required
       />
-      <InputField
+      <Input
         id="email"
         name="email"
         onChange={(event) => setRegister({ email: event.target.value })}
@@ -83,7 +83,7 @@ const RegistrationForm = () => {
         <option value="male">Male</option>
         <option value="female">Female</option>
       </Select>
-      <InputField
+      <Input
         id="password"
         name="password"
         onChange={(event) => setRegister({ password: event.target.value })}
@@ -92,7 +92,7 @@ const RegistrationForm = () => {
         placeholder="Create a password"
         required
       />
-      <InputField
+      <Input
         id="password-confirmation"
         name="password-confirmation"
         onChange={(event) =>

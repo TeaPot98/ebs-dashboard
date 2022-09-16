@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Select, InputField } from "components";
+import { Select, Input } from "components";
 import { User } from "types";
 
 interface UserFormProps {
@@ -34,15 +34,15 @@ const UserForm = ({ user }: UserFormProps) => {
 
   return (
     <form className="form">
-      <InputField
+      <Input
         id="name"
         name="name"
         value={name}
         onChange={handleNameChange}
         placeholder="Name"
       />
-      <InputField placeholder="Surname" />
-      <InputField type="email" placeholder="Email address" />
+      <Input placeholder="Surname" />
+      <Input type="email" placeholder="Email address" />
       <Select
         value={gender}
         onChange={handleGenderChange}

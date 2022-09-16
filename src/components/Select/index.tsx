@@ -9,12 +9,13 @@ const Select = ({
   id,
   labelText,
   children,
+  className,
   ...props
 }: React.PropsWithChildren<SelectProps>) => {
   return (
     <div className="select">
       <label htmlFor={id}>{labelText}</label>
-      <select id={id} {...props}>
+      <select id={id} className={className} {...props}>
         {children}
       </select>
     </div>
