@@ -45,6 +45,7 @@ const LoginForm = () => {
         value={login.email}
         onChange={(event) => setLogin({ email: event.target.value })}
         placeholder="Email Address"
+        required
       />
       <InputField
         id="password"
@@ -53,6 +54,7 @@ const LoginForm = () => {
         onChange={(event) => setLogin({ password: event.target.value })}
         type="password"
         placeholder="Password"
+        required
       />
       <div className="form__footer">
         <span className="form__error">{errorMessage}</span>

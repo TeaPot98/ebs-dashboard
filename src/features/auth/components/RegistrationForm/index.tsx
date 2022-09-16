@@ -53,6 +53,7 @@ const RegistrationForm = () => {
         onChange={(event) => setRegister({ name: event.target.value })}
         value={register.name}
         placeholder="Name"
+        required
       />
       <InputField
         id="surname"
@@ -60,6 +61,7 @@ const RegistrationForm = () => {
         onChange={(event) => setRegister({ surname: event.target.value })}
         value={register.surname}
         placeholder="Surname"
+        required
       />
       <InputField
         id="email"
@@ -68,6 +70,7 @@ const RegistrationForm = () => {
         value={register.email}
         type="email"
         placeholder="Email address"
+        required
       />
       <Select
         id="gender"
@@ -87,6 +90,7 @@ const RegistrationForm = () => {
         value={register.password}
         type="password"
         placeholder="Create a password"
+        required
       />
       <InputField
         id="password-confirmation"
@@ -97,6 +101,7 @@ const RegistrationForm = () => {
         value={register.passConfirmation}
         type="password"
         placeholder="Confirm your password"
+        required
       />
       <Checkbox
         id="agreement"
@@ -104,6 +109,7 @@ const RegistrationForm = () => {
         checked={register.agreement}
         onChange={(event) => setRegister({ agreement: event.target.checked })}
         labelText="I agree with personal data processing"
+        required
       />
       <div className="form__footer">
         <p>
