@@ -3,19 +3,20 @@ import React, { useState } from "react";
 
 import { Button, ConfirmationModal, Modal } from "components";
 import UserForm from "../UserForm";
+import { User } from "types";
 
-const UserTableItem = ({ user }: { user: number }) => {
+const UserTableItem = ({ user }: { user: User }) => {
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [removeModalOpen, setRemoveModalOpen] = useState(false);
 
   return (
-    <tr key={user}>
-      <td>{user}</td>
-      <td>John</td>
-      <td>Doe</td>
-      <td>example@gmail.com</td>
-      <td>Male</td>
-      <td>Administrator</td>
+    <tr key={user.id}>
+      <td>{user.id}</td>
+      <td>{user.name}</td>
+      <td>{user.surname}</td>
+      <td>{user.email}</td>
+      <td>{user.gender}</td>
+      <td>{user.role}</td>
       <td>
         <div className="user-card__buttons">
           <Button onClick={() => setEditModalOpen(true)}>Edit</Button>
@@ -48,7 +49,12 @@ const UserTableItem = ({ user }: { user: number }) => {
               setRemoveModalOpen(false);
             }}
           >
-            Are your sure you want to remove this user?
+            Are your sure you want to remove
+            <b>
+              {" "}
+              "{user.name} {user.surname}"{" "}
+            </b>
+            from users?
           </ConfirmationModal>
         </div>
       </td>

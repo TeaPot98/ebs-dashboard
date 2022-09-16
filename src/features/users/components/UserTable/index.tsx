@@ -1,7 +1,12 @@
-import Table from "components/Table";
+import { Table } from "components";
+import { User } from "types";
 import UserTableItem from "../UserTableItem";
 
-const UserTable = () => {
+interface UserTableProps {
+  users: User[];
+}
+
+const UserTable = ({ users }: UserTableProps) => {
   return (
     <Table cellSpacing="0">
       <thead>
@@ -16,8 +21,8 @@ const UserTable = () => {
         </tr>
       </thead>
       <tbody>
-        {Array.from(Array(10).keys()).map((user) => (
-          <UserTableItem key={user} user={user} />
+        {users.map((user) => (
+          <UserTableItem key={user.id} user={user} />
         ))}
       </tbody>
     </Table>

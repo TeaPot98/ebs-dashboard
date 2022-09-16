@@ -9,7 +9,7 @@ import { UserContext } from "context/UserContext";
 const TopBar = () => {
   const [userModalOpen, setUserModalOpen] = useState(false);
   const location = useLocation();
-  const { user } = useContext(UserContext);
+  const { user, logOut } = useContext(UserContext);
 
   const renderPageName = () => {
     switch (location.pathname) {
@@ -67,6 +67,9 @@ const TopBar = () => {
             <span>
               {user.name} {user.surname}
             </span>
+            <Button type="danger" onClick={logOut}>
+              Log Out
+            </Button>
           </>
         )}
       </div>

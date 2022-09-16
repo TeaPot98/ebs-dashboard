@@ -7,13 +7,14 @@ import { User, UserContextType } from "types";
 const initialState: UserContextType = {
   setUser: (user) => {},
   user: undefined,
+  logOut: () => {},
 };
 
 export const UserContext = React.createContext<UserContextType>(initialState);
 
 export const UserContextProvider = ({ children }: React.PropsWithChildren) => {
   const navigate = useNavigate();
-  const userId = localStorage.getItem("userId");
+  let userId = localStorage.getItem("userId");
   const [user, setUser] = useState<User | undefined>();
   // const [state, dispatch] = useReducer(userReducer, initialState);
   console.log("User ID from Provider", userId);
@@ -28,13 +29,19 @@ export const UserContextProvider = ({ children }: React.PropsWithChildren) => {
       navigate("/login");
     };
     fetchUser();
-  }, []);
+  }, [userId]);
 
   const setLoggedUser = (user: User | undefined) => {
     if (user) {
       localStorage.setItem("userId", user.id.toString());
     }
     setUser(user);
+  };
+
+  const logOut = () => {
+    localStorage.removeItem("userId");
+    setUser(undefined);
+    userId = "";
   };
 
   // const setUser = (user: User) => {
@@ -49,6 +56,7 @@ export const UserContextProvider = ({ children }: React.PropsWithChildren) => {
       value={{
         user: user,
         setUser: setLoggedUser,
+        logOut,
       }}
     >
       {children}

@@ -18,4 +18,5 @@ export interface UserCredentials {
 export interface UserContextType {
   user: User | undefined;
   setUser: (user: User | undefined) => void;
+  logOut: () => void;
 }
