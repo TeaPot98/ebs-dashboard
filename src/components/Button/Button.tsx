@@ -6,7 +6,7 @@ interface ButtonProps
   type?: "primary" | "danger";
 }
 
-const Button = ({
+export const Button = ({
   type = "primary",
   children,
   className,
@@ -18,5 +18,3 @@ const Button = ({
     </button>
   );
 };
-
-export { Button };

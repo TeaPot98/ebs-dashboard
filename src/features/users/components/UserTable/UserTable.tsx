@@ -1,12 +1,12 @@
 import { Table } from "components";
 import { User } from "types";
-import UserTableItem from "../UserTableItem";
+import { UserTableItem } from "../UserTableItem/UserTableItem";
 
 interface UserTableProps {
   users: User[];
 }
 
-const UserTable = ({ users }: UserTableProps) => {
+export const UserTable = ({ users }: UserTableProps) => {
   return (
     <Table cellSpacing="0">
       <thead>
@@ -28,5 +28,3 @@ const UserTable = ({ users }: UserTableProps) => {
     </Table>
   );
 };
-
-export { UserTable };

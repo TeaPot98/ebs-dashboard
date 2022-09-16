@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import Posts from "../../features/posts/pages/Posts";
-import Users from "../../features/users/pages/Users";
+import { Posts } from "../../features/posts/pages/Posts";
+import { Users } from "../../features/users/pages/Users";
 
 import "./DashboardContainer.scss";
 
-const DashboardContainer = () => {
+export const DashboardContainer = () => {
   const location = useLocation();
   // console.log(location.pathname);
 
@@ -24,5 +24,3 @@ const DashboardContainer = () => {
 
   return <div className="container">{renderContent()}</div>;
 };
-
-export { DashboardContainer };

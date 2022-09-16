@@ -5,7 +5,7 @@ interface GridProps extends React.HTMLAttributes<HTMLDivElement> {
   columns: number;
 }
 
-const Grid = ({
+export const Grid = ({
   className,
   children,
   columns = 2,
@@ -17,5 +17,3 @@ const Grid = ({
     </div>
   );
 };
-
-export { Grid };

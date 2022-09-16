@@ -1,6 +1,6 @@
 import { Table } from "components";
 
-const PostTable = () => {
+export const PostTable = () => {
   return (
     <Table cellSpacing="0">
       <thead>
@@ -24,5 +24,3 @@ const PostTable = () => {
     </Table>
   );
 };
-
-export default PostTable;

@@ -1,8 +1,8 @@
 import { Input, Button } from "components";
-import DateInput from "components/DateInput";
-import TextArea from "components/TextArea";
+import { DateInput } from "components/DateInput/DateInput";
+import { TextArea } from "components/TextArea/TextArea";
 
-const PostForm = () => {
+export const PostForm = () => {
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
     console.log("New Post created !");
@@ -18,5 +18,3 @@ const PostForm = () => {
     </form>
   );
 };
-
-export default PostForm;

@@ -5,10 +5,12 @@ interface InputFieldProps
   type?: "text" | "email" | "password";
 }
 
-const Input = ({ className, type = "text", ...props }: InputFieldProps) => {
+export const Input = ({
+  className,
+  type = "text",
+  ...props
+}: InputFieldProps) => {
   return (
     <input type={type} className={`input-field ${className}`} {...props} />
   );
 };
-
-export { Input };

@@ -9,7 +9,7 @@ interface ModalProps {
   onClose: () => void;
 }
 
-const Modal = ({
+export const Modal = ({
   title = "",
   children,
   open,
@@ -37,5 +37,3 @@ const Modal = ({
     </div>
   );
 };
-
-export { Modal };

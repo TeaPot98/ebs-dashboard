@@ -1,7 +1,7 @@
 import { UserAvatar } from "components";
 import "./PostCard.scss";
 
-const PostCard = () => {
+export const PostCard = () => {
   return (
     <div className="post">
       <div className="post__header">
@@ -32,5 +32,3 @@ const PostCard = () => {
     </div>
   );
 };
-
-export default PostCard;

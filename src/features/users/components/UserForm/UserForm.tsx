@@ -8,7 +8,7 @@ interface UserFormProps {
   user?: User;
 }
 
-const UserForm = ({ user }: UserFormProps) => {
+export const UserForm = ({ user }: UserFormProps) => {
   const [userForm, setUserForm] = useSetState(
     user
       ? user
@@ -69,5 +69,3 @@ const UserForm = ({ user }: UserFormProps) => {
     </form>
   );
 };
-
-export default UserForm;

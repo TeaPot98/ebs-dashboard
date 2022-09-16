@@ -1,6 +1,6 @@
 import "./NoMatch.scss";
 
-const NoMatch = () => {
+export const NoMatch = () => {
   return (
     <div className="no-match-container">
       <h1>404</h1>
@@ -8,5 +8,3 @@ const NoMatch = () => {
     </div>
   );
 };
-
-export { NoMatch };

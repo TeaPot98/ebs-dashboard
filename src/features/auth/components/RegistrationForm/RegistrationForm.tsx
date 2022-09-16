@@ -7,7 +7,7 @@ import { registerUser } from "api/users";
 import { UserContext } from "context/UserContext";
 import useSetState from "hooks/useSetState";
 
-const RegistrationForm = () => {
+export const RegistrationForm = () => {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
   const [register, setRegister] = useSetState({
@@ -120,5 +120,3 @@ const RegistrationForm = () => {
     </form>
   );
 };
-
-export default RegistrationForm;

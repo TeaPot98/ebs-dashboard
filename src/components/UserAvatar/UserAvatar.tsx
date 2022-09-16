@@ -6,7 +6,7 @@ interface UserAvatarProps extends React.HTMLAttributes<HTMLDivElement> {
   surname: string;
 }
 
-const UserAvatar = ({
+export const UserAvatar = ({
   name,
   surname,
   className,
@@ -19,5 +19,3 @@ const UserAvatar = ({
     </div>
   );
 };
-
-export { UserAvatar };

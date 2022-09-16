@@ -7,7 +7,7 @@ interface ConfirmationModalProps {
   title: string;
 }
 
-const ConfirmationModal = ({
+export const ConfirmationModal = ({
   onClose,
   onAccept,
   open,
@@ -29,5 +29,3 @@ const ConfirmationModal = ({
     </Modal>
   );
 };
-
-export { ConfirmationModal };

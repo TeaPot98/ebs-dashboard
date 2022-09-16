@@ -2,9 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import { getAllUsers } from "api/users";
 import { LoadingSpinner } from "components";
 
-import { UserTable } from "../components/UserTable";
+import { UserTable } from "../components/UserTable/UserTable";
 
-const Users = () => {
+export const Users = () => {
   const { isLoading, isError, data, error } = useQuery(["users"], getAllUsers);
 
   if (isLoading) {
@@ -28,5 +28,3 @@ const Users = () => {
     </>
   );
 };
-
-export default Users;

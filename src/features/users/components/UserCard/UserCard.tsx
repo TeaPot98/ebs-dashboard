@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./UserCard.scss";
 import { Button, ConfirmationModal, Modal, UserAvatar } from "components";
 
-const UserCard = () => {
+export const UserCard = () => {
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [removeModalOpen, setRemoveModalOpen] = useState(false);
 
@@ -39,5 +39,3 @@ const UserCard = () => {
     </div>
   );
 };
-
-export default UserCard;

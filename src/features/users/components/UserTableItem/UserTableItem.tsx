@@ -2,10 +2,10 @@ import "../UserCard/UserCard.scss";
 import React, { useState } from "react";
 
 import { Button, ConfirmationModal, Modal } from "components";
-import UserForm from "../UserForm";
+import { UserForm } from "../UserForm/UserForm";
 import { User } from "types";
 
-const UserTableItem = ({ user }: { user: User }) => {
+export const UserTableItem = ({ user }: { user: User }) => {
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [removeModalOpen, setRemoveModalOpen] = useState(false);
 
@@ -61,5 +61,3 @@ const UserTableItem = ({ user }: { user: User }) => {
     </tr>
   );
 };
-
-export default UserTableItem;

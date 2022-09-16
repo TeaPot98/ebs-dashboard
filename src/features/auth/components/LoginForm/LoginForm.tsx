@@ -6,7 +6,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserCredentials } from "types";
 
-const LoginForm = () => {
+export const LoginForm = () => {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
   const [errorMessage, setErrorMessage] = useState("");
@@ -66,5 +66,3 @@ const LoginForm = () => {
     </form>
   );
 };
-
-export default LoginForm;

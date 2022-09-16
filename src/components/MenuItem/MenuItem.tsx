@@ -7,7 +7,7 @@ interface MenuItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
   route: string;
 }
 
-const MenuItem = ({
+export const MenuItem = ({
   icon,
   children,
   route,
@@ -27,5 +27,3 @@ const MenuItem = ({
     </Link>
   );
 };
-
-export { MenuItem };

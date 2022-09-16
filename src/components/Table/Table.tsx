@@ -1,6 +1,6 @@
 import "./Table.scss";
 
-const Table = ({
+export const Table = ({
   children,
   className,
   ...props
@@ -11,5 +11,3 @@ const Table = ({
     </table>
   );
 };
-
-export { Table };

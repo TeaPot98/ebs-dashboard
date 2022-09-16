@@ -2,9 +2,9 @@ import React, { useContext, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import { Layout } from "components";
-import AuthPage from "./features/auth/pages/AuthPage";
-import NewPost from "features/posts/pages/NewPost";
-import { NoMatch } from "components/NoMatch";
+import { AuthPage } from "./features/auth/pages/AuthPage";
+import { NewPost } from "features/posts/pages/NewPost";
+import { NoMatch } from "components/NoMatch/NoMatch";
 import { UserContext, UserContextProvider } from "context/UserContext";
 
 function App() {

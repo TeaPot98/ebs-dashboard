@@ -5,7 +5,7 @@ interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   labelText: string;
 }
 
-const Select = ({
+export const Select = ({
   id,
   labelText,
   children,
@@ -21,5 +21,3 @@ const Select = ({
     </div>
   );
 };
-
-export { Select };

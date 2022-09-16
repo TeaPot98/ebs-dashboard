@@ -1,8 +1,8 @@
 import { Button } from "components";
 import { Link } from "react-router-dom";
-import PostForm from "../components/PostForm";
+import { PostForm } from "../components/PostForm/PostForm";
 
-const NewPost = () => {
+export const NewPost = () => {
   return (
     <div className="auth-page">
       <PostForm />
@@ -12,5 +12,3 @@ const NewPost = () => {
     </div>
   );
 };
-
-export default NewPost;

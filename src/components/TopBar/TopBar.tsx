@@ -3,10 +3,10 @@ import { useLocation, Link } from "react-router-dom";
 
 import { UserAvatar, Button, Modal } from "components";
 import "./TopBar.scss";
-import UserForm from "features/users/components/UserForm";
+import { UserForm } from "features/users/components/UserForm/UserForm";
 import { UserContext } from "context/UserContext";
 
-const TopBar = () => {
+export const TopBar = () => {
   const [userModalOpen, setUserModalOpen] = useState(false);
   const location = useLocation();
   const { user, logOut } = useContext(UserContext);
@@ -76,5 +76,3 @@ const TopBar = () => {
     </div>
   );
 };
-
-export { TopBar };

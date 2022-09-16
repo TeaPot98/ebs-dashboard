@@ -1,7 +1,7 @@
 import "./SideMenu.scss";
 import { MenuItem } from "components";
 
-const SideMenu = () => {
+export const SideMenu = () => {
   return (
     <div className="menu">
       <div className="menu__header">
@@ -31,5 +31,3 @@ const SideMenu = () => {
     </div>
   );
 };
-
-export { SideMenu };

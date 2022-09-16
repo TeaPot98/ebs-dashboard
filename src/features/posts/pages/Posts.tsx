@@ -1,8 +1,8 @@
 import { Grid } from "components";
-import PostCard from "../components/PostCard";
-import PostTable from "../components/PostTable";
+import { PostCard } from "../components/PostCard/PostCart";
+import { PostTable } from "../components/PostTable/PostTable";
 
-const Posts = () => {
+export const Posts = () => {
   return (
     <Grid columns={2}>
       {Array.from(Array(10).keys()).map((post, i) => (
@@ -12,5 +12,3 @@ const Posts = () => {
     // <PostTable />
   );
 };
-
-export default Posts;
