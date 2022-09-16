@@ -2,69 +2,43 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Button, Checkbox, InputField, Select } from "components";
-import { User, UserRegistration } from "types";
+import { UserRegistration } from "types";
 import { registerUser } from "api/users";
 import { UserContext } from "context/UserContext";
+import useSetState from "hooks/useSetState";
 
 const RegistrationForm = () => {
-  const { setUser } = useContext(UserContext);
-
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passConfirmation, setPassConfirmation] = useState("");
-  const [gender, setGender] = useState("none");
-  const [role, setRole] = useState("");
-  const [agreement, setAgreement] = useState(false);
   const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
+  const [register, setRegister] = useSetState({
+    name: "",
+    surname: "",
+    email: "",
+    password: "",
+    passConfirmation: "",
+    gender: "",
+    role: "",
+    agreement: false,
+  });
 
   const handleRegistration = async (
     event: React.FormEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
-    console.log(event.target);
+
     const user: UserRegistration = {
-      name: name,
-      surname: surname,
-      email: email,
-      password: password,
-      gender: "none",
+      name: register.name,
+      surname: register.surname,
+      email: register.email,
+      password: register.password,
+      gender: register.gender,
       role: "moderator",
     };
+
     const loggedUser = await registerUser(user);
+
     setUser(loggedUser);
     navigate("/");
-  };
-
-  const handleNameChange = (event: React.FormEvent<HTMLInputElement>) => {
-    setName(event.currentTarget.value);
-  };
-
-  const handleSurnameChange = (event: React.FormEvent<HTMLInputElement>) => {
-    setSurname(event.currentTarget.value);
-  };
-
-  const handleEmailChange = (event: React.FormEvent<HTMLInputElement>) => {
-    setEmail(event.currentTarget.value);
-  };
-
-  const handleGenderChange = (event: React.FormEvent<HTMLSelectElement>) => {
-    setGender(event.currentTarget.value);
-  };
-
-  const handlePasswordChange = (event: React.FormEvent<HTMLInputElement>) => {
-    setPassword(event.currentTarget.value);
-  };
-
-  const handlePassConfirmationChange = (
-    event: React.FormEvent<HTMLInputElement>
-  ) => {
-    setPassConfirmation(event.currentTarget.value);
-  };
-
-  const handleAgreement = (event: React.FormEvent<HTMLInputElement>) => {
-    setAgreement(event.currentTarget.checked);
   };
 
   return (
@@ -76,30 +50,30 @@ const RegistrationForm = () => {
       <InputField
         id="name"
         name="name"
-        onChange={handleNameChange}
-        value={name}
+        onChange={(event) => setRegister({ name: event.target.value })}
+        value={register.name}
         placeholder="Name"
       />
       <InputField
         id="surname"
         name="surname"
-        onChange={handleSurnameChange}
-        value={surname}
+        onChange={(event) => setRegister({ surname: event.target.value })}
+        value={register.surname}
         placeholder="Surname"
       />
       <InputField
         id="email"
         name="email"
-        onChange={handleEmailChange}
-        value={email}
+        onChange={(event) => setRegister({ email: event.target.value })}
+        value={register.email}
         type="email"
         placeholder="Email address"
       />
       <Select
         id="gender"
         name="gender"
-        value={gender}
-        onChange={handleGenderChange}
+        value={register.gender}
+        onChange={(event) => setRegister({ gender: event.target.value })}
         labelText="Gender"
       >
         <option value="none">None</option>
@@ -109,23 +83,26 @@ const RegistrationForm = () => {
       <InputField
         id="password"
         name="password"
-        onChange={handlePasswordChange}
-        value={password}
+        onChange={(event) => setRegister({ password: event.target.value })}
+        value={register.password}
         type="password"
         placeholder="Create a password"
       />
       <InputField
         id="password-confirmation"
         name="password-confirmation"
-        onChange={handlePassConfirmationChange}
-        value={passConfirmation}
+        onChange={(event) =>
+          setRegister({ passConfirmation: event.target.value })
+        }
+        value={register.passConfirmation}
         type="password"
         placeholder="Confirm your password"
       />
       <Checkbox
         id="agreement"
         name="agreement"
-        onChange={handleAgreement}
+        checked={register.agreement}
+        onChange={(event) => setRegister({ agreement: event.target.checked })}
         labelText="I agree with personal data processing"
       />
       <div className="form__footer">

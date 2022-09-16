@@ -6,18 +6,21 @@
   align-items: center;
   gap: 8px;
   color: black;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: background-color 0.1s ease-in-out, color 0.2s ease-in-out;
 
-  &:hover,
   &--active {
-    background-color: #5570f1;
+    background-color: #5570f1 !important;
     color: white;
     cursor: pointer;
 
     img {
       filter: invert(100%);
-      transition: filter 0.2s ease-in-out;
+      transition: filter 0.1s ease-in-out;
     }
+  }
+
+  &:hover {
+    background-color: whitesmoke;
   }
 
   img {

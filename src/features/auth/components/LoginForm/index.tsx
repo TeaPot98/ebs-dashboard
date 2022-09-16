@@ -1,7 +1,7 @@
 import { loginUser } from "api/users";
 import { Button, InputField } from "components";
 import { UserContext } from "context/UserContext";
-import userReducer from "context/userReducer";
+import useSetState from "hooks/useSetState";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserCredentials } from "types";
@@ -9,16 +9,20 @@ import { UserCredentials } from "types";
 const LoginForm = () => {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [login, setLogin] = useSetState({
+    email: "",
+    password: "",
+  });
 
   const handleLogin = async (event: React.SyntheticEvent) => {
     event.preventDefault();
+
     const userCredentials: UserCredentials = {
-      email: email,
-      password: password,
+      email: login.email,
+      password: login.password,
     };
+
     try {
       const loggedUser = await loginUser(userCredentials);
       setUser(loggedUser[0]);
@@ -27,14 +31,6 @@ const LoginForm = () => {
       setErrorMessage(error.message);
       console.error(error);
     }
-  };
-
-  const handleEmailChange = (event: React.FormEvent<HTMLInputElement>) => {
-    setEmail(event.currentTarget.value);
-  };
-
-  const handlePasswordChange = (event: React.FormEvent<HTMLInputElement>) => {
-    setPassword(event.currentTarget.value);
   };
 
   return (
@@ -46,15 +42,15 @@ const LoginForm = () => {
       <InputField
         id="email"
         name="email"
-        value={email}
-        onChange={handleEmailChange}
+        value={login.email}
+        onChange={(event) => setLogin({ email: event.target.value })}
         placeholder="Email Address"
       />
       <InputField
         id="password"
         name="password"
-        value={password}
-        onChange={handlePasswordChange}
+        value={login.password}
+        onChange={(event) => setLogin({ password: event.target.value })}
         type="password"
         placeholder="Password"
       />

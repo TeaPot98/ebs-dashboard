@@ -44,13 +44,6 @@ export const UserContextProvider = ({ children }: React.PropsWithChildren) => {
     userId = "";
   };
 
-  // const setUser = (user: User) => {
-  //   return dispatch({
-  //     type: "SET_USER",
-  //     payload: user,
-  //   });
-  // };
-
   return (
     <UserContext.Provider
       value={{

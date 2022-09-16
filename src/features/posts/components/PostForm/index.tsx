@@ -12,6 +12,7 @@ const PostForm = () => {
     <form className="form">
       <InputField placeholder="Title" />
       <TextArea placeholder="Description" />
+      <InputField placeholder="Image URL" />
       <DateInput />
       <Button onClick={handleSubmit}>Create</Button>
     </form>

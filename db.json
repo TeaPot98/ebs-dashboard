@@ -33,6 +33,15 @@
       "gender": "none",
       "role": "moderator",
       "id": 4
+    },
+    {
+      "name": "Elena",
+      "surname": "E",
+      "email": "some@gmail.com",
+      "password": "test",
+      "gender": "female",
+      "role": "moderator",
+      "id": 5
     }
   ]
 }

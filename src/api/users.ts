@@ -14,6 +14,18 @@ const registerUser = async (user: UserRegistration) => {
   }
 };
 
+const editUser = async (user: User) => {
+  try {
+    const response = await axios.put(
+      `http://localhost:3001/users/${user.id}`,
+      user
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const loginUser = async (userCredentials: UserCredentials) => {
   try {
     const response = await axios.get<User[]>(
@@ -49,4 +61,4 @@ const getAllUsers = async () => {
   }
 };
 
-export { registerUser, loginUser, getUser, getAllUsers };
+export { registerUser, loginUser, getUser, getAllUsers, editUser };

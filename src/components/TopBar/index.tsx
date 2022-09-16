@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { useLocation, Link } from "react-router-dom";
 
 import { UserAvatar, Button, Modal } from "components";
@@ -14,13 +14,13 @@ const TopBar = () => {
   const renderPageName = () => {
     switch (location.pathname) {
       case "/":
-        return "Dashboard";
+        return <h2>Dashboard</h2>;
       case "/users":
-        return "Users";
+        return <h2>Users</h2>;
       case "/posts":
-        return "Posts";
+        return <h2>Posts</h2>;
       default:
-        return "Dashboard";
+        return <h2>Dashboard</h2>;
     }
   };
 
@@ -50,13 +50,13 @@ const TopBar = () => {
 
   return (
     <div className="top-bar">
-      <h2>{renderPageName()}</h2>
+      {renderPageName()}
       <div className="top-bar__user-container">
         {renderCreateButton()}
         <Modal
           open={userModalOpen}
           onClose={() => setUserModalOpen(false)}
-          title="Edit user"
+          title="Add new user"
           actions={<Button onClick={saveNewUser}>Save</Button>}
         >
           <UserForm />

@@ -38,7 +38,7 @@ const UserTableItem = ({ user }: { user: User }) => {
               </Button>
             }
           >
-            <UserForm />
+            <UserForm user={user} />
           </Modal>
           <ConfirmationModal
             title="Remove user"
