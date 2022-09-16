@@ -3,7 +3,7 @@ export * from "./Checkbox";
 export * from "./ConfirmationModal";
 export * from "./DashboardContainer";
 export * from "./Grid";
-export * from "./InputField";
+export * from "./Input";
 export * from "./Layout";
 export * from "./MenuItem";
 export * from "./Modal";
