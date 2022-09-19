@@ -1,5 +1,9 @@
+import { ModalHeader } from "./ModalHeader";
+import { ModalContent } from "./ModalContent";
+import { ModalFooter } from "./ModalFooter";
 import { Button } from "components";
 import "./Modal.scss";
+import { ModalTitle } from "./ModalTitle";
 
 interface ModalProps {
   title?: string;
@@ -10,10 +14,10 @@ interface ModalProps {
 }
 
 export const Modal = ({
-  title = "",
+  // title = "",
   children,
   open,
-  actions,
+  // actions,
   onClose,
 }: React.PropsWithChildren<ModalProps>) => {
   return (
@@ -24,16 +28,22 @@ export const Modal = ({
         onClose();
       }}
     >
-      <div className="modal__window">
-        <div className="modal__header">
+      <div className="modal__container">
+        {children}
+        {/* <div className="modal__header">
           <h5 className="modal__title">{title}</h5>
-        </div>
-        <div className="modal__content">{children}</div>
+        </div> */}
+        {/* <div className="modal__content">{children}</div>
         <div className="modal__footer">
           {actions}
           <Button onClick={onClose}>Cancel</Button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
 };
+
+Modal.Header = ModalHeader;
+Modal.Content = ModalContent;
+Modal.Footer = ModalFooter;
+Modal.Title = ModalTitle;

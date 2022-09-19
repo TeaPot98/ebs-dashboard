@@ -23,11 +23,14 @@ export const UserTableItem = ({ user }: { user: User }) => {
           <Button type="danger" onClick={() => setRemoveModalOpen(true)}>
             Remove
           </Button>
-          <Modal
-            open={editModalOpen}
-            onClose={() => setEditModalOpen(false)}
-            title="Edit user"
-            actions={
+          <Modal open={editModalOpen} onClose={() => setEditModalOpen(false)}>
+            <Modal.Header>
+              <Modal.Title>Edit user</Modal.Title>
+            </Modal.Header>
+            <Modal.Content>
+              <UserForm user={user} />
+            </Modal.Content>
+            <Modal.Footer>
               <Button
                 onClick={() => {
                   console.log("User saved!");
@@ -36,9 +39,7 @@ export const UserTableItem = ({ user }: { user: User }) => {
               >
                 Save
               </Button>
-            }
-          >
-            <UserForm user={user} />
+            </Modal.Footer>
           </Modal>
           <ConfirmationModal
             title="Remove user"

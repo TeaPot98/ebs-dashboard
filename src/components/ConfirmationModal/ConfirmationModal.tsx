@@ -15,17 +15,17 @@ export const ConfirmationModal = ({
   title,
 }: React.PropsWithChildren<ConfirmationModalProps>) => {
   return (
-    <Modal
-      onClose={onClose}
-      title={title}
-      open={open}
-      actions={
+    <Modal onClose={onClose} open={open}>
+      <Modal.Header>
+        <Modal.Title>{title}</Modal.Title>
+      </Modal.Header>
+      <Modal.Content>{children}</Modal.Content>
+      <Modal.Footer>
+        <Button onClick={onClose}>Cancel</Button>
         <Button type="danger" onClick={onAccept}>
           Accept
         </Button>
-      }
-    >
-      {children}
+      </Modal.Footer>
     </Modal>
   );
 };

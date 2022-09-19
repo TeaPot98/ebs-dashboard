@@ -36,13 +36,17 @@ export const Users = () => {
       <ContainerHeader>
         <h2>Users</h2>
         <Button onClick={() => setUserModalOpen(true)}>Add new user</Button>
-        <Modal
-          open={userModalOpen}
-          onClose={() => setUserModalOpen(false)}
-          title="Add new user"
-          actions={<Button onClick={saveNewUser}>Save</Button>}
-        >
-          <UserForm />
+        <Modal open={userModalOpen} onClose={() => setUserModalOpen(false)}>
+          <Modal.Header>
+            <Modal.Title>Add new user</Modal.Title>
+          </Modal.Header>
+          <Modal.Content>
+            <UserForm />
+          </Modal.Content>
+          <Modal.Footer>
+            <Button onClick={() => setUserModalOpen(false)}>Close</Button>
+            <Button onClick={saveNewUser}>Save</Button>
+          </Modal.Footer>
         </Modal>
       </ContainerHeader>
       <UserTable users={data} />
