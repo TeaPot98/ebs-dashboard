@@ -42,6 +42,15 @@
       "gender": "female",
       "role": "moderator",
       "id": 5
+    },
+    {
+      "name": "Vlad",
+      "surname": "Tr",
+      "email": "fourth@gmail.com",
+      "password": "test123",
+      "gender": "male",
+      "role": "moderator",
+      "id": 6
     }
   ]
 }

@@ -7,7 +7,6 @@ import { UserForm } from "features/users/components/UserForm/UserForm";
 import { UserContext } from "context/UserContext";
 
 export const TopBar = () => {
-  const location = useLocation();
   const { user, logOut } = useContext(UserContext);
 
   return (
