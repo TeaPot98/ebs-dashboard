@@ -1,6 +1,5 @@
 import { Grid } from "components";
 import { PostCard } from "../components/PostCard/PostCart";
-import { PostTable } from "../components/PostTable/PostTable";
 
 export const Posts = () => {
   return (
@@ -9,6 +8,5 @@ export const Posts = () => {
         <PostCard key={i} />
       ))}
     </Grid>
-    // <PostTable />
   );
 };

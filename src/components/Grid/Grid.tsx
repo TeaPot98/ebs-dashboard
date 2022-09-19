@@ -12,7 +12,11 @@ export const Grid = ({
   ...props
 }: React.PropsWithChildren<GridProps>) => {
   return (
-    <div className={`grid col-${columns} ${className}`} {...props}>
+    <div
+      className={`grid ${className}`}
+      style={{ gridTemplateColumns: "1fr ".repeat(columns) }}
+      {...props}
+    >
       {children}
     </div>
   );
