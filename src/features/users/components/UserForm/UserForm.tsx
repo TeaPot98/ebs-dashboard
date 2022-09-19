@@ -1,15 +1,17 @@
 import { useState } from "react";
 
-import { Select, Input } from "components";
+import { Select, Input, Button } from "components";
 import { User } from "types";
 import useSetState from "hooks/useSetState";
 import { Roles } from "utils";
+import { editUser, registerUser } from "api/users";
 
 interface UserFormProps {
   user?: User;
+  onSubmit: () => void;
 }
 
-export const UserForm = ({ user }: UserFormProps) => {
+export const UserForm = ({ user, onSubmit = () => {} }: UserFormProps) => {
   const [userForm, setUserForm] = useSetState(
     user
       ? user
@@ -22,14 +24,25 @@ export const UserForm = ({ user }: UserFormProps) => {
         }
   );
 
+  const submitForm = (event: React.SyntheticEvent) => {
+    event.preventDefault();
+    if (user) {
+      editUser({ ...userForm, id: user.id });
+    } else {
+      registerUser(userForm);
+    }
+    onSubmit();
+  };
+
   return (
-    <form className="form">
+    <form className="form" onSubmit={submitForm}>
       <Input
         id="name"
         name="name"
         value={userForm.name}
         onChange={(event) => setUserForm({ name: event.target.value })}
         placeholder="Name"
+        required
       />
       <Input
         id="surname"
@@ -37,6 +50,7 @@ export const UserForm = ({ user }: UserFormProps) => {
         value={userForm.surname}
         onChange={(event) => setUserForm({ surname: event.target.value })}
         placeholder="Surname"
+        required
       />
       <Input
         id="email"
@@ -45,17 +59,19 @@ export const UserForm = ({ user }: UserFormProps) => {
         onChange={(event) => setUserForm({ email: event.target.value })}
         type="email"
         placeholder="Email address"
+        required
       />
       <Select
         id="gender"
-        name={userForm.gender}
+        name="gender"
         value={userForm.gender}
         onChange={(event) => setUserForm({ gender: event.target.value })}
         labelText="Gender"
+        required
       >
-        <option value="">None</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
+        <Select.Option value="None">None</Select.Option>
+        <Select.Option value="Male">Male</Select.Option>
+        <Select.Option value="Female">Female</Select.Option>
       </Select>
       <Select
         id="role"
@@ -63,6 +79,7 @@ export const UserForm = ({ user }: UserFormProps) => {
         value={userForm.role}
         onChange={(event) => setUserForm({ role: event.target.value })}
         labelText="Role"
+        required
       >
         {Object.entries(Roles).map(([_, role]) => (
           <Select.Option key={role} value={role}>
@@ -70,6 +87,7 @@ export const UserForm = ({ user }: UserFormProps) => {
           </Select.Option>
         ))}
       </Select>
+      <Button>Submit</Button>
     </form>
   );
 };

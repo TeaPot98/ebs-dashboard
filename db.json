@@ -12,45 +12,17 @@
       "surname": "Trifautan",
       "email": "example@gmail.com",
       "password": "somepass123",
-      "gender": "none",
-      "role": "moderator",
+      "gender": "Male",
+      "role": "Administrator",
       "id": 2
     },
     {
       "name": "John",
       "surname": "Doe",
       "email": "ex@gmail.com",
-      "password": "test123",
-      "gender": "none",
-      "role": "moderator",
+      "gender": "Male",
+      "role": "Moderator",
       "id": 3
-    },
-    {
-      "name": "Alexandru",
-      "surname": "Ion",
-      "email": "third@gmail.com",
-      "password": "test123",
-      "gender": "none",
-      "role": "moderator",
-      "id": 4
-    },
-    {
-      "name": "Elena",
-      "surname": "E",
-      "email": "some@gmail.com",
-      "password": "test",
-      "gender": "female",
-      "role": "moderator",
-      "id": 5
-    },
-    {
-      "name": "Vlad",
-      "surname": "Tr",
-      "email": "fourth@gmail.com",
-      "password": "test123",
-      "gender": "male",
-      "role": "moderator",
-      "id": 6
     }
   ]
 }

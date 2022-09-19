@@ -16,14 +16,16 @@
   }
 
   &__title {
-    // line-height: 0;
+    line-height: 0;
     margin: 16px 0;
     font-size: 16px;
   }
 
   &__header {
+    display: flex;
+    justify-content: space-between;
     padding: 0px 8px;
-    height: 10px;
+    // height: 10px;
   }
 
   &__content {
