@@ -11,6 +11,5 @@ export * from "./Select/Select";
 export * from "./SideMenu/SideMenu";
 export * from "./TopBar/TopBar";
 export * from "./UserAvatar/UserAvatar";
-export * from "./NoMatch/NoMatch";
 export * from "./Table/Table";
 export * from "./LoadingSpinner/LoadingSpinner";
