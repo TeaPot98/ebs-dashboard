@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import { Select, Input, Button } from "components";
 import { User } from "types";
 import useSetState from "hooks/useSetState";
 import { Roles } from "utils";
 import { editUser, registerUser } from "api/users";
+import { UserContext } from "context/UserContext";
 
 interface UserFormProps {
   user?: User;
@@ -12,6 +13,8 @@ interface UserFormProps {
 }
 
 export const UserForm = ({ user, onSubmit = () => {} }: UserFormProps) => {
+  const loggedUser = useContext(UserContext);
+  const [errorMessage, setErrorMessage] = useState("");
   const [userForm, setUserForm] = useSetState(
     user
       ? user
@@ -24,14 +27,18 @@ export const UserForm = ({ user, onSubmit = () => {} }: UserFormProps) => {
         }
   );
 
-  const submitForm = (event: React.SyntheticEvent) => {
+  const submitForm = async (event: React.SyntheticEvent) => {
     event.preventDefault();
-    if (user) {
-      editUser({ ...userForm, id: user.id });
-    } else {
-      registerUser(userForm);
+    try {
+      if (user) {
+        await editUser({ ...userForm, id: user.id });
+      } else {
+        await registerUser(userForm);
+      }
+      onSubmit();
+    } catch (error: any) {
+      setErrorMessage(error.message);
     }
-    onSubmit();
   };
 
   return (
@@ -80,6 +87,7 @@ export const UserForm = ({ user, onSubmit = () => {} }: UserFormProps) => {
         onChange={(event) => setUserForm({ role: event.target.value })}
         labelText="Role"
         required
+        disabled={loggedUser.user?.id === user?.id}
       >
         {Object.entries(Roles).map(([_, role]) => (
           <Select.Option key={role} value={role}>
@@ -87,6 +95,7 @@ export const UserForm = ({ user, onSubmit = () => {} }: UserFormProps) => {
           </Select.Option>
         ))}
       </Select>
+      <span className="form__error">{errorMessage}</span>
       <Button>Submit</Button>
     </form>
   );

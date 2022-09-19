@@ -2,7 +2,7 @@ import { Button } from "components";
 import { Link } from "react-router-dom";
 import { PostForm } from "../components/PostForm/PostForm";
 
-export const NewPost = () => {
+export const PostFormPage = () => {
   return (
     <div className="auth-page">
       <PostForm />

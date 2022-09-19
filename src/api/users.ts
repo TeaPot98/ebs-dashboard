@@ -4,13 +4,22 @@ import { User, UserCredentials, UserRegistration } from "types";
 
 export const registerUser = async (user: UserRegistration) => {
   try {
-    const response = await axios.post<User>(
+    // Check if user already exists
+    const response = await axios.get<User[]>(
+      `http://localhost:3001/users?email=${user.email}`
+    );
+    if (response.data.length > 0) {
+      throw new Error("The user with this email already exists");
+    }
+    // Register new user
+    const registeredUser = await axios.post<User>(
       "http://localhost:3001/users",
       user
     );
-    return response.data;
+    return registeredUser.data;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
 

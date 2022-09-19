@@ -20,6 +20,7 @@ export const UserContextProvider = ({ children }: React.PropsWithChildren) => {
     ["user", userId],
     () => getUser(userId ? userId : ""),
     {
+      // fetch user only when "userId" is available
       enabled: !!userId,
     }
   );

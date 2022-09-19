@@ -10,6 +10,7 @@ import useSetState from "hooks/useSetState";
 export const RegistrationForm = () => {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
+  const [errorMessage, setErrorMessage] = useState("");
   const [register, setRegister] = useSetState({
     name: "",
     surname: "",
@@ -32,13 +33,16 @@ export const RegistrationForm = () => {
       email: register.email,
       password: register.password,
       gender: register.gender,
-      role: "moderator",
+      role: "Moderator",
     };
 
-    const loggedUser = await registerUser(user);
-
-    setUser(loggedUser);
-    navigate("/");
+    try {
+      const loggedUser = await registerUser(user);
+      setUser(loggedUser);
+      navigate("/");
+    } catch (error: any) {
+      setErrorMessage(error.message);
+    }
   };
 
   return (
@@ -112,6 +116,7 @@ export const RegistrationForm = () => {
         required
       />
       <div className="form__footer">
+        <span className="form__error">{errorMessage}</span>
         <p>
           Already have an account ? <a href="/login">Login</a>
         </p>

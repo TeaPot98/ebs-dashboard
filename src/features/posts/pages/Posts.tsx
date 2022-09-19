@@ -1,9 +1,37 @@
+import React from "react";
 import { Link } from "react-router-dom";
-import { Grid, Button } from "components";
-import { PostCard } from "../components/PostCard/PostCart";
+import { Grid, Button, LoadingSpinner } from "components";
+import { PostCard } from "../components/PostCard/PostCard";
 import { ContainerHeader } from "components/Container/ContainerHeader/ContainerHeader";
+import { useQuery } from "@tanstack/react-query";
+import { getAllPosts } from "api/posts";
+import { resolveProjectReferencePath } from "typescript";
+
+export const PostsContext = React.createContext({
+  refetch: () => {},
+});
 
 export const Posts = () => {
+  const { isLoading, isError, error, data, refetch } = useQuery(
+    ["posts"],
+    getAllPosts
+  );
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (isError) {
+    if (error instanceof Error) {
+      return <span>Error: {error.message}</span>;
+    }
+    return <span>An unknown error occured</span>;
+  }
+
+  if (!data) {
+    return <span>Data is missing</span>;
+  }
+
   return (
     <>
       <ContainerHeader className="container__header">
@@ -12,11 +40,17 @@ export const Posts = () => {
           <Button>Create new post</Button>
         </Link>
       </ContainerHeader>
-      <Grid columns={2}>
-        {Array.from(Array(10).keys()).map((post, i) => (
-          <PostCard key={i} />
-        ))}
-      </Grid>
+      <PostsContext.Provider
+        value={{
+          refetch: refetch,
+        }}
+      >
+        <Grid columns={2}>
+          {data.map((post) => (
+            <PostCard key={post.id} post={post} />
+          ))}
+        </Grid>
+      </PostsContext.Provider>
     </>
   );
 };

@@ -2,6 +2,7 @@
   background-color: white;
   width: 100%;
   padding: 16px;
+  height: fit-content;
   box-sizing: border-box;
   border-radius: 16px;
 
@@ -26,8 +27,18 @@
     border-radius: 8px;
   }
 
-  &__text {
+  &__body {
+    // height: 100%;
+    width: 100%;
+  }
+
+  &__description {
+    display: -webkit-box;
     font-size: 14px;
+    overflow: hidden;
+    max-width: 100%;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
   }
 
   &__footer {

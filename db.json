@@ -1,9 +1,40 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "title": "10 Tips To Be More Productive",
+      "description": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+      "category": "General",
+      "imageUrl": "https://images.unsplash.com/photo-1661956602868-6ae368943878?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+      "date": "2022-09-19T11:16:56.648Z",
+      "author": {
+        "name": "Vlad",
+        "surname": "Trifautan"
+      },
+      "id": 2
+    },
+    {
+      "title": "The Story of One Lion",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+      "category": "Nature",
+      "imageUrl": "https://images.unsplash.com/photo-1554990772-0bea55d510d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+      "date": "2022-09-19T11:48:56.719Z",
+      "author": {
+        "name": "Vlad",
+        "surname": "Trifautan"
+      },
+      "id": 3
+    },
+    {
+      "title": "Why Team Work is Important",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+      "category": "Healthcare",
+      "imageUrl": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+      "date": "2022-09-19T11:51:05.421Z",
+      "author": {
+        "name": "Vlad",
+        "surname": "Trifautan"
+      },
+      "id": 4
     }
   ],
   "users": [
@@ -12,7 +43,7 @@
       "surname": "Trifautan",
       "email": "example@gmail.com",
       "password": "somepass123",
-      "gender": "Male",
+      "gender": "Female",
       "role": "Administrator",
       "id": 2
     },

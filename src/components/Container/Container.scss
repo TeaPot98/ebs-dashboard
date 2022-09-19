@@ -4,12 +4,15 @@
   width: 100%;
   overflow: auto;
   border-radius: 20px 0 0 0;
-  // background-color: lightgray;
+  background-color: whitesmoke;
   padding: 8px;
 
   &__header {
+    // box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    line-height: 0;
+    padding: 8px 8px;
   }
 }

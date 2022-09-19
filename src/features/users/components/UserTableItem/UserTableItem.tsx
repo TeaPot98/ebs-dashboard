@@ -28,27 +28,31 @@ export const UserTableItem = ({ user }: UserTableItemProps) => {
       <td>{user.role}</td>
       <td>
         <div className="user-card__buttons">
-          <Button onClick={() => setEditModalOpen(true)}>Edit</Button>
+          <Button onClick={() => setEditModalOpen(true)}>
+            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png" />
+          </Button>
           {user.id !== loggedUser.user?.id && (
             <Button type="danger" onClick={() => setRemoveModalOpen(true)}>
-              Remove
+              <img src="https://cdn-icons-png.flaticon.com/512/542/542724.png" />
             </Button>
           )}
-          <Modal open={editModalOpen} onClose={() => setEditModalOpen(false)}>
-            <Modal.Header>
-              <Modal.Title>Edit user</Modal.Title>
-              <Button onClick={() => setEditModalOpen(false)}>Close</Button>
-            </Modal.Header>
-            <Modal.Content>
-              <UserForm
-                user={user}
-                onSubmit={() => {
-                  refetch();
-                  setEditModalOpen(false);
-                }}
-              />
-            </Modal.Content>
-          </Modal>
+          {editModalOpen && (
+            <Modal open={editModalOpen} onClose={() => setEditModalOpen(false)}>
+              <Modal.Header>
+                <Modal.Title>Edit user</Modal.Title>
+                <Button onClick={() => setEditModalOpen(false)}>Close</Button>
+              </Modal.Header>
+              <Modal.Content>
+                <UserForm
+                  user={user}
+                  onSubmit={() => {
+                    refetch();
+                    setEditModalOpen(false);
+                  }}
+                />
+              </Modal.Content>
+            </Modal>
+          )}
           <ConfirmationModal
             title="Remove user"
             open={removeModalOpen}
