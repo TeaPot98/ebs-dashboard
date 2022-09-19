@@ -27,10 +27,12 @@ export const PostCard = ({ post }: PostCardProps) => {
             <img src="https://cdn-icons-png.flaticon.com/512/542/542724.png" />
           </Button>
         </div>
-        <h5 className="post__category">{post.category}</h5>
-        <span className="post__date">{post.date.toDateString()}</span>
-        <h1 className="post__title">{post.title}</h1>
+        <div>
+          <h5 className="post__category">{post.category}</h5>
+          <span className="post__date">{post.date.toDateString()}</span>
+        </div>
       </div>
+      <h1 className="post__title">{post.title}</h1>
       <img className="post__image" src={post.imageUrl} />
       <div className="post__body">
         <p className="post__description">{post.description}</p>

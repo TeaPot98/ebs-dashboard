@@ -8,6 +8,7 @@
 
   &__category {
     display: inline;
+    margin: 0px;
     margin-right: 8px;
     font-size: 16px;
     color: #5570f1;
@@ -20,6 +21,21 @@
 
   &__title {
     font-size: 24px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: end;
+    gap: 8px;
   }
 
   &__image {
