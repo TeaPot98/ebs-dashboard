@@ -7,23 +7,42 @@ import { PostsContext } from "features/posts/pages/Posts";
 import { removePost } from "api/posts";
 import { useNavigate } from "react-router-dom";
 
-interface PostCardProps {
+interface PostCardProps extends React.HTMLAttributes<HTMLDivElement> {
   post: Post;
+  className?: string;
 }
 
-export const PostCard = ({ post }: PostCardProps) => {
+export const PostCard = ({ post, className }: PostCardProps) => {
   const navigate = useNavigate();
   const { refetch } = useContext(PostsContext);
   const [removeModalOpen, setRemoveModalOpen] = useState(false);
 
   return (
-    <div className="post">
+    <div
+      className={`post ${className}`}
+      onClick={(event) => {
+        if (!className?.includes("details")) {
+          navigate(`/posts/${post.id}`);
+        }
+      }}
+    >
       <div className="post__header">
         <div className="post__buttons">
-          <Button onClick={() => navigate(`/posts/${post.id}/edit`)}>
+          <Button
+            onClick={(event) => {
+              event.stopPropagation();
+              navigate(`/posts/${post.id}/edit`);
+            }}
+          >
             <img src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png" />
           </Button>
-          <Button type="danger" onClick={() => setRemoveModalOpen(true)}>
+          <Button
+            type="danger"
+            onClick={(event) => {
+              event.stopPropagation();
+              setRemoveModalOpen(true);
+            }}
+          >
             <img src="https://cdn-icons-png.flaticon.com/512/542/542724.png" />
           </Button>
         </div>

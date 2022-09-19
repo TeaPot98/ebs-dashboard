@@ -5,7 +5,6 @@ import { PostCard } from "../components/PostCard/PostCard";
 import { ContainerHeader } from "components/Container/ContainerHeader/ContainerHeader";
 import { useQuery } from "@tanstack/react-query";
 import { getAllPosts } from "api/posts";
-import { resolveProjectReferencePath } from "typescript";
 
 export const PostsContext = React.createContext({
   refetch: () => {},

@@ -9,7 +9,7 @@ export const Container = () => {
   return (
     <div className="container">
       <Routes>
-        <Route path="/" element={<div>Dashboard</div>} />
+        <Route path="/dashboard" element={<div>Dashboard</div>} />
         <Route path="/users" element={<Users />} />
         <Route path="/posts" element={<Posts />} />
       </Routes>

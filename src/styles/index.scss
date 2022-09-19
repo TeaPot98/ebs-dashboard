@@ -54,12 +54,24 @@ body {
 }
 
 .auth-page {
-  height: 100vh;
+  min-height: 100vh;
+  padding: 32px;
   overflow: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: lightgray;
+}
+
+.post-details {
+  // height: 100vh;
+  min-height: 100vh;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightblue;
+  padding: 32px;
 }
 
 a {
@@ -82,7 +94,7 @@ a {
 }
 
 .back-button {
-  position: absolute;
+  position: fixed;
   top: 8px;
   left: 8px;
 }

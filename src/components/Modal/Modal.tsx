@@ -24,6 +24,7 @@ export const Modal = ({
     <div
       className={`modal ${!open && "modal--closed"}`}
       onClick={(event) => {
+        event.stopPropagation();
         if (event.target !== event.currentTarget) return;
         onClose();
       }}
