@@ -1,4 +1,4 @@
-import { TopBar, SideMenu, DashboardContainer } from "components";
+import { TopBar, SideMenu, Container } from "components";
 import "./Layout.scss";
 
 export const Layout = () => {
@@ -7,7 +7,7 @@ export const Layout = () => {
       <SideMenu />
       <div className="layout__container">
         <TopBar />
-        <DashboardContainer />
+        <Container />
       </div>
     </div>
   );

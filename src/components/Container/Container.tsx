@@ -3,9 +3,9 @@ import { useLocation } from "react-router-dom";
 import { Posts } from "../../features/posts/pages/Posts";
 import { Users } from "../../features/users/pages/Users";
 
-import "./DashboardContainer.scss";
+import "./Container.scss";
 
-export const DashboardContainer = () => {
+export const Container = () => {
   const location = useLocation();
   // console.log(location.pathname);
 
