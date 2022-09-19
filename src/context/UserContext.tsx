@@ -16,7 +16,6 @@ export const UserContextProvider = ({ children }: React.PropsWithChildren) => {
   const navigate = useNavigate();
   let userId = localStorage.getItem("userId");
   const [user, setUser] = useState<User | undefined>();
-  // const [state, dispatch] = useReducer(userReducer, initialState);
   console.log("User ID from Provider", userId);
 
   useEffect(() => {
