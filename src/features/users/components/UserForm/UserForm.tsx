@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Select, Input } from "components";
 import { User } from "types";
 import useSetState from "hooks/useSetState";
+import { Roles } from "utils";
 
 interface UserFormProps {
   user?: User;
@@ -63,8 +64,11 @@ export const UserForm = ({ user }: UserFormProps) => {
         onChange={(event) => setUserForm({ role: event.target.value })}
         labelText="Role"
       >
-        <option value="moderator">Moderator</option>
-        <option value="administrator">Administrator</option>
+        {Object.entries(Roles).map(([_, role]) => (
+          <Select.Option key={role} value={role}>
+            {role}
+          </Select.Option>
+        ))}
       </Select>
     </form>
   );

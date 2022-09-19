@@ -79,9 +79,9 @@ export const RegistrationForm = () => {
         onChange={(event) => setRegister({ gender: event.target.value })}
         labelText="Gender"
       >
-        <option value="none">None</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
+        <Select.Option value="none">None</Select.Option>
+        <Select.Option value="male">Male</Select.Option>
+        <Select.Option value="female">Female</Select.Option>
       </Select>
       <Input
         id="password"

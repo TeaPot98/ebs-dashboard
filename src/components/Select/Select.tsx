@@ -1,3 +1,4 @@
+import { Option } from "./Option";
 import "./Select.scss";
 
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
@@ -21,3 +22,5 @@ export const Select = ({
     </div>
   );
 };
+
+Select.Option = Option;
