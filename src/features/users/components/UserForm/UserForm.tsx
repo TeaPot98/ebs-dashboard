@@ -28,9 +28,7 @@ export const UserForm = ({ user, onSubmit = () => {} }: UserFormProps) => {
         }
   );
   const registerMutation = useMutation(
-    (userInfo: UserRegistration) => {
-      return registerUser(userInfo);
-    },
+    (userInfo: UserRegistration) => registerUser(userInfo),
     {
       onError: (error) => {
         if (error instanceof Error) {
@@ -43,22 +41,17 @@ export const UserForm = ({ user, onSubmit = () => {} }: UserFormProps) => {
       },
     }
   );
-  const editMutation = useMutation(
-    (userInfo: User) => {
-      return editUser(userInfo);
+  const editMutation = useMutation((userInfo: User) => editUser(userInfo), {
+    onError: (error) => {
+      if (error instanceof Error) {
+        setErrorMessage(error.message);
+      }
+      console.error(error);
     },
-    {
-      onError: (error) => {
-        if (error instanceof Error) {
-          setErrorMessage(error.message);
-        }
-        console.error(error);
-      },
-      onSuccess: (data) => {
-        onSubmit();
-      },
-    }
-  );
+    onSuccess: (data) => {
+      onSubmit();
+    },
+  });
 
   const submitForm = async (event: React.SyntheticEvent) => {
     event.preventDefault();
@@ -126,7 +119,7 @@ export const UserForm = ({ user, onSubmit = () => {} }: UserFormProps) => {
       <span className="form__error">{errorMessage}</span>
       <Button disabled={registerMutation.isLoading || editMutation.isLoading}>
         {registerMutation.isLoading || editMutation.isLoading
-          ? "Submiting..."
+          ? "Submitting..."
           : "Submit"}
       </Button>
     </form>

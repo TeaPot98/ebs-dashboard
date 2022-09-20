@@ -13,9 +13,7 @@ export const RegistrationForm = () => {
   const { setUser } = useContext(UserContext);
   const [errorMessage, setErrorMessage] = useState("");
   const mutation = useMutation(
-    (userInfo: UserRegistration) => {
-      return registerUser(userInfo);
-    },
+    (userInfo: UserRegistration) => registerUser(userInfo),
     {
       onError: (error) => {
         if (error instanceof Error) {

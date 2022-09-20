@@ -16,9 +16,7 @@ export const LoginForm = () => {
     password: "",
   });
   const mutation = useMutation(
-    (userCredentials: UserCredentials) => {
-      return loginUser(userCredentials);
-    },
+    (userCredentials: UserCredentials) => loginUser(userCredentials),
     {
       onError: (error) => {
         if (error instanceof Error) {

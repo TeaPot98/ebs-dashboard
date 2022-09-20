@@ -1,5 +1,5 @@
-import { useContext, useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useContext, useState } from "react";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import { editPost, getPost, uploadPost } from "api/posts";
@@ -22,6 +22,7 @@ export const PostForm = ({ formData }: PostFormProps) => {
   const location = useLocation();
   const { id: postId } = useParams();
   const { user } = useContext(UserContext);
+  const [errorMessage, setErrorMessage] = useState("");
   const [formState, setFormState] = useSetState(
     formData !== null
       ? formData
@@ -38,18 +39,35 @@ export const PostForm = ({ formData }: PostFormProps) => {
           },
         }
   );
+  const editMutation = useMutation((postInfo: Post) => editPost(postInfo), {
+    onError: (error) => {
+      if (error instanceof Error) {
+        setErrorMessage(error.message);
+      }
+      console.error(error);
+    },
+    onSuccess: (data) => {
+      navigate("/posts");
+    },
+  });
+  const createMutation = useMutation((postInfo: Post) => uploadPost(postInfo), {
+    onError: (error) => {
+      if (error instanceof Error) {
+        setErrorMessage(error.message);
+      }
+      console.error(error);
+    },
+    onSuccess: (data) => {
+      navigate("/posts");
+    },
+  });
 
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
-    try {
-      if (postId) {
-        await editPost({ ...formState, id: postId });
-      } else {
-        await uploadPost(formState);
-      }
-      navigate("/posts");
-    } catch (error) {
-      console.error(error);
+    if (postId) {
+      editMutation.mutate({ ...formState, id: postId });
+    } else {
+      createMutation.mutate(formState);
     }
 
     console.log("New Post created !");
@@ -102,7 +120,15 @@ export const PostForm = ({ formData }: PostFormProps) => {
           setFormState({ date: new Date(event.target.value) })
         }
       />
-      <Button onClick={handleSubmit}>Submit</Button>
+      <span>{errorMessage}</span>
+      <Button
+        onClick={handleSubmit}
+        disabled={editMutation.isLoading || createMutation.isLoading}
+      >
+        {editMutation.isLoading || createMutation.isLoading
+          ? "Submitting..."
+          : "Submit"}
+      </Button>
     </form>
   );
 };
