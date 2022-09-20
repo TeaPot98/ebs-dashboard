@@ -4,7 +4,7 @@ import "./Button.scss";
 
 interface ButtonProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "type"> {
-  type?: "primary" | "danger";
+  type?: "primary" | "danger" | "hamburger";
 }
 
 export const Button = ({

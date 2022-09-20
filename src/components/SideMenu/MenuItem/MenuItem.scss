@@ -1,4 +1,8 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
 .menu-item {
+  box-sizing: border-box;
   padding: 8px;
   border-radius: 8px;
   display: flex;
@@ -9,7 +13,7 @@
   transition: background-color 0.1s ease-in-out, color 0.2s ease-in-out;
 
   &--active {
-    background-color: #5570f1 !important;
+    background-color: $primary !important;
     color: white;
     cursor: pointer;
 

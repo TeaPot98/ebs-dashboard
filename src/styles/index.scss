@@ -1,3 +1,5 @@
+@import "./variables";
+@import "../components/Button/Button.scss";
 @mixin set-color($color) {
   color: $color;
   &:hover,

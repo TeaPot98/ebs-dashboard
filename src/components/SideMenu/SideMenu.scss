@@ -1,3 +1,5 @@
+@import "../../styles/mixins";
+
 .menu {
   position: sticky;
   box-sizing: border-box;
@@ -6,14 +8,23 @@
   min-width: 200px;
   height: 100%;
   padding: 8px;
+  transition: min-width 0.2s, padding 0.2s ease-in-out;
+  overflow-y: hidden;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
 
   &__header {
+    box-sizing: border-box;
     height: 80px;
     display: flex;
-    gap: 10px;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
     color: darkgray;
+    transition: width 0.2s, opacity 0.2s ease-in-out;
 
     img {
       height: 40px;
@@ -21,7 +32,36 @@
   }
 
   &__body {
+    box-sizing: border-box;
     list-style-type: none;
     padding: 0;
+    transition: width 0.2s, opacity 0.2s ease-in-out;
+  }
+
+  @include sm {
+    min-width: 0px;
+    padding: 0px;
+    width: 0px;
+
+    &__header {
+      opacity: 0;
+    }
+
+    &__body {
+      opacity: 0;
+    }
+
+    &--open {
+      padding: 16px;
+      min-width: 100vw;
+    }
+
+    &--open &__header {
+      opacity: 1;
+    }
+
+    &--open &__body {
+      opacity: 1;
+    }
   }
 }

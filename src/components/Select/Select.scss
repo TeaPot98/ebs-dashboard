@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .select {
   display: flex;
   align-items: center;
@@ -10,7 +12,7 @@
 
     &:active,
     &:focus {
-      outline: 2px solid #5570f1;
+      outline: 2px solid $primary;
       border: 1px solid transparent;
     }
 

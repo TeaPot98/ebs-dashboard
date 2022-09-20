@@ -1,3 +1,4 @@
+@import "../../styles/variables";
 .btn {
   color: white;
   border-radius: 8px;
@@ -8,22 +9,49 @@
     cursor: pointer;
   }
 
+  img {
+    height: 16px;
+    filter: invert(100%);
+  }
+
   &--primary {
-    background-color: #5570f1;
+    // background-color: #5570f1;
+    background-color: $primary;
     &:active {
-      background-color: #3e5ae8;
+      background-color: $primary_accent;
     }
   }
 
   &--danger {
-    background-color: #cc5f5f;
+    background-color: $danger;
     &:active {
-      background-color: #c34c4c;
+      background-color: $danger_accent;
     }
   }
 
-  img {
-    height: 16px;
-    filter: invert(100%);
+  &--hamburger {
+    // position: absolute;
+    // top: 8px;
+    // left: 8px;
+    // z-index: 5000;
+
+    img {
+      filter: none;
+      height: 24px;
+    }
+  }
+
+  &--back {
+    background-color: white;
+
+    &:focus,
+    &:active {
+      background-color: whitesmoke;
+    }
+
+    img {
+      filter: none;
+      height: 24px;
+    }
   }
 }

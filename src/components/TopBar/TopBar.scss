@@ -1,5 +1,8 @@
 .top-bar {
   position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   top: 0;
   left: 0;
   right: 0;
@@ -12,4 +15,8 @@
     float: right;
     gap: 8px;
   }
+}
+
+#hamburger-container {
+  display: inline-block;
 }

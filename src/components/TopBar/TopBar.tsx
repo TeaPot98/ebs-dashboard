@@ -12,6 +12,7 @@ export const TopBar = () => {
 
   return (
     <div className="top-bar">
+      <div id="hamburger-container"></div>
       <div className="top-bar__user-container">
         {user && (
           <>

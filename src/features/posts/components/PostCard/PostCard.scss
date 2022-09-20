@@ -1,3 +1,5 @@
+@import "../../../../styles/variables";
+
 .post {
   background-color: white;
   // height: 100%;
@@ -13,7 +15,7 @@
     margin: 0px;
     margin-right: 8px;
     font-size: 16px;
-    color: #5570f1;
+    color: $primary;
   }
 
   &__date {
@@ -70,7 +72,7 @@
 
     span {
       font-weight: 600;
-      color: #5570f1;
+      color: $primary;
     }
   }
 }
