@@ -11,7 +11,7 @@ export const SideMenu = () => {
       <ul className="menu__body">
         <MenuItem
           icon="https://cdn-icons-png.flaticon.com/512/2948/2948037.png"
-          route="/"
+          route="/dashboard"
         >
           Dashboard
         </MenuItem>
