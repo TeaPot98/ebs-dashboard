@@ -121,6 +121,15 @@
       "gender": "Male",
       "role": "Moderator",
       "id": 3
+    },
+    {
+      "name": "Alexandru",
+      "surname": "Ion",
+      "email": "some@gmail.com",
+      "password": "test",
+      "gender": "Male",
+      "role": "Moderator",
+      "id": 4
     }
   ]
 }

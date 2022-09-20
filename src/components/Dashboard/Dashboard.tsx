@@ -1,17 +1,13 @@
 import "./Dashboard.scss";
 import { useQuery } from "@tanstack/react-query";
 import { getAllPosts } from "api/posts";
-import { getAllUsers } from "api/users";
 import { Chart, LoadingSpinner } from "components";
-import { PostAuthorChart } from "types";
-import { idText } from "typescript";
 import { getOneWeekDays } from "utils";
 
 export const Dashboard = () => {
   const {
     isLoading,
     isError,
-    isSuccess,
     data: posts,
     error,
   } = useQuery(["posts"], async () => await getAllPosts());

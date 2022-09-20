@@ -6,11 +6,26 @@ import { UserRegistration } from "types";
 import { registerUser } from "api/users";
 import { UserContext } from "context/UserContext";
 import useSetState from "hooks/useSetState";
+import { useMutation } from "@tanstack/react-query";
 
 export const RegistrationForm = () => {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
   const [errorMessage, setErrorMessage] = useState("");
+  const mutation = useMutation(
+    (userInfo: UserRegistration) => {
+      return registerUser(userInfo);
+    },
+    {
+      onError: (error) => {
+        console.error(error);
+      },
+      onSuccess: (data) => {
+        setUser(data);
+        navigate("/");
+      },
+    }
+  );
   const [register, setRegister] = useSetState({
     name: "",
     surname: "",
@@ -37,9 +52,7 @@ export const RegistrationForm = () => {
     };
 
     try {
-      const loggedUser = await registerUser(user);
-      setUser(loggedUser);
-      navigate("/");
+      mutation.mutate(user);
     } catch (error: any) {
       setErrorMessage(error.message);
     }
@@ -120,7 +133,9 @@ export const RegistrationForm = () => {
         <p>
           Already have an account ? <a href="/login">Login</a>
         </p>
-        <Button>Sign Up</Button>
+        <Button disabled={mutation.isLoading}>
+          {mutation.isLoading ? "Signing up..." : "Sign Up"}
+        </Button>
       </div>
     </form>
   );

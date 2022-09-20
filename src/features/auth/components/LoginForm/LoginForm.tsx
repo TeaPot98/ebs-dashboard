@@ -1,5 +1,6 @@
+import { useMutation } from "@tanstack/react-query";
 import { loginUser } from "api/users";
-import { Button, Input } from "components";
+import { Button, Input, LoadingSpinner } from "components";
 import { UserContext } from "context/UserContext";
 import useSetState from "hooks/useSetState";
 import React, { useContext, useState } from "react";
@@ -14,6 +15,20 @@ export const LoginForm = () => {
     email: "",
     password: "",
   });
+  const mutation = useMutation(
+    (userCredentials: UserCredentials) => {
+      return loginUser(userCredentials);
+    },
+    {
+      onError: (error) => {
+        console.error(error);
+      },
+      onSuccess: (data) => {
+        setUser(data[0]);
+        navigate("/");
+      },
+    }
+  );
 
   const handleLogin = async (event: React.SyntheticEvent) => {
     event.preventDefault();
@@ -24,9 +39,7 @@ export const LoginForm = () => {
     };
 
     try {
-      const loggedUser = await loginUser(userCredentials);
-      setUser(loggedUser[0]);
-      navigate("/");
+      const loggedUser = mutation.mutate(userCredentials);
     } catch (error: any) {
       setErrorMessage(error.message);
       console.error(error);
@@ -61,7 +74,9 @@ export const LoginForm = () => {
         <p>
           Don't have an account ? <a href="/register">Sign Up</a>
         </p>
-        <Button>Login</Button>
+        <Button disabled={mutation.isLoading}>
+          {mutation.isLoading ? "Loggin in..." : "Login"}
+        </Button>
       </div>
     </form>
   );

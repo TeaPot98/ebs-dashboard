@@ -1,8 +1,4 @@
 import {
-  PieChart,
-  Pie,
-  Sector,
-  Cell,
   ResponsiveContainer,
   Bar,
   BarChart,
@@ -13,8 +9,6 @@ import {
   YAxis,
   LabelList,
 } from "recharts";
-
-import { PostAuthorChart } from "types";
 
 export const Chart = ({ data }: { data: any[] | undefined }) => {
   return (

@@ -24,10 +24,6 @@ export interface Post {
 
 export type PostAuthor = Pick<User, "id" | "name" | "surname">;
 
-export interface PostAuthorChart extends PostAuthor {
-  posts: number;
-}
-
 type PostCategory = keyof typeof Categories;
 
 export type UserRegistration = Omit<User, "id">;
