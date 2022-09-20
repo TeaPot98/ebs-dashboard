@@ -18,6 +18,9 @@ export const RegistrationForm = () => {
     },
     {
       onError: (error) => {
+        if (error instanceof Error) {
+          setErrorMessage(error.message);
+        }
         console.error(error);
       },
       onSuccess: (data) => {

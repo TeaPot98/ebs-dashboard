@@ -130,6 +130,14 @@
       "gender": "Male",
       "role": "Moderator",
       "id": 4
+    },
+    {
+      "name": "Ionel",
+      "surname": "Grivei",
+      "email": "grivei555@gmail.com",
+      "gender": "Male",
+      "role": "Moderator",
+      "id": 5
     }
   ]
 }

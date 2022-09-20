@@ -1,11 +1,12 @@
 import { useState, useContext } from "react";
 
 import { Select, Input, Button } from "components";
-import { User } from "types";
+import { User, UserRegistration } from "types";
 import useSetState from "hooks/useSetState";
 import { Roles } from "utils";
 import { editUser, registerUser } from "api/users";
 import { UserContext } from "context/UserContext";
+import { useMutation } from "@tanstack/react-query";
 
 interface UserFormProps {
   user?: User;
@@ -23,21 +24,48 @@ export const UserForm = ({ user, onSubmit = () => {} }: UserFormProps) => {
           surname: "",
           email: "",
           gender: "none",
-          role: "moderator",
+          role: "Moderator",
         }
+  );
+  const registerMutation = useMutation(
+    (userInfo: UserRegistration) => {
+      return registerUser(userInfo);
+    },
+    {
+      onError: (error) => {
+        if (error instanceof Error) {
+          setErrorMessage(error.message);
+        }
+        console.error(error);
+      },
+      onSuccess: (data) => {
+        onSubmit();
+      },
+    }
+  );
+  const editMutation = useMutation(
+    (userInfo: User) => {
+      return editUser(userInfo);
+    },
+    {
+      onError: (error) => {
+        if (error instanceof Error) {
+          setErrorMessage(error.message);
+        }
+        console.error(error);
+      },
+      onSuccess: (data) => {
+        onSubmit();
+      },
+    }
   );
 
   const submitForm = async (event: React.SyntheticEvent) => {
     event.preventDefault();
-    try {
-      if (user) {
-        await editUser({ ...userForm, id: user.id });
-      } else {
-        await registerUser(userForm);
-      }
-      onSubmit();
-    } catch (error: any) {
-      setErrorMessage(error.message);
+    if (user) {
+      editMutation.mutate({ ...userForm, id: user.id });
+    } else {
+      registerMutation.mutate(userForm);
     }
   };
 
@@ -96,7 +124,11 @@ export const UserForm = ({ user, onSubmit = () => {} }: UserFormProps) => {
         ))}
       </Select>
       <span className="form__error">{errorMessage}</span>
-      <Button>Submit</Button>
+      <Button disabled={registerMutation.isLoading || editMutation.isLoading}>
+        {registerMutation.isLoading || editMutation.isLoading
+          ? "Submiting..."
+          : "Submit"}
+      </Button>
     </form>
   );
 };
