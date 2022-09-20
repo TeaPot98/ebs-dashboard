@@ -13,3 +13,5 @@ export * from "./TopBar/TopBar";
 export * from "./UserAvatar/UserAvatar";
 export * from "./Table/Table";
 export * from "./LoadingSpinner/LoadingSpinner";
+export * from "./Chart/Chart";
+export * from "./Dashboard/Dashboard";

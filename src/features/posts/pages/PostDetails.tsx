@@ -11,10 +11,9 @@ export const PostDetails = () => {
   const {
     isLoading,
     isError,
-    isSuccess,
     data: post,
     error,
-  } = useQuery(["post"], () => getPost(postId ? postId : ""));
+  } = useQuery(["post-details"], () => getPost(postId ? postId : ""));
 
   if (isLoading) {
     return <LoadingSpinner />;

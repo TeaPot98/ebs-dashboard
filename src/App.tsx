@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/posts/create" element={<PostFormPage />} />
-        <Route path="posts/:id" element={<PostDetails />} />
+        <Route path="/posts/:id" element={<PostDetails />} />
         <Route path="/posts/:id/edit" element={<PostFormPage />} />
         <Route path="/login" element={<AuthPage type="login" />} />
         <Route path="/register" element={<AuthPage type="register" />} />

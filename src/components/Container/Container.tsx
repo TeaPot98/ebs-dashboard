@@ -1,3 +1,4 @@
+import { Chart, Dashboard } from "components";
 import { Routes, Route } from "react-router-dom";
 
 import { Posts } from "../../features/posts/pages/Posts";
@@ -9,7 +10,7 @@ export const Container = () => {
   return (
     <div className="container">
       <Routes>
-        <Route path="/dashboard" element={<div>Dashboard</div>} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/users" element={<Users />} />
         <Route path="/posts" element={<Posts />} />
       </Routes>

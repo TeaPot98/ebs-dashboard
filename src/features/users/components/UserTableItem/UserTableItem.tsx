@@ -57,9 +57,9 @@ export const UserTableItem = ({ user }: UserTableItemProps) => {
             title="Remove user"
             open={removeModalOpen}
             onClose={() => setRemoveModalOpen(false)}
-            onAccept={() => {
+            onAccept={async () => {
               console.log("User removed");
-              removeUser(user.id.toString());
+              await removeUser(user.id.toString());
               refetch();
               setRemoveModalOpen(false);
             }}

@@ -22,7 +22,11 @@ export interface Post {
   author: PostAuthor;
 }
 
-export type PostAuthor = Pick<User, "name" | "surname">;
+export type PostAuthor = Pick<User, "id" | "name" | "surname">;
+
+export interface PostAuthorChart extends PostAuthor {
+  posts: number;
+}
 
 type PostCategory = keyof typeof Categories;
 

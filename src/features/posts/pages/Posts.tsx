@@ -36,7 +36,7 @@ export const Posts = () => {
       <ContainerHeader className="container__header">
         <h2>Posts</h2>
         <Link to="create">
-          <Button>Create new post</Button>
+          <Button>+ Create new post</Button>
         </Link>
       </ContainerHeader>
       <PostsContext.Provider

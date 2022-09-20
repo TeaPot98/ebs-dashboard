@@ -69,9 +69,9 @@ export const PostCard = ({ post, className }: PostCardProps) => {
         title="Remove post"
         open={removeModalOpen}
         onClose={() => setRemoveModalOpen(false)}
-        onAccept={() => {
+        onAccept={async () => {
           console.log("Post removed");
-          removePost(post.id.toString());
+          await removePost(post.id.toString());
           refetch();
           setRemoveModalOpen(false);
         }}

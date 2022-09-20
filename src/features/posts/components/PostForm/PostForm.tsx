@@ -1,34 +1,43 @@
 import { useContext, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+
 import { editPost, getPost, uploadPost } from "api/posts";
-import { Input, Button, Select, LoadingSpinner } from "components";
-import { DateInput } from "components/DateInput/DateInput";
-import { TextArea } from "components/TextArea/TextArea";
+
 import { UserContext } from "context/UserContext";
 import useSetState from "hooks/useSetState";
 import { Categories, formatDate } from "utils";
-import { useNavigate, useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { Post } from "types";
 
-export const PostForm = () => {
-  const { id: postId } = useParams();
-  const { isLoading, isSuccess, isError, data, error } = useQuery(
-    ["post", postId],
-    () => getPost(postId ? postId : ""),
-    { enabled: !!postId }
-  );
+import { TextArea } from "components/TextArea/TextArea";
+import { DateInput } from "components/DateInput/DateInput";
+import { Input, Button, Select, LoadingSpinner } from "components";
+
+interface PostFormProps {
+  formData: Post | null;
+}
+
+export const PostForm = ({ formData }: PostFormProps) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { id: postId } = useParams();
   const { user } = useContext(UserContext);
-  const [formState, setFormState] = useSetState({
-    title: "",
-    description: "",
-    category: "General",
-    imageUrl: "",
-    date: new Date(),
-    author: {
-      name: user?.name,
-      surname: user?.surname,
-    },
-  });
+  const [formState, setFormState] = useSetState(
+    formData !== null
+      ? formData
+      : {
+          title: "",
+          description: "",
+          category: "General",
+          imageUrl: "",
+          date: new Date(),
+          author: {
+            id: user?.id,
+            name: user?.name,
+            surname: user?.surname,
+          },
+        }
+  );
 
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
@@ -45,35 +54,6 @@ export const PostForm = () => {
 
     console.log("New Post created !");
   };
-
-  // Check if data is available and set initial state for the form
-  useEffect(() => {
-    if (isSuccess && data) {
-      setFormState({
-        title: data.title,
-        description: data.description,
-        category: data.category,
-        imageUrl: data.imageUrl,
-        date: new Date(data.date),
-        author: data.author,
-      });
-    }
-  }, [data]);
-
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
-
-  if (isError) {
-    if (error instanceof Error) {
-      return <span>Error: {error.message}</span>;
-    }
-    return <span>An unknown error occured</span>;
-  }
-
-  if (!data) {
-    return <span>Data not found</span>;
-  }
 
   return (
     <form className="form" onSubmit={handleSubmit}>
