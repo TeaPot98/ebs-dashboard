@@ -5,18 +5,16 @@ import { getAllUsers } from "api/users";
 import { Chart, LoadingSpinner } from "components";
 import { PostAuthorChart } from "types";
 import { idText } from "typescript";
+import { getOneWeekDays } from "utils";
 
 export const Dashboard = () => {
-  const { data: users } = useQuery(["users"], async () => getAllUsers());
   const {
     isLoading,
     isError,
     isSuccess,
     data: posts,
     error,
-  } = useQuery(["posts", users], async () => await getAllPosts(), {
-    enabled: !!users,
-  });
+  } = useQuery(["posts"], async () => await getAllPosts());
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -33,26 +31,43 @@ export const Dashboard = () => {
     return <span>Data is missing</span>;
   }
 
-  console.log("Users", users);
-  console.log("Posts", posts);
+  let chartData = getOneWeekDays(-6).map((date) => {
+    let output = {
+      date: date,
+      posts: 0,
+    };
 
-  if (isSuccess && users && posts) {
-    if (users !== undefined) {
-      var chartData: PostAuthorChart[] | undefined = users.map<PostAuthorChart>(
-        (u) => ({ id: u.id, name: u.name, surname: u.surname, posts: 0 })
-      );
+    for (let i = 0; i < posts.length; i++) {
+      if (
+        new Date(posts[i].date).getDate() ===
+        new Date(Date.parse(date)).getDate()
+      ) {
+        output = {
+          ...output,
+          posts: output.posts + 1,
+        };
+      }
     }
 
-    posts.forEach((p) => {
-      chartData = chartData?.map((author) =>
-        p.author.id === author.id
-          ? { ...author, posts: author.posts + 1 }
-          : author
-      );
-    });
-  }
+    return output;
+  });
 
-  console.log(chartData);
+  // Create array of authors. Each author contains number of posts.
+  // if (isSuccess && users && posts) {
+  //   if (users !== undefined) {
+  //     var chartData: PostAuthorChart[] | undefined = users.map<PostAuthorChart>(
+  //       (u) => ({ id: u.id, name: u.name, surname: u.surname, posts: 0 })
+  //     );
+  //   }
+
+  //   posts.forEach((p) => {
+  //     chartData = chartData?.map((author) =>
+  //       p.author.id === author.id
+  //         ? { ...author, posts: author.posts + 1 }
+  //         : author
+  //     );
+  //   });
+  // }
 
   return (
     <div className="dashboard">
