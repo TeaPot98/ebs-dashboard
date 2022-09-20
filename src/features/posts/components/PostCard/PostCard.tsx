@@ -1,11 +1,13 @@
 import { useState, useContext } from "react";
-import { removeUser } from "api/users";
-import { Button, ConfirmationModal, UserAvatar } from "components";
-import { Post } from "types";
-import "./PostCard.scss";
-import { PostsContext } from "features/posts/pages/Posts";
-import { removePost } from "api/posts";
 import { useNavigate } from "react-router-dom";
+
+import { PostsContext } from "features/posts/pages/Posts";
+import { removeUser } from "api/users";
+import { removePost } from "api/posts";
+import { Post } from "types";
+
+import { Button, ConfirmationModal, UserAvatar } from "components";
+import "./PostCard.scss";
 
 interface PostCardProps extends React.HTMLAttributes<HTMLDivElement> {
   post: Post;

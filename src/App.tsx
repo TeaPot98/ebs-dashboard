@@ -1,9 +1,9 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import { Layout } from "components";
 import { AuthPage } from "./features/auth/pages/AuthPage";
 import { PostFormPage } from "features/posts/pages/PostFormPage";
 import { PostDetails } from "features/posts/pages/PostDetails";
+import { Layout } from "components";
 
 function App() {
   return (

@@ -1,12 +1,13 @@
 import { useState, useContext } from "react";
+import { useMutation } from "@tanstack/react-query";
 
-import { Select, Input, Button } from "components";
+import { editUser, registerUser } from "api/users";
+import { UserContext } from "context/UserContext";
 import { User, UserRegistration } from "types";
 import useSetState from "hooks/useSetState";
 import { Roles } from "utils";
-import { editUser, registerUser } from "api/users";
-import { UserContext } from "context/UserContext";
-import { useMutation } from "@tanstack/react-query";
+
+import { Select, Input, Button } from "components";
 
 interface UserFormProps {
   user?: User;

@@ -1,10 +1,11 @@
 import { useState, useContext } from "react";
 import { useLocation, Link } from "react-router-dom";
 
+import { UserContext } from "context/UserContext";
+
 import { UserAvatar, Button, Modal } from "components";
 import "./TopBar.scss";
 import { UserForm } from "features/users/components/UserForm/UserForm";
-import { UserContext } from "context/UserContext";
 
 export const TopBar = () => {
   const { user, logOut } = useContext(UserContext);

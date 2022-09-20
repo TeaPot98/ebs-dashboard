@@ -1,5 +1,5 @@
-import { Option } from "./Option";
 import "./Select.scss";
+import { Option } from "./Option";
 
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   id: string;

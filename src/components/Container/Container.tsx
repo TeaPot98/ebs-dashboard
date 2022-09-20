@@ -1,5 +1,6 @@
-import { Chart, Dashboard } from "components";
 import { Routes, Route } from "react-router-dom";
+
+import { Chart, Dashboard } from "components";
 
 import { Posts } from "../../features/posts/pages/Posts";
 import { Users } from "../../features/users/pages/Users";

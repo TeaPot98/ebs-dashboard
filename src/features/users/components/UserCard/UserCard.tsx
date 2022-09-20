@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import "./UserCard.scss";
 import { Button, ConfirmationModal, Modal, UserAvatar } from "components";
 

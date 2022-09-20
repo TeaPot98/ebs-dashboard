@@ -1,12 +1,13 @@
 import React, { useContext, useState } from "react";
+import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
-import { Button, Checkbox, Input, Select } from "components";
 import { UserRegistration } from "types";
 import { registerUser } from "api/users";
 import { UserContext } from "context/UserContext";
 import useSetState from "hooks/useSetState";
-import { useMutation } from "@tanstack/react-query";
+
+import { Button, Checkbox, Input, Select } from "components";
 
 export const RegistrationForm = () => {
   const navigate = useNavigate();

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import { Table, Button } from "components";
 
 export const PostTable = () => {

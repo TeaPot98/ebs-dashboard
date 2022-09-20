@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+
 import { getAllUsers } from "api/users";
+
 import { LoadingSpinner, Button, Modal } from "components";
 import { UserForm } from "../components/UserForm/UserForm";
-
 import { UserTable } from "../components/UserTable/UserTable";
 import { ContainerHeader } from "components/Container/ContainerHeader/ContainerHeader";
 

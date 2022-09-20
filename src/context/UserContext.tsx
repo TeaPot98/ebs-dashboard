@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { getUser } from "api/users";
-import { LoadingSpinner } from "components";
 import React, { useReducer, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+
+import { getUser } from "api/users";
 import { User, UserContextType } from "types";
+
+import { LoadingSpinner } from "components";
 
 const initialState: UserContextType = {
   setUser: (user) => {},

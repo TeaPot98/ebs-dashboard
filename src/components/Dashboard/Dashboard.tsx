@@ -1,8 +1,10 @@
-import "./Dashboard.scss";
 import { useQuery } from "@tanstack/react-query";
+
 import { getAllPosts } from "api/posts";
-import { Chart, LoadingSpinner } from "components";
 import { getOneWeekDays } from "utils";
+
+import { Chart, LoadingSpinner } from "components";
+import "./Dashboard.scss";
 
 export const Dashboard = () => {
   const {
@@ -48,7 +50,7 @@ export const Dashboard = () => {
     return output;
   });
 
-  // Create array of authors. Each author contains number of posts.
+  // Create array of authors. Each author contains its number of posts.
   // if (isSuccess && users && posts) {
   //   if (users !== undefined) {
   //     var chartData: PostAuthorChart[] | undefined = users.map<PostAuthorChart>(

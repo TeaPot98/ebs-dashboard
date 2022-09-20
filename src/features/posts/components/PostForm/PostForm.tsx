@@ -1,17 +1,17 @@
 import { useContext, useState } from "react";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-import { editPost, getPost, uploadPost } from "api/posts";
+import { editPost, uploadPost } from "api/posts";
 
 import { UserContext } from "context/UserContext";
-import useSetState from "hooks/useSetState";
 import { Categories, formatDate } from "utils";
+import useSetState from "hooks/useSetState";
 import { Post } from "types";
 
 import { TextArea } from "components/TextArea/TextArea";
 import { DateInput } from "components/DateInput/DateInput";
-import { Input, Button, Select, LoadingSpinner } from "components";
+import { Input, Button, Select } from "components";
 
 interface PostFormProps {
   formData: Post | null;

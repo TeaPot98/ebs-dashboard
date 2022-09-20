@@ -1,12 +1,13 @@
-import "../UserCard/UserCard.scss";
 import React, { useState, useContext } from "react";
 
-import { Button, ConfirmationModal, Modal } from "components";
-import { UserForm } from "../UserForm/UserForm";
 import { User } from "types";
 import { UsersContext } from "features/users/pages/Users";
 import { removeUser } from "api/users";
 import { UserContext } from "context/UserContext";
+
+import { Button, ConfirmationModal, Modal } from "components";
+import { UserForm } from "../UserForm/UserForm";
+import "../UserCard/UserCard.scss";
 
 interface UserTableItemProps {
   user: User;

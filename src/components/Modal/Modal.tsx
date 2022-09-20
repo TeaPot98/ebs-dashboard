@@ -1,8 +1,8 @@
+import "./Modal.scss";
 import { ModalHeader } from "./ModalHeader";
 import { ModalContent } from "./ModalContent";
 import { ModalFooter } from "./ModalFooter";
 import { Button } from "components";
-import "./Modal.scss";
 import { ModalTitle } from "./ModalTitle";
 
 interface ModalProps {
