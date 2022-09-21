@@ -16,7 +16,10 @@ export const HamburgerButton = (
   return domReady ? (
     ReactDOM.createPortal(
       <Button type="icon" {...props}>
-        <img src="https://cdn-icons-png.flaticon.com/512/6015/6015685.png" />
+        <img
+          alt=""
+          src="https://cdn-icons-png.flaticon.com/512/6015/6015685.png"
+        />
       </Button>,
       document.querySelector("#hamburger-container")!
     )

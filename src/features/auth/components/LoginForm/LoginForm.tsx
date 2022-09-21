@@ -7,7 +7,7 @@ import { UserContext } from "context/UserContext";
 import useSetState from "hooks/useSetState";
 import { UserCredentials } from "types";
 
-import { Button, Input, LoadingSpinner } from "components";
+import { Button, Input } from "components";
 
 export const LoginForm = () => {
   const navigate = useNavigate();
@@ -42,7 +42,7 @@ export const LoginForm = () => {
     };
 
     try {
-      const loggedUser = mutation.mutate(userCredentials);
+      mutation.mutate(userCredentials);
     } catch (error: any) {
       setErrorMessage(error.message);
       console.error(error);

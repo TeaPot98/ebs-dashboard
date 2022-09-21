@@ -46,7 +46,7 @@ export const Posts = () => {
           refetch: refetch,
         }}
       >
-        <Grid columns={2}>
+        <Grid columns={4}>
           {data.map((post) => (
             <PostCard key={post.id} post={post} />
           ))}

@@ -25,7 +25,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "json-server --watch db.json -p 3001"
+    "dev": "json-server db.json --host 192.168.88.109 -p 3001"
   },
   "eslintConfig": {
     "extends": [

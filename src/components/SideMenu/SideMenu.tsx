@@ -16,11 +16,17 @@ export const SideMenu = () => {
       <HamburgerButton onClick={() => setOpen(!open)} />
       <div className="menu__header">
         <div className="menu__logo">
-          <img src="https://www.yiiframework.com/image/design/logo/yii3_sign.png" />
+          <img
+            alt=""
+            src="https://www.yiiframework.com/image/design/logo/yii3_sign.png"
+          />
           <h1>Metrix</h1>
         </div>
         <Button id="close-menu-btn" type="icon" onClick={() => setOpen(false)}>
-          <img src="https://cdn-icons-png.flaticon.com/512/130/130882.png" />
+          <img
+            alt=""
+            src="https://cdn-icons-png.flaticon.com/512/130/130882.png"
+          />
         </Button>
       </div>
       <ul className="menu__body">

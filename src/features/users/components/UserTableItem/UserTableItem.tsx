@@ -30,11 +30,17 @@ export const UserTableItem = ({ user }: UserTableItemProps) => {
       <td>
         <div className="user-card__buttons">
           <Button onClick={() => setEditModalOpen(true)}>
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png" />
+            <img
+              alt=""
+              src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png"
+            />
           </Button>
           {user.id !== loggedUser.user?.id && (
             <Button type="danger" onClick={() => setRemoveModalOpen(true)}>
-              <img src="https://cdn-icons-png.flaticon.com/512/542/542724.png" />
+              <img
+                alt=""
+                src="https://cdn-icons-png.flaticon.com/512/542/542724.png"
+              />
             </Button>
           )}
           {editModalOpen && (

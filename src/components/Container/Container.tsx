@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import { Chart, Dashboard } from "components";
+import { Dashboard } from "components";
 import { Roles } from "utils";
 
 import { Posts } from "../../features/posts/pages/Posts";

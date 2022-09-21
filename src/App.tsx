@@ -13,30 +13,23 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route
-          path="/posts/create"
-          element={user ? <PostFormPage /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/posts/:id"
-          element={user ? <PostDetails /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/posts/:id/edit"
-          element={user ? <PostFormPage /> : <Navigate to="/login" />}
-        />
-        <Route path="/login" element={<AuthPage type="login" />} />
-        <Route path="/register" element={<AuthPage type="register" />} />
-        <Route
-          path="/"
-          element={
-            user ? <Navigate to="/dashboard" /> : <Navigate to="/login" />
-          }
-        />
-        <Route
-          path="*"
-          element={user ? <Layout /> : <Navigate to="/login" />}
-        />
+        {user ? (
+          <>
+            <Route path="/" element={<Navigate to="/dashboard" />} />
+            <Route path="/posts/create" element={<PostFormPage />} />
+            <Route path="/posts/:id" element={<PostDetails />} />
+            <Route path="/posts/:id/edit" element={<PostFormPage />} />
+            <Route path="/login" element={<AuthPage type="login" />} />
+            <Route path="/register" element={<AuthPage type="register" />} />
+            <Route path="*" element={<Layout />} />
+          </>
+        ) : (
+          <>
+            <Route path="/login" element={<AuthPage type="login" />} />
+            <Route path="/register" element={<AuthPage type="register" />} />
+            <Route path="*" element={<Navigate to="/login" />} />
+          </>
+        )}
       </Routes>
     </div>
   );

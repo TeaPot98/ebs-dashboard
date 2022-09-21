@@ -35,7 +35,10 @@ export const PostCard = ({ post, className }: PostCardProps) => {
               navigate(`/posts/${post.id}/edit`);
             }}
           >
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png" />
+            <img
+              alt=""
+              src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png"
+            />
           </Button>
           <Button
             type="danger"
@@ -44,7 +47,10 @@ export const PostCard = ({ post, className }: PostCardProps) => {
               setRemoveModalOpen(true);
             }}
           >
-            <img src="https://cdn-icons-png.flaticon.com/512/542/542724.png" />
+            <img
+              alt=""
+              src="https://cdn-icons-png.flaticon.com/512/542/542724.png"
+            />
           </Button>
         </div>
         <div>
@@ -54,7 +60,7 @@ export const PostCard = ({ post, className }: PostCardProps) => {
       </div>
       <h1 className="post__title">{post.title}</h1>
       <div className="post__image">
-        <img src={post.imageUrl} />
+        <img alt="" src={post.imageUrl} />
       </div>
       <div className="post__body">
         <p className="post__description">{post.description}</p>

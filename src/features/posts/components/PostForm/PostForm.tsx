@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { editPost, uploadPost } from "api/posts";
 
@@ -19,7 +19,6 @@ interface PostFormProps {
 
 export const PostForm = ({ formData }: PostFormProps) => {
   const navigate = useNavigate();
-  const location = useLocation();
   const { id: postId } = useParams();
   const { user } = useContext(UserContext);
   const [errorMessage, setErrorMessage] = useState("");
