@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import { MenuItem, Button } from "components";
 import { HamburgerButton } from "components/HamburgerButton/HamburgerButton";
 
 import "./SideMenu.scss";
+import { UserContext } from "context/UserContext";
+import { Roles } from "utils";
 
 export const SideMenu = () => {
+  const { user } = useContext(UserContext);
   const [open, setOpen] = useState(false);
 
   return (
@@ -28,13 +31,15 @@ export const SideMenu = () => {
         >
           Dashboard
         </MenuItem>
-        <MenuItem
-          icon="https://cdn-icons-png.flaticon.com/512/615/615075.png"
-          route="/users"
-          onClick={() => setOpen(false)}
-        >
-          Users
-        </MenuItem>
+        {user!.role === Roles.Administrator && (
+          <MenuItem
+            icon="https://cdn-icons-png.flaticon.com/512/615/615075.png"
+            route="/users"
+            onClick={() => setOpen(false)}
+          >
+            Users
+          </MenuItem>
+        )}
         <MenuItem
           icon="https://cdn-icons-png.flaticon.com/512/3131/3131446.png"
           route="/posts"
