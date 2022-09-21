@@ -2,11 +2,8 @@
 
 .post {
   background-color: white;
-  // height: 100%;
-  // width: 100%;
   padding: 16px;
   height: fit-content;
-  box-sizing: border-box;
   border-radius: 16px;
   cursor: pointer;
 
@@ -88,7 +85,6 @@
 .details {
   cursor: unset;
   max-width: 500px;
-  // overflow: auto;
 
   .post__description {
     height: 100%;

@@ -1,22 +1,17 @@
-import { useState, useEffect } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { PostForm } from "../components/PostForm/PostForm";
 import { Button, LoadingSpinner } from "components";
 import { useQuery } from "@tanstack/react-query";
 import { getPost } from "api/posts";
-import { Post } from "types";
 
 export const PostFormPage = () => {
-  const location = useLocation();
   const { id: postId } = useParams();
   const {
     isFetching,
     isError,
-    isSuccess,
     data: post,
     error,
-    ...rest
   } = useQuery(["posts", postId], () => getPost(postId!), {
     enabled: !!postId,
   });

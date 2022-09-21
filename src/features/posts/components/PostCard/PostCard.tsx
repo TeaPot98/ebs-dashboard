@@ -2,7 +2,6 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { PostsContext } from "features/posts/pages/Posts";
-import { removeUser } from "api/users";
 import { removePost } from "api/posts";
 import { Post } from "types";
 

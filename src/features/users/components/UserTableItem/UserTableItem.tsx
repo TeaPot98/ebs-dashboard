@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 
 import { User } from "types";
 import { UsersContext } from "features/users/pages/Users";

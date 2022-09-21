@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Grid, Button, LoadingSpinner } from "components";
-import { PostCard } from "../components/PostCard/PostCard";
-import { ContainerHeader } from "components/Container/ContainerHeader/ContainerHeader";
 import { useQuery } from "@tanstack/react-query";
+
 import { getAllPosts } from "api/posts";
+
+import { ContainerHeader } from "components/Container/ContainerHeader/ContainerHeader";
+import { PostCard } from "../components/PostCard/PostCard";
+import { Grid, Button, LoadingSpinner } from "components";
 
 export const PostsContext = React.createContext({
   refetch: () => {},

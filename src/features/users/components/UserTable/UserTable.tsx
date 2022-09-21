@@ -1,10 +1,7 @@
-import { useState } from "react";
-
 import { User } from "types";
 
-import { UserForm } from "../UserForm/UserForm";
 import { UserTableItem } from "../UserTableItem/UserTableItem";
-import { Button, Modal, Table } from "components";
+import { Table } from "components";
 
 interface UserTableProps {
   users: User[];

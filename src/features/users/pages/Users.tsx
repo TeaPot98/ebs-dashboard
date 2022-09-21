@@ -19,11 +19,6 @@ export const Users = () => {
   );
   const [userModalOpen, setUserModalOpen] = useState(false);
 
-  const saveNewUser = () => {
-    console.log("New user saved");
-    setUserModalOpen(false);
-  };
-
   if (isLoading) {
     return <LoadingSpinner />;
   }

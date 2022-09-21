@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useReducer, useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import { getUser } from "api/users";
 import { User, UserContextType } from "types";
