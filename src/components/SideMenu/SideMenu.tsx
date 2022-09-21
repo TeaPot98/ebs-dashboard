@@ -16,7 +16,7 @@ export const SideMenu = () => {
           <img src="https://www.yiiframework.com/image/design/logo/yii3_sign.png" />
           <h1>Metrix</h1>
         </div>
-        <Button className="btn--back" onClick={() => setOpen(false)}>
+        <Button id="close-menu-btn" type="icon" onClick={() => setOpen(false)}>
           <img src="https://cdn-icons-png.flaticon.com/512/130/130882.png" />
         </Button>
       </div>

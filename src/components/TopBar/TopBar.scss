@@ -1,12 +1,15 @@
+@import "../../styles/mixins";
+
 .top-bar {
   position: sticky;
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
   top: 0;
   left: 0;
   right: 0;
   padding: 8px;
+  width: 100%;
   background-color: white;
 
   &__user-container {
@@ -15,8 +18,16 @@
     float: right;
     gap: 8px;
   }
+
+  @include sm {
+    justify-content: space-between;
+  }
 }
 
 #hamburger-container {
-  display: inline-block;
+  display: none;
+
+  @include sm {
+    display: unset;
+  }
 }

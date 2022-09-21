@@ -15,7 +15,7 @@ export const HamburgerButton = (
   // Checking if DOM is loaded, then displaying the teleported element in DOM tree
   return domReady ? (
     ReactDOM.createPortal(
-      <Button type="hamburger" {...props}>
+      <Button type="icon" {...props}>
         <img src="https://cdn-icons-png.flaticon.com/512/6015/6015685.png" />
       </Button>,
       document.querySelector("#hamburger-container")!

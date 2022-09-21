@@ -1,6 +1,8 @@
 @import "../../styles/mixins";
 
 .menu {
+  background-color: white;
+  z-index: 100;
   position: sticky;
   box-sizing: border-box;
   top: 0;
@@ -39,6 +41,7 @@
   }
 
   @include sm {
+    position: absolute;
     min-width: 0px;
     padding: 0px;
     width: 0px;
@@ -62,6 +65,14 @@
 
     &--open &__body {
       opacity: 1;
+    }
+  }
+
+  #close-menu-btn {
+    display: none;
+
+    @include sm {
+      display: unset;
     }
   }
 }

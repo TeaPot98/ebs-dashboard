@@ -29,19 +29,7 @@
     }
   }
 
-  &--hamburger {
-    // position: absolute;
-    // top: 8px;
-    // left: 8px;
-    // z-index: 5000;
-
-    img {
-      filter: none;
-      height: 24px;
-    }
-  }
-
-  &--back {
+  &--icon {
     background-color: white;
 
     &:focus,
