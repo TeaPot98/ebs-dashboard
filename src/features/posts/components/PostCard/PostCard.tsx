@@ -54,7 +54,9 @@ export const PostCard = ({ post, className }: PostCardProps) => {
         </div>
       </div>
       <h1 className="post__title">{post.title}</h1>
-      <img className="post__image" src={post.imageUrl} />
+      <div className="post__image">
+        <img src={post.imageUrl} />
+      </div>
       <div className="post__body">
         <p className="post__description">{post.description}</p>
       </div>

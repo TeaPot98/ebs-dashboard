@@ -1,5 +1,5 @@
 @import "./variables";
-@import "../components/Button/Button.scss";
+@import "./mixins";
 @mixin set-color($color) {
   color: $color;
   &:hover,
@@ -39,7 +39,9 @@ body {
   background-color: white;
   border-radius: 16px;
   padding: 16px;
-  width: 300px;
+  width: 100%;
+  min-width: 300px;
+  max-width: 600px;
   gap: 24px;
 
   &__header {
@@ -67,6 +69,10 @@ body {
   justify-content: center;
   align-items: center;
   background-color: lightgray;
+
+  @include sm {
+    padding: 8px;
+  }
 }
 
 .post-details {

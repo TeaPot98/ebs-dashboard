@@ -31,6 +31,8 @@
 
   &--icon {
     background-color: white;
+    padding: 4px;
+    max-height: 30px;
 
     &:focus,
     &:active {
@@ -39,7 +41,8 @@
 
     img {
       filter: none;
-      height: 24px;
+      // max-width: 28px;
+      max-height: 24px;
     }
   }
 }
