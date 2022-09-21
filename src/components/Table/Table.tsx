@@ -6,8 +6,10 @@ export const Table = ({
   ...props
 }: React.PropsWithChildren<React.TableHTMLAttributes<HTMLTableElement>>) => {
   return (
-    <table className={`table ${className}`} {...props}>
-      {children}
-    </table>
+    <div className="table-container">
+      <table className={`table ${className}`} {...props}>
+        {children}
+      </table>
+    </div>
   );
 };
