@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 
-import { MenuItem, Button } from "components";
+import { Button } from "components";
+import { MenuItem } from "./MenuItem/MenuItem";
 import { HamburgerButton } from "components/HamburgerButton/HamburgerButton";
 
 import "./SideMenu.scss";

@@ -6,7 +6,7 @@ import api from "api";
 import { LoadingSpinner, Button, Modal } from "components";
 import { UserForm } from "../components/UserForm/UserForm";
 import { UserTable } from "../components/UserTable/UserTable";
-import { ContainerHeader } from "components/Container/ContainerHeader/ContainerHeader";
+import { ContainerHeader } from "components/Container/ContainerHeader";
 
 export const UsersContext = React.createContext({
   refetch: () => {},

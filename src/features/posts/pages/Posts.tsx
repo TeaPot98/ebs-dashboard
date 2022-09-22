@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import api from "api";
 
-import { ContainerHeader } from "components/Container/ContainerHeader/ContainerHeader";
+import { ContainerHeader } from "components/Container/ContainerHeader";
 import { PostCard } from "../components/PostCard/PostCard";
 import { Grid, Button, LoadingSpinner } from "components";
 
