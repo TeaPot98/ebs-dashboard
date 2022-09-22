@@ -42,12 +42,7 @@ export const LoginForm = () => {
       password: login.password,
     };
 
-    try {
-      mutation.mutate(userCredentials);
-    } catch (error: any) {
-      setErrorMessage(error.message);
-      console.error(error);
-    }
+    mutation.mutate(userCredentials);
   };
 
   return (

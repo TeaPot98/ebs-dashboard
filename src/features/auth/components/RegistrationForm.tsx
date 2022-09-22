@@ -53,11 +53,7 @@ export const RegistrationForm = () => {
       role: "Moderator",
     };
 
-    try {
-      mutation.mutate(user);
-    } catch (error: any) {
-      setErrorMessage(error.message);
-    }
+    mutation.mutate(user);
   };
 
   return (

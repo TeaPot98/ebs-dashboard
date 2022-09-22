@@ -25,6 +25,7 @@ export const UserContextProvider = ({ children }: React.PropsWithChildren) => {
     {
       // fetch user only when "userId" is available
       enabled: !!userId,
+      onSuccess: (data) => setLoggedUser(data),
     }
   );
   console.log("User ID from Provider", userId);
@@ -50,10 +51,6 @@ export const UserContextProvider = ({ children }: React.PropsWithChildren) => {
       return <div>Error: {error.message}</div>;
     }
     return <span>An unknown error occured</span>;
-  }
-
-  if (isSuccess) {
-    setLoggedUser(data);
   }
 
   return (
