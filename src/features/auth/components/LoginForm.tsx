@@ -17,6 +17,7 @@ export const LoginForm = () => {
     email: "",
     password: "",
   });
+
   const mutation = useMutation(
     (userCredentials: models.UserCredentials) =>
       api.users.login(userCredentials),
@@ -37,12 +38,16 @@ export const LoginForm = () => {
   const handleLogin = async (event: React.SyntheticEvent) => {
     event.preventDefault();
 
-    const userCredentials: models.UserCredentials = {
+    mutation.mutate({
       email: login.email,
       password: login.password,
-    };
+    });
+  };
 
-    mutation.mutate(userCredentials);
+  const handleChange = ({ target }: { target: HTMLInputElement }) => {
+    setLogin({
+      [target.name]: target.value,
+    });
   };
 
   return (
@@ -55,7 +60,7 @@ export const LoginForm = () => {
         id="email"
         name="email"
         value={login.email}
-        onChange={(event) => setLogin({ email: event.target.value })}
+        onChange={handleChange}
         placeholder="Email Address"
         required
       />
@@ -63,7 +68,7 @@ export const LoginForm = () => {
         id="password"
         name="password"
         value={login.password}
-        onChange={(event) => setLogin({ password: event.target.value })}
+        onChange={handleChange}
         type="password"
         placeholder="Password"
         required

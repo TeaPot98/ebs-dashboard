@@ -13,7 +13,7 @@ export const PostDetails = () => {
     isError,
     data: post,
     error,
-  } = useQuery(["post-details"], () => api.posts.getById(postId!), {
+  } = useQuery(["posts", postId], () => api.posts.getById(postId!), {
     enabled: !!postId,
   });
 

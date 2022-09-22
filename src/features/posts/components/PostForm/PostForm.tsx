@@ -38,6 +38,7 @@ export const PostForm = ({ formData }: PostFormProps) => {
           },
         }
   );
+
   const editMutation = useMutation(
     (postInfo: models.Post) => api.posts.edit(postInfo),
     {
@@ -52,6 +53,7 @@ export const PostForm = ({ formData }: PostFormProps) => {
       },
     }
   );
+
   const createMutation = useMutation(
     (postInfo: models.Post) => api.posts.create(postInfo),
     {
@@ -78,13 +80,20 @@ export const PostForm = ({ formData }: PostFormProps) => {
     console.log("New Post created !");
   };
 
+  const handleChange = ({ target }: any) => {
+    setFormState({
+      [target.name]:
+        target.type === "date" ? new Date(target.value) : target.value,
+    });
+  };
+
   return (
     <form className="form" onSubmit={handleSubmit}>
       <Input
         id="title"
         name="title"
         value={formState.title}
-        onChange={(event) => setFormState({ title: event.target.value })}
+        onChange={handleChange}
         placeholder="Title"
         required
       />
@@ -92,7 +101,7 @@ export const PostForm = ({ formData }: PostFormProps) => {
         id="description"
         name="description"
         value={formState.description}
-        onChange={(event) => setFormState({ description: event.target.value })}
+        onChange={handleChange}
         placeholder="Description"
         required
       />
@@ -100,7 +109,7 @@ export const PostForm = ({ formData }: PostFormProps) => {
         id="category"
         name="category"
         value={formState.category}
-        onChange={(event) => setFormState({ category: event.target.value })}
+        onChange={handleChange}
         labelText="Category"
         required
       >
@@ -111,19 +120,17 @@ export const PostForm = ({ formData }: PostFormProps) => {
         ))}
       </Select>
       <Input
-        id="image-url"
-        name="image-url"
+        id="imageUrl"
+        name="imageUrl"
         value={formState.imageUrl}
-        onChange={(event) => setFormState({ imageUrl: event.target.value })}
+        onChange={handleChange}
         placeholder="Image URL"
       />
       <DateInput
-        id="post-date"
-        name="post-date"
+        id="postDate"
+        name="date"
         value={formatDate(formState.date)}
-        onChange={(event) =>
-          setFormState({ date: new Date(event.target.value) })
-        }
+        onChange={handleChange}
       />
       <span>{errorMessage}</span>
       <Button

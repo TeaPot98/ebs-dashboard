@@ -9,10 +9,23 @@ import useSetState from "hooks/useSetState";
 
 import { Button, Checkbox, Input, Select } from "components";
 
+const initialState = {
+  name: "",
+  surname: "",
+  email: "",
+  password: "",
+  passConfirmation: "",
+  gender: "",
+  role: "",
+  agreement: false,
+};
+
 export const RegistrationForm = () => {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
   const [errorMessage, setErrorMessage] = useState("");
+  const [register, setRegister] = useSetState(initialState);
+
   const mutation = useMutation(
     (userInfo: models.UserRegistration) => api.users.register(userInfo),
     {
@@ -28,32 +41,26 @@ export const RegistrationForm = () => {
       },
     }
   );
-  const [register, setRegister] = useSetState({
-    name: "",
-    surname: "",
-    email: "",
-    password: "",
-    passConfirmation: "",
-    gender: "",
-    role: "",
-    agreement: false,
-  });
 
   const handleRegistration = async (
     event: React.FormEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
 
-    const user: models.UserRegistration = {
+    mutation.mutate({
       name: register.name,
       surname: register.surname,
       email: register.email,
       password: register.password,
       gender: register.gender,
       role: "Moderator",
-    };
+    });
+  };
 
-    mutation.mutate(user);
+  const handleChange = ({ target }: any) => {
+    setRegister({
+      [target.name]: target.type === "checkbox" ? target.checked : target.value,
+    });
   };
 
   return (
@@ -65,7 +72,7 @@ export const RegistrationForm = () => {
       <Input
         id="name"
         name="name"
-        onChange={(event) => setRegister({ name: event.target.value })}
+        onChange={handleChange}
         value={register.name}
         placeholder="Name"
         required
@@ -73,7 +80,7 @@ export const RegistrationForm = () => {
       <Input
         id="surname"
         name="surname"
-        onChange={(event) => setRegister({ surname: event.target.value })}
+        onChange={handleChange}
         value={register.surname}
         placeholder="Surname"
         required
@@ -81,7 +88,7 @@ export const RegistrationForm = () => {
       <Input
         id="email"
         name="email"
-        onChange={(event) => setRegister({ email: event.target.value })}
+        onChange={handleChange}
         value={register.email}
         type="email"
         placeholder="Email address"
@@ -91,7 +98,7 @@ export const RegistrationForm = () => {
         id="gender"
         name="gender"
         value={register.gender}
-        onChange={(event) => setRegister({ gender: event.target.value })}
+        onChange={handleChange}
         labelText="Gender"
       >
         <Select.Option value="None">None</Select.Option>
@@ -101,18 +108,16 @@ export const RegistrationForm = () => {
       <Input
         id="password"
         name="password"
-        onChange={(event) => setRegister({ password: event.target.value })}
+        onChange={handleChange}
         value={register.password}
         type="password"
         placeholder="Create a password"
         required
       />
       <Input
-        id="password-confirmation"
-        name="password-confirmation"
-        onChange={(event) =>
-          setRegister({ passConfirmation: event.target.value })
-        }
+        id="passConfirmation"
+        name="passConfirmation"
+        onChange={handleChange}
         value={register.passConfirmation}
         type="password"
         placeholder="Confirm your password"
@@ -122,7 +127,7 @@ export const RegistrationForm = () => {
         id="agreement"
         name="agreement"
         checked={register.agreement}
-        onChange={(event) => setRegister({ agreement: event.target.checked })}
+        onChange={handleChange}
         labelText="I agree with personal data processing"
         required
       />
