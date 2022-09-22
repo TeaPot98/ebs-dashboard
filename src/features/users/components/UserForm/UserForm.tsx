@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { useMutation } from "@tanstack/react-query";
 
-import { editUser, registerUser } from "api/users";
+import api from "api";
 import { UserContext } from "context/UserContext";
 import { User, UserRegistration } from "types";
 import useSetState from "hooks/useSetState";
@@ -29,7 +29,7 @@ export const UserForm = ({ user, onSubmit = () => {} }: UserFormProps) => {
         }
   );
   const registerMutation = useMutation(
-    (userInfo: UserRegistration) => registerUser(userInfo),
+    (userInfo: UserRegistration) => api.users.register(userInfo),
     {
       onError: (error) => {
         if (error instanceof Error) {
@@ -42,17 +42,20 @@ export const UserForm = ({ user, onSubmit = () => {} }: UserFormProps) => {
       },
     }
   );
-  const editMutation = useMutation((userInfo: User) => editUser(userInfo), {
-    onError: (error) => {
-      if (error instanceof Error) {
-        setErrorMessage(error.message);
-      }
-      console.error(error);
-    },
-    onSuccess: (data) => {
-      onSubmit();
-    },
-  });
+  const editMutation = useMutation(
+    (userInfo: User) => api.users.edit(userInfo),
+    {
+      onError: (error) => {
+        if (error instanceof Error) {
+          setErrorMessage(error.message);
+        }
+        console.error(error);
+      },
+      onSuccess: (data) => {
+        onSubmit();
+      },
+    }
+  );
 
   const submitForm = async (event: React.SyntheticEvent) => {
     event.preventDefault();

@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-import { getPost } from "api/posts";
+import api from "api";
 import { LoadingSpinner, Button } from "components";
 import { PostCard } from "../components/PostCard/PostCard";
 
@@ -13,7 +13,9 @@ export const PostDetails = () => {
     isError,
     data: post,
     error,
-  } = useQuery(["post-details"], () => getPost(postId ? postId : ""));
+  } = useQuery(["post-details"], () => api.posts.getById(postId!), {
+    enabled: !!postId,
+  });
 
   if (isLoading) {
     return <LoadingSpinner />;

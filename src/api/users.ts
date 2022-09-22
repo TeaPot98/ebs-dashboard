@@ -1,20 +1,16 @@
-import axios from "axios";
+import axios from "./axios";
 
 import { User, UserCredentials, UserRegistration } from "types";
 
-import { apiUrl } from "utils";
-
-export const registerUser = async (user: UserRegistration) => {
+export const register = async (user: UserRegistration) => {
   try {
     // Check if user already exists
-    const response = await axios.get<User[]>(
-      `${apiUrl}/users?email=${user.email}`
-    );
+    const response = await axios.get<User[]>(`/users?email=${user.email}`);
     if (response.data.length > 0) {
       throw new Error("The user with this email already exists");
     }
     // Register new user
-    const registeredUser = await axios.post<User>(`${apiUrl}/users`, user);
+    const registeredUser = await axios.post<User>(`/users`, user);
     return registeredUser.data;
   } catch (error) {
     console.error(error);
@@ -22,28 +18,28 @@ export const registerUser = async (user: UserRegistration) => {
   }
 };
 
-export const editUser = async (user: User) => {
+export const edit = async (user: User) => {
   try {
-    const response = await axios.put(`${apiUrl}/users/${user.id}`, user);
+    const response = await axios.put(`/users/${user.id}`, user);
     return response.data;
   } catch (error) {
     console.error(error);
   }
 };
 
-export const removeUser = async (userId: string) => {
+export const remove = async (userId: string) => {
   try {
-    const response = await axios.delete(`${apiUrl}/users/${userId}`);
+    const response = await axios.delete(`/users/${userId}`);
     return response.data;
   } catch (error) {
     console.error(error);
   }
 };
 
-export const loginUser = async (userCredentials: UserCredentials) => {
+export const login = async (userCredentials: UserCredentials) => {
   try {
     const response = await axios.get<User[]>(
-      `${apiUrl}/users?email=${userCredentials.email}&password=${userCredentials.password}`
+      `/users?email=${userCredentials.email}&password=${userCredentials.password}`
     );
     if (response.data.length === 0) {
       throw new Error("Incorrect email or password!");
@@ -55,18 +51,18 @@ export const loginUser = async (userCredentials: UserCredentials) => {
   }
 };
 
-export const getUser = async (userId: string) => {
+export const getById = async (userId: string) => {
   try {
-    const response = await axios.get<User>(`${apiUrl}/users/${userId}`);
+    const response = await axios.get<User>(`/users/${userId}`);
     return response.data;
   } catch (error) {
     console.error(error);
   }
 };
 
-export const getAllUsers = async () => {
+export const getAll = async () => {
   try {
-    const response = await axios.get<User[]>(`${apiUrl}/users`);
+    const response = await axios.get<User[]>(`/users`);
     return response.data;
   } catch (error) {
     console.error(error);

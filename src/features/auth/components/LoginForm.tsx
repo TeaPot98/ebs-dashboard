@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
-import { loginUser } from "api/users";
+import api from "api";
 import { UserContext } from "context/UserContext";
 import useSetState from "hooks/useSetState";
 import { UserCredentials } from "types";
@@ -18,7 +18,7 @@ export const LoginForm = () => {
     password: "",
   });
   const mutation = useMutation(
-    (userCredentials: UserCredentials) => loginUser(userCredentials),
+    (userCredentials: UserCredentials) => api.users.login(userCredentials),
     {
       onError: (error) => {
         if (error instanceof Error) {

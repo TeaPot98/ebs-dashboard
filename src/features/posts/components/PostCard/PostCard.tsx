@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { PostsContext } from "features/posts/pages/Posts";
-import { removePost } from "api/posts";
+import api from "api";
 import { Post } from "types";
 
 import { Button, ConfirmationModal, UserAvatar } from "components";
@@ -83,7 +83,7 @@ export const PostCard = ({ post, className }: PostCardProps) => {
         onClose={() => setRemoveModalOpen(false)}
         onAccept={async () => {
           console.log("Post removed");
-          await removePost(post.id.toString());
+          await api.posts.remove(post.id.toString());
           refetch();
           setRemoveModalOpen(false);
         }}

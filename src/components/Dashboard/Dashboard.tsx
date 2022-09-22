@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getAllPosts } from "api/posts";
+import api from "api";
 import { getOneWeekDays } from "utils";
 
 import { Chart, LoadingSpinner } from "components";
@@ -12,7 +12,7 @@ export const Dashboard = () => {
     isError,
     data: posts,
     error,
-  } = useQuery(["posts"], async () => await getAllPosts());
+  } = useQuery(["posts"], async () => await api.posts.getAll());
 
   if (isLoading) {
     return <LoadingSpinner />;

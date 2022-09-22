@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 
 import { User } from "types";
 import { UsersContext } from "features/users/pages/Users";
-import { removeUser } from "api/users";
+import api from "api";
 import { UserContext } from "context/UserContext";
 
 import { Button, ConfirmationModal, Modal } from "components";
@@ -66,7 +66,7 @@ export const UserTableItem = ({ user }: UserTableItemProps) => {
             onClose={() => setRemoveModalOpen(false)}
             onAccept={async () => {
               console.log("User removed");
-              await removeUser(user.id.toString());
+              await api.users.remove(user.id.toString());
               refetch();
               setRemoveModalOpen(false);
             }}

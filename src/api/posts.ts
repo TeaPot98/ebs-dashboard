@@ -1,11 +1,10 @@
-import axios from "axios";
+import axios from "./axios";
 
 import { Post } from "types";
-import { apiUrl } from "utils";
 
-export const uploadPost = async (post: Post) => {
+export const create = async (post: Post) => {
   try {
-    const response = await axios.post<Post>(`${apiUrl}/posts`, post);
+    const response = await axios.post<Post>(`/posts`, post);
 
     return response.data;
   } catch (error) {
@@ -13,18 +12,18 @@ export const uploadPost = async (post: Post) => {
   }
 };
 
-export const getPost = async (postId: string) => {
+export const getById = async (postId: string) => {
   try {
-    const response = await axios.get<Post>(`${apiUrl}/posts/${postId}`);
+    const response = await axios.get<Post>(`/posts/${postId}`);
     return { ...response.data, date: new Date(response.data.date) };
   } catch (error) {
     console.error(error);
   }
 };
 
-export const getAllPosts = async () => {
+export const getAll = async () => {
   try {
-    const response = await axios.get<Post[]>(`${apiUrl}/posts`);
+    const response = await axios.get<Post[]>(`/posts`);
 
     // Parse date and return
     return response.data.map((post) => ({
@@ -36,18 +35,18 @@ export const getAllPosts = async () => {
   }
 };
 
-export const editPost = async (post: Post) => {
+export const edit = async (post: Post) => {
   try {
-    const response = await axios.put(`${apiUrl}/posts/${post.id}`, post);
+    const response = await axios.put(`/posts/${post.id}`, post);
     return response.data;
   } catch (error) {
     console.error(error);
   }
 };
 
-export const removePost = async (postId: string) => {
+export const remove = async (postId: string) => {
   try {
-    const response = await axios.delete(`${apiUrl}/posts/${postId}`);
+    const response = await axios.delete(`/posts/${postId}`);
     return response.data;
   } catch (error) {
     console.error(error);

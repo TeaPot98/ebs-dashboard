@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
 import { UserRegistration } from "types";
-import { registerUser } from "api/users";
+import api from "api";
 import { UserContext } from "context/UserContext";
 import useSetState from "hooks/useSetState";
 
@@ -14,7 +14,7 @@ export const RegistrationForm = () => {
   const { setUser } = useContext(UserContext);
   const [errorMessage, setErrorMessage] = useState("");
   const mutation = useMutation(
-    (userInfo: UserRegistration) => registerUser(userInfo),
+    (userInfo: UserRegistration) => api.users.register(userInfo),
     {
       onError: (error) => {
         if (error instanceof Error) {

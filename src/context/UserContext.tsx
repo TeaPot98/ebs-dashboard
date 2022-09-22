@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { getUser } from "api/users";
+import api from "api";
 import { User, UserContextType } from "types";
 
 import { LoadingSpinner } from "components";
@@ -20,7 +20,7 @@ export const UserContextProvider = ({ children }: React.PropsWithChildren) => {
   let userId = localStorage.getItem("userId");
   const { isLoading, isSuccess, isError, error, data } = useQuery(
     ["user", userId],
-    () => getUser(userId ? userId : ""),
+    () => api.users.getById(userId!),
     {
       // fetch user only when "userId" is available
       enabled: !!userId,

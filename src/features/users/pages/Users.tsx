@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
-import { getAllUsers } from "api/users";
+import api from "api";
 
 import { LoadingSpinner, Button, Modal } from "components";
 import { UserForm } from "../components/UserForm/UserForm";
@@ -15,7 +15,7 @@ export const UsersContext = React.createContext({
 export const Users = () => {
   const { isLoading, isError, data, error, refetch } = useQuery(
     ["users"],
-    getAllUsers
+    api.users.getAll
   );
   const [userModalOpen, setUserModalOpen] = useState(false);
 

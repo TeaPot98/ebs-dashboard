@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
-import { getAllPosts } from "api/posts";
+import api from "api";
 
 import { ContainerHeader } from "components/Container/ContainerHeader/ContainerHeader";
 import { PostCard } from "../components/PostCard/PostCard";
@@ -15,7 +15,7 @@ export const PostsContext = React.createContext({
 export const Posts = () => {
   const { isLoading, isError, error, data, refetch } = useQuery(
     ["posts"],
-    getAllPosts
+    api.posts.getAll
   );
 
   if (isLoading) {

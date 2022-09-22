@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { editPost, uploadPost } from "api/posts";
+import api from "api";
 
 import { UserContext } from "context/UserContext";
 import { Categories, formatDate } from "utils";
@@ -38,28 +38,34 @@ export const PostForm = ({ formData }: PostFormProps) => {
           },
         }
   );
-  const editMutation = useMutation((postInfo: Post) => editPost(postInfo), {
-    onError: (error) => {
-      if (error instanceof Error) {
-        setErrorMessage(error.message);
-      }
-      console.error(error);
-    },
-    onSuccess: (data) => {
-      navigate("/posts");
-    },
-  });
-  const createMutation = useMutation((postInfo: Post) => uploadPost(postInfo), {
-    onError: (error) => {
-      if (error instanceof Error) {
-        setErrorMessage(error.message);
-      }
-      console.error(error);
-    },
-    onSuccess: (data) => {
-      navigate("/posts");
-    },
-  });
+  const editMutation = useMutation(
+    (postInfo: Post) => api.posts.edit(postInfo),
+    {
+      onError: (error) => {
+        if (error instanceof Error) {
+          setErrorMessage(error.message);
+        }
+        console.error(error);
+      },
+      onSuccess: (data) => {
+        navigate("/posts");
+      },
+    }
+  );
+  const createMutation = useMutation(
+    (postInfo: Post) => api.posts.create(postInfo),
+    {
+      onError: (error) => {
+        if (error instanceof Error) {
+          setErrorMessage(error.message);
+        }
+        console.error(error);
+      },
+      onSuccess: (data) => {
+        navigate("/posts");
+      },
+    }
+  );
 
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();

@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { PostForm } from "../components/PostForm/PostForm";
 import { Button, LoadingSpinner } from "components";
 import { useQuery } from "@tanstack/react-query";
-import { getPost } from "api/posts";
+import api from "api";
 
 export const PostFormPage = () => {
   const { id: postId } = useParams();
@@ -12,7 +12,7 @@ export const PostFormPage = () => {
     isError,
     data: post,
     error,
-  } = useQuery(["posts", postId], () => getPost(postId!), {
+  } = useQuery(["posts", postId], () => api.posts.getById(postId!), {
     enabled: !!postId,
   });
 
