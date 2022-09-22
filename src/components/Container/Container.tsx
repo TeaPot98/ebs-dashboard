@@ -4,8 +4,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { Dashboard } from "components";
 import { Roles } from "utils";
 
-import { Posts } from "../../features/posts/pages/Posts";
-import { Users } from "../../features/users/pages/Users";
+import { Posts } from "features/posts/pages/Posts";
+import { Users } from "features/users/pages/Users";
 
 import "./Container.scss";
 import { UserContext } from "context/UserContext";
