@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useQuery } from "@tanstack/react-query";
 
 import api from "api";
@@ -6,7 +7,7 @@ import { getOneWeekDays } from "utils";
 import { Chart, LoadingSpinner } from "components";
 import "./Dashboard.scss";
 
-export const Dashboard = () => {
+export const Dashboard = (props: JSX.IntrinsicElements["div"]) => {
   const {
     isLoading,
     isError,
@@ -68,7 +69,7 @@ export const Dashboard = () => {
   // }
 
   return (
-    <div className="dashboard">
+    <div className={`dashboard ${classNames(props.className)}`} {...props}>
       <Chart data={chartData} />
     </div>
   );

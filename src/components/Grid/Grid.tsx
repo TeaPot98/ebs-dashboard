@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 import "./Grid.scss";
 
 interface GridProps {
@@ -12,7 +14,7 @@ export const Grid = ({
 }: GridProps & JSX.IntrinsicElements["div"]) => {
   return (
     <div
-      className={`grid ${className}`}
+      className={`grid ${classNames(className)}`}
       style={{ gridTemplateColumns: "1fr ".repeat(columns) }}
       {...props}
     >

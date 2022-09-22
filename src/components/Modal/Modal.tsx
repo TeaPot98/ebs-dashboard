@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 import "./Modal.scss";
 import { ModalHeader } from "./ModalHeader";
 import { ModalContent } from "./ModalContent";
@@ -21,7 +23,7 @@ export const Modal = ({
 }: React.PropsWithChildren<ModalProps>) => {
   return (
     <div
-      className={`modal ${!open && "modal--closed"}`}
+      className={`modal ${classNames({ "modal--closed": !open })}`}
       onClick={(event) => {
         event.stopPropagation();
         if (event.target !== event.currentTarget) return;

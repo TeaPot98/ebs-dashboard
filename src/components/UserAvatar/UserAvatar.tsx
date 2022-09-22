@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 import "./UserAvatar.scss";
 
 interface UserAvatarProps {
@@ -12,7 +14,7 @@ export const UserAvatar = ({
   ...props
 }: UserAvatarProps & JSX.IntrinsicElements["div"]) => {
   return (
-    <div className={`avatar ${className}`} {...props}>
+    <div className={`avatar ${classNames(className)}`} {...props}>
       {name[0]}
       {surname[0]}
     </div>

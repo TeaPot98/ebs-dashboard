@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import classNames from "classnames";
 
 import { Button } from "components";
 import { MenuItem } from "./MenuItem/MenuItem";
@@ -13,7 +14,7 @@ export const SideMenu = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className={`menu ${open && "menu--open"}`}>
+    <div className={`menu ${classNames({ "menu--open": open })}`}>
       <HamburgerButton onClick={() => setOpen(!open)} />
       <div className="menu__header">
         <div className="menu__logo">

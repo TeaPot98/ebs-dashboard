@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import classNames from "classnames";
 
 import { PostsContext } from "features/posts/pages/Posts";
 import api from "api";
@@ -23,7 +24,7 @@ export const PostCard = ({
 
   return (
     <div
-      className={`post ${className}`}
+      className={`post ${classNames(className)}`}
       onClick={(event) => {
         if (!className?.includes("details")) {
           navigate(`/posts/${post.id}`);

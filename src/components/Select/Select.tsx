@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 import "./Select.scss";
 import { Option } from "./Option";
 
@@ -16,7 +18,7 @@ export const Select = ({
   return (
     <div className="select">
       <label htmlFor={id}>{labelText}</label>
-      <select id={id} className={className} {...props}>
+      <select id={id} className={classNames(className)} {...props}>
         {children}
       </select>
     </div>

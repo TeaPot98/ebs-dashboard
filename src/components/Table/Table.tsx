@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 import "./Table.scss";
 
 export const Table = ({
@@ -7,7 +9,7 @@ export const Table = ({
 }: JSX.IntrinsicElements["table"]) => {
   return (
     <div className="table-container">
-      <table className={`table ${className}`} {...props}>
+      <table className={`table ${classNames(className)}`} {...props}>
         {children}
       </table>
     </div>

@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 import "./Button.scss";
 
 interface ButtonProps {
@@ -11,7 +13,7 @@ export const Button = ({
   ...props
 }: ButtonProps & Omit<JSX.IntrinsicElements["button"], "type">) => {
   return (
-    <button {...props} className={`btn btn--${type} ${className}`}>
+    <button {...props} className={`btn btn--${type} ${classNames(className)}`}>
       {children}
     </button>
   );

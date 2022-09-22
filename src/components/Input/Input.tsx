@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 import "./Input.scss";
 
 interface InputFieldProps {
@@ -10,6 +12,10 @@ export const Input = ({
   ...props
 }: InputFieldProps & Omit<JSX.IntrinsicElements["input"], "type">) => {
   return (
-    <input type={type} className={`input-field ${className}`} {...props} />
+    <input
+      type={type}
+      className={`input-field ${classNames(className)}`}
+      {...props}
+    />
   );
 };
