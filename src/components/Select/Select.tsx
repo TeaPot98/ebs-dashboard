@@ -1,7 +1,7 @@
 import "./Select.scss";
 import { Option } from "./Option";
 
-interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+interface SelectProps {
   id: string;
   labelText: string;
 }
@@ -12,7 +12,7 @@ export const Select = ({
   children,
   className,
   ...props
-}: React.PropsWithChildren<SelectProps>) => {
+}: SelectProps & JSX.IntrinsicElements["select"]) => {
   return (
     <div className="select">
       <label htmlFor={id}>{labelText}</label>

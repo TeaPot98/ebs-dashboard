@@ -1,7 +1,7 @@
 import React from "react";
 import "./Grid.scss";
 
-interface GridProps extends React.HTMLAttributes<HTMLDivElement> {
+interface GridProps {
   columns: number;
 }
 
@@ -10,7 +10,7 @@ export const Grid = ({
   children,
   columns = 2,
   ...props
-}: React.PropsWithChildren<GridProps>) => {
+}: GridProps & JSX.IntrinsicElements["div"]) => {
   return (
     <div
       className={`grid ${className}`}

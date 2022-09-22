@@ -4,7 +4,7 @@ export const Table = ({
   children,
   className,
   ...props
-}: React.PropsWithChildren<React.TableHTMLAttributes<HTMLTableElement>>) => {
+}: JSX.IntrinsicElements["table"]) => {
   return (
     <div className="table-container">
       <table className={`table ${className}`} {...props}>

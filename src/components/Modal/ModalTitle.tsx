@@ -2,6 +2,6 @@ export const ModalTitle = ({
   className,
   children,
   ...props
-}: React.PropsWithChildren<React.HTMLAttributes<HTMLHeadingElement>>) => {
+}: JSX.IntrinsicElements["h4"]) => {
   return <h4 className={`modal__title ${className}`}>{children}</h4>;
 };

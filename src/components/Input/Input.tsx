@@ -1,7 +1,6 @@
 import "./Input.scss";
 
-interface InputFieldProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> {
+interface InputFieldProps {
   type?: "text" | "email" | "password";
 }
 
@@ -9,7 +8,7 @@ export const Input = ({
   className,
   type = "text",
   ...props
-}: InputFieldProps) => {
+}: InputFieldProps & Omit<JSX.IntrinsicElements["input"], "type">) => {
   return (
     <input type={type} className={`input-field ${className}`} {...props} />
   );

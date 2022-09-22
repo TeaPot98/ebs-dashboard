@@ -2,8 +2,7 @@ import React from "react";
 
 import "./Button.scss";
 
-interface ButtonProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "type"> {
+interface ButtonProps {
   type?: "primary" | "danger" | "icon";
 }
 
@@ -12,7 +11,7 @@ export const Button = ({
   children,
   className,
   ...props
-}: React.PropsWithChildren<ButtonProps>) => {
+}: ButtonProps & Omit<JSX.IntrinsicElements["button"], "type">) => {
   return (
     <button {...props} className={`btn btn--${type} ${className}`}>
       {children}

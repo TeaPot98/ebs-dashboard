@@ -2,7 +2,7 @@ export const ModalFooter = ({
   children,
   className,
   ...props
-}: React.PropsWithChildren<React.HTMLAttributes<HTMLDivElement>>) => {
+}: JSX.IntrinsicElements["div"]) => {
   return (
     <div className={`modal__footer ${className}`} {...props}>
       {children}

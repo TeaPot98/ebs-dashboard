@@ -1,6 +1,6 @@
 import "./UserAvatar.scss";
 
-interface UserAvatarProps extends React.HTMLAttributes<HTMLDivElement> {
+interface UserAvatarProps {
   name: string;
   surname: string;
 }
@@ -10,7 +10,7 @@ export const UserAvatar = ({
   surname,
   className,
   ...props
-}: UserAvatarProps) => {
+}: UserAvatarProps & JSX.IntrinsicElements["div"]) => {
   return (
     <div className={`avatar ${className}`} {...props}>
       {name[0]}

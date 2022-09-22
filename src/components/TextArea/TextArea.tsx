@@ -3,6 +3,6 @@ import "./TextArea.scss";
 export const TextArea = ({
   className,
   ...props
-}: React.TextareaHTMLAttributes<HTMLTextAreaElement>) => {
+}: JSX.IntrinsicElements["textarea"]) => {
   return <textarea className={`text-area ${className}`} {...props} />;
 };

@@ -1,8 +1,12 @@
-interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface CheckboxProps {
   labelText: string;
 }
 
-export const Checkbox = ({ labelText, id, ...props }: CheckboxProps) => {
+export const Checkbox = ({
+  labelText,
+  id,
+  ...props
+}: CheckboxProps & JSX.IntrinsicElements["input"]) => {
   return (
     <div>
       <input id={id} {...props} type="checkbox" />

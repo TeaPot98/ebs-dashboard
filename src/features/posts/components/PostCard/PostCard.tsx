@@ -8,12 +8,15 @@ import models from "models";
 import { Button, ConfirmationModal, UserAvatar } from "components";
 import "./PostCard.scss";
 
-interface PostCardProps extends React.HTMLAttributes<HTMLDivElement> {
+interface PostCardProps {
   post: models.Post;
   className?: string;
 }
 
-export const PostCard = ({ post, className }: PostCardProps) => {
+export const PostCard = ({
+  post,
+  className,
+}: PostCardProps & JSX.IntrinsicElements["div"]) => {
   const navigate = useNavigate();
   const { refetch } = useContext(PostsContext);
   const [removeModalOpen, setRemoveModalOpen] = useState(false);

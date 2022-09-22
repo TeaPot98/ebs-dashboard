@@ -1,7 +1,7 @@
 export const ContainerHeader = ({
   children,
   ...props
-}: React.PropsWithChildren<React.HTMLAttributes<HTMLDivElement>>) => {
+}: JSX.IntrinsicElements["div"]) => {
   return (
     <div className="container__header" {...props}>
       {children}

@@ -4,7 +4,7 @@ import * as ReactDOM from "react-dom";
 import { Button } from "components";
 
 export const HamburgerButton = (
-  props: Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "type">
+  props: Omit<JSX.IntrinsicElements["button"], "type">
 ) => {
   const [domReady, setDomReady] = useState(false);
 

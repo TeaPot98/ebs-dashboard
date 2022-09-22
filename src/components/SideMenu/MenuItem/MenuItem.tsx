@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import "./MenuItem.scss";
 
-interface MenuItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
+interface MenuItemProps {
   icon?: string;
   onClick?: () => void;
   route: string;
@@ -13,7 +13,7 @@ export const MenuItem = ({
   children,
   route,
   onClick,
-}: React.PropsWithChildren<MenuItemProps>) => {
+}: MenuItemProps & JSX.IntrinsicElements["li"]) => {
   const location = useLocation();
 
   return (
