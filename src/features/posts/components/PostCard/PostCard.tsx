@@ -59,8 +59,11 @@ export const PostCard = ({ post, className }: PostCardProps) => {
         </div>
       </div>
       <h1 className="post__title">{post.title}</h1>
-      <div className="post__image">
-        <img alt="" src={post.imageUrl} />
+      <div
+        className="post__image"
+        style={{ backgroundImage: `url(${post.imageUrl})` }}
+      >
+        {/* <img alt="" src={post.imageUrl} /> */}
       </div>
       <div className="post__body">
         <p className="post__description">{post.description}</p>

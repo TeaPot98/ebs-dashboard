@@ -44,6 +44,10 @@
     overflow: hidden;
     height: 200px;
     border-radius: 8px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: contain;
+    background-position: center;
 
     img {
       width: 100%;
