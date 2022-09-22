@@ -20,3 +20,16 @@
     @content;
   }
 }
+
+@mixin box($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin hover-states() {
+  &:active,
+  &:focus,
+  &:hover {
+    @content;
+  }
+}

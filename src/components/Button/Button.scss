@@ -1,4 +1,5 @@
 @import "styles/variables";
+@import "styles/mixins";
 
 .btn {
   color: white;
@@ -18,14 +19,16 @@
   &--primary {
     // background-color: #5570f1;
     background-color: $primary;
-    &:active {
+
+    @include hover-states {
       background-color: $primary_accent;
     }
   }
 
   &--danger {
     background-color: $danger;
-    &:active {
+
+    @include hover-states {
       background-color: $danger_accent;
     }
   }
@@ -35,8 +38,7 @@
     padding: 4px;
     max-height: 30px;
 
-    &:focus,
-    &:active {
+    @include hover-states {
       background-color: whitesmoke;
     }
 

@@ -22,7 +22,7 @@
     }
   }
 
-  &:hover {
+  @include hover-states {
     background-color: whitesmoke;
   }
 
