@@ -3,14 +3,14 @@ import { useMutation } from "@tanstack/react-query";
 
 import api from "api";
 import { UserContext } from "context/UserContext";
-import { User, UserRegistration } from "types";
+import models from "models";
 import useSetState from "hooks/useSetState";
 import { Roles } from "utils";
 
 import { Select, Input, Button } from "components";
 
 interface UserFormProps {
-  user?: User;
+  user?: models.User;
   onSubmit: () => void;
 }
 
@@ -29,7 +29,7 @@ export const UserForm = ({ user, onSubmit = () => {} }: UserFormProps) => {
         }
   );
   const registerMutation = useMutation(
-    (userInfo: UserRegistration) => api.users.register(userInfo),
+    (userInfo: models.UserRegistration) => api.users.register(userInfo),
     {
       onError: (error) => {
         if (error instanceof Error) {
@@ -43,7 +43,7 @@ export const UserForm = ({ user, onSubmit = () => {} }: UserFormProps) => {
     }
   );
   const editMutation = useMutation(
-    (userInfo: User) => api.users.edit(userInfo),
+    (userInfo: models.User) => api.users.edit(userInfo),
     {
       onError: (error) => {
         if (error instanceof Error) {

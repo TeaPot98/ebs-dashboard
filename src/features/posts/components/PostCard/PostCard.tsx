@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 
 import { PostsContext } from "features/posts/pages/Posts";
 import api from "api";
-import { Post } from "types";
+import models from "models";
 
 import { Button, ConfirmationModal, UserAvatar } from "components";
 import "./PostCard.scss";
 
 interface PostCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  post: Post;
+  post: models.Post;
   className?: string;
 }
 

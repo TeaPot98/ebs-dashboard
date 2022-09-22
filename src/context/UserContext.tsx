@@ -3,17 +3,18 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import api from "api";
-import { User, UserContextType } from "types";
+import models from "models";
 
 import { LoadingSpinner } from "components";
 
-const initialState: UserContextType = {
+const initialState: models.UserContextType = {
   setUser: (user) => {},
   user: undefined,
   logOut: () => {},
 };
 
-export const UserContext = React.createContext<UserContextType>(initialState);
+export const UserContext =
+  React.createContext<models.UserContextType>(initialState);
 
 export const UserContextProvider = ({ children }: React.PropsWithChildren) => {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ export const UserContextProvider = ({ children }: React.PropsWithChildren) => {
   );
   console.log("User ID from Provider", userId);
 
-  const setLoggedUser = (user: User | undefined) => {
+  const setLoggedUser = (user: models.User | undefined) => {
     if (user) {
       localStorage.setItem("userId", user.id.toString());
     }

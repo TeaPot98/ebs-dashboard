@@ -1,10 +1,10 @@
 import axios from "./axios";
 
-import { Post } from "types";
+import models from "models";
 
-export const create = async (post: Post) => {
+export const create = async (post: models.Post) => {
   try {
-    const response = await axios.post<Post>(`/posts`, post);
+    const response = await axios.post<models.Post>(`/posts`, post);
 
     return response.data;
   } catch (error) {
@@ -14,7 +14,7 @@ export const create = async (post: Post) => {
 
 export const getById = async (postId: string) => {
   try {
-    const response = await axios.get<Post>(`/posts/${postId}`);
+    const response = await axios.get<models.Post>(`/posts/${postId}`);
     return { ...response.data, date: new Date(response.data.date) };
   } catch (error) {
     console.error(error);
@@ -23,7 +23,7 @@ export const getById = async (postId: string) => {
 
 export const getAll = async () => {
   try {
-    const response = await axios.get<Post[]>(`/posts`);
+    const response = await axios.get<models.Post[]>(`/posts`);
 
     // Parse date and return
     return response.data.map((post) => ({
@@ -35,7 +35,7 @@ export const getAll = async () => {
   }
 };
 
-export const edit = async (post: Post) => {
+export const edit = async (post: models.Post) => {
   try {
     const response = await axios.put(`/posts/${post.id}`, post);
     return response.data;

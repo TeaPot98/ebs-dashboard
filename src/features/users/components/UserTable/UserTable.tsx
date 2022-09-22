@@ -1,10 +1,10 @@
-import { User } from "types";
+import models from "models";
 
 import { UserTableItem } from "../UserTableItem/UserTableItem";
 import { Table } from "components";
 
 interface UserTableProps {
-  users: User[];
+  users: models.User[];
 }
 
 export const UserTable = ({ users }: UserTableProps) => {

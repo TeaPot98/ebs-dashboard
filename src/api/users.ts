@@ -1,16 +1,18 @@
 import axios from "./axios";
 
-import { User, UserCredentials, UserRegistration } from "types";
+import models from "models";
 
-export const register = async (user: UserRegistration) => {
+export const register = async (user: models.UserRegistration) => {
   try {
     // Check if user already exists
-    const response = await axios.get<User[]>(`/users?email=${user.email}`);
+    const response = await axios.get<models.User[]>(
+      `/users?email=${user.email}`
+    );
     if (response.data.length > 0) {
       throw new Error("The user with this email already exists");
     }
     // Register new user
-    const registeredUser = await axios.post<User>(`/users`, user);
+    const registeredUser = await axios.post<models.User>(`/users`, user);
     return registeredUser.data;
   } catch (error) {
     console.error(error);
@@ -18,7 +20,7 @@ export const register = async (user: UserRegistration) => {
   }
 };
 
-export const edit = async (user: User) => {
+export const edit = async (user: models.User) => {
   try {
     const response = await axios.put(`/users/${user.id}`, user);
     return response.data;
@@ -36,9 +38,9 @@ export const remove = async (userId: string) => {
   }
 };
 
-export const login = async (userCredentials: UserCredentials) => {
+export const login = async (userCredentials: models.UserCredentials) => {
   try {
-    const response = await axios.get<User[]>(
+    const response = await axios.get<models.User[]>(
       `/users?email=${userCredentials.email}&password=${userCredentials.password}`
     );
     if (response.data.length === 0) {
@@ -53,7 +55,7 @@ export const login = async (userCredentials: UserCredentials) => {
 
 export const getById = async (userId: string) => {
   try {
-    const response = await axios.get<User>(`/users/${userId}`);
+    const response = await axios.get<models.User>(`/users/${userId}`);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -62,7 +64,7 @@ export const getById = async (userId: string) => {
 
 export const getAll = async () => {
   try {
-    const response = await axios.get<User[]>(`/users`);
+    const response = await axios.get<models.User[]>(`/users`);
     return response.data;
   } catch (error) {
     console.error(error);

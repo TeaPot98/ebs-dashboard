@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
-import { UserRegistration } from "types";
+import models from "models";
 import api from "api";
 import { UserContext } from "context/UserContext";
 import useSetState from "hooks/useSetState";
@@ -14,7 +14,7 @@ export const RegistrationForm = () => {
   const { setUser } = useContext(UserContext);
   const [errorMessage, setErrorMessage] = useState("");
   const mutation = useMutation(
-    (userInfo: UserRegistration) => api.users.register(userInfo),
+    (userInfo: models.UserRegistration) => api.users.register(userInfo),
     {
       onError: (error) => {
         if (error instanceof Error) {
@@ -44,7 +44,7 @@ export const RegistrationForm = () => {
   ) => {
     event.preventDefault();
 
-    const user: UserRegistration = {
+    const user: models.UserRegistration = {
       name: register.name,
       surname: register.surname,
       email: register.email,

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import api from "api";
 import { UserContext } from "context/UserContext";
 import useSetState from "hooks/useSetState";
-import { UserCredentials } from "types";
+import models from "models";
 
 import { Button, Input } from "components";
 
@@ -18,7 +18,8 @@ export const LoginForm = () => {
     password: "",
   });
   const mutation = useMutation(
-    (userCredentials: UserCredentials) => api.users.login(userCredentials),
+    (userCredentials: models.UserCredentials) =>
+      api.users.login(userCredentials),
     {
       onError: (error) => {
         if (error instanceof Error) {
@@ -36,7 +37,7 @@ export const LoginForm = () => {
   const handleLogin = async (event: React.SyntheticEvent) => {
     event.preventDefault();
 
-    const userCredentials: UserCredentials = {
+    const userCredentials: models.UserCredentials = {
       email: login.email,
       password: login.password,
     };

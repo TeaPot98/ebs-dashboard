@@ -7,14 +7,14 @@ import api from "api";
 import { UserContext } from "context/UserContext";
 import { Categories, formatDate } from "utils";
 import useSetState from "hooks/useSetState";
-import { Post } from "types";
+import models from "models";
 
 import { TextArea } from "components/TextArea/TextArea";
 import { DateInput } from "components/DateInput/DateInput";
 import { Input, Button, Select } from "components";
 
 interface PostFormProps {
-  formData: Post | null;
+  formData: models.Post | null;
 }
 
 export const PostForm = ({ formData }: PostFormProps) => {
@@ -39,7 +39,7 @@ export const PostForm = ({ formData }: PostFormProps) => {
         }
   );
   const editMutation = useMutation(
-    (postInfo: Post) => api.posts.edit(postInfo),
+    (postInfo: models.Post) => api.posts.edit(postInfo),
     {
       onError: (error) => {
         if (error instanceof Error) {
@@ -53,7 +53,7 @@ export const PostForm = ({ formData }: PostFormProps) => {
     }
   );
   const createMutation = useMutation(
-    (postInfo: Post) => api.posts.create(postInfo),
+    (postInfo: models.Post) => api.posts.create(postInfo),
     {
       onError: (error) => {
         if (error instanceof Error) {

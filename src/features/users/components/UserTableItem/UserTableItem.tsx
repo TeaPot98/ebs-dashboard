@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 
-import { User } from "types";
+import models from "models";
 import { UsersContext } from "features/users/pages/Users";
 import api from "api";
 import { UserContext } from "context/UserContext";
@@ -10,7 +10,7 @@ import { UserForm } from "../UserForm/UserForm";
 import "../UserCard/UserCard.scss";
 
 interface UserTableItemProps {
-  user: User;
+  user: models.User;
 }
 
 export const UserTableItem = ({ user }: UserTableItemProps) => {

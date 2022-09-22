@@ -1,4 +1,4 @@
-import { Categories, Roles } from "utils";
+import { Roles } from "utils";
 
 export interface User {
   id: number;
@@ -11,20 +11,6 @@ export interface User {
 }
 
 type RoleType = keyof typeof Roles;
-
-export interface Post {
-  id: number;
-  title: string;
-  description: string;
-  imageUrl: string;
-  category: PostCategory;
-  date: Date;
-  author: PostAuthor;
-}
-
-export type PostAuthor = Pick<User, "id" | "name" | "surname">;
-
-type PostCategory = keyof typeof Categories;
 
 export type UserRegistration = Omit<User, "id">;
 
