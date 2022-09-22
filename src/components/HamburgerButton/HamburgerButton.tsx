@@ -10,6 +10,8 @@ export const HamburgerButton = (
 
   useEffect(() => {
     setDomReady(true);
+
+    return () => setDomReady(false);
   }, []);
 
   // Checking if DOM is loaded, then displaying the teleported element in DOM tree
