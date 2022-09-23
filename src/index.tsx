@@ -9,6 +9,7 @@ import { UserContextProvider } from "context/UserContext";
 import "./styles/index.scss";
 
 import App from "./App";
+import { ErrorBoundary } from "components";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -19,11 +20,13 @@ const queryClient = new QueryClient();
 root.render(
   <React.StrictMode>
     <Router>
-      <QueryClientProvider client={queryClient}>
-        <UserContextProvider>
-          <App />
-        </UserContextProvider>
-      </QueryClientProvider>
+      <ErrorBoundary>
+        <QueryClientProvider client={queryClient}>
+          <UserContextProvider>
+            <App />
+          </UserContextProvider>
+        </QueryClientProvider>
+      </ErrorBoundary>
     </Router>
   </React.StrictMode>
 );

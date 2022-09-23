@@ -28,28 +28,13 @@ export const UserForm = ({ user, onSubmit = () => {} }: UserFormProps) => {
           role: "Moderator",
         }
   );
-  const registerMutation = useMutation(
-    (userInfo: models.UserRegistration) => api.users.register(userInfo),
+
+  const mutation = useMutation(
+    (userInfo: models.UserRegistration) =>
+      user ? api.users.edit(userForm) : api.users.register(userInfo),
     {
-      onError: (error) => {
-        if (error instanceof Error) {
-          setErrorMessage(error.message);
-        }
-        console.error(error);
-      },
-      onSuccess: (data) => {
-        onSubmit();
-      },
-    }
-  );
-  const editMutation = useMutation(
-    (userInfo: models.User) => api.users.edit(userInfo),
-    {
-      onError: (error) => {
-        if (error instanceof Error) {
-          setErrorMessage(error.message);
-        }
-        console.error(error);
+      onError: (error: Error) => {
+        setErrorMessage(error.message);
       },
       onSuccess: (data) => {
         onSubmit();
@@ -59,11 +44,7 @@ export const UserForm = ({ user, onSubmit = () => {} }: UserFormProps) => {
 
   const submitForm = async (event: React.SyntheticEvent) => {
     event.preventDefault();
-    if (user) {
-      editMutation.mutate({ ...userForm, id: user.id });
-    } else {
-      registerMutation.mutate(userForm);
-    }
+    mutation.mutate(user ? { ...userForm, id: user.id } : userForm);
   };
 
   return (
@@ -121,10 +102,8 @@ export const UserForm = ({ user, onSubmit = () => {} }: UserFormProps) => {
         ))}
       </Select>
       <span className="form__error">{errorMessage}</span>
-      <Button disabled={registerMutation.isLoading || editMutation.isLoading}>
-        {registerMutation.isLoading || editMutation.isLoading
-          ? "Submitting..."
-          : "Submit"}
+      <Button disabled={mutation.isLoading}>
+        {mutation.isLoading ? "Submitting..." : "Submit"}
       </Button>
     </form>
   );

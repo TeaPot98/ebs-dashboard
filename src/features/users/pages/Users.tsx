@@ -24,14 +24,7 @@ export const Users = () => {
   }
 
   if (isError) {
-    if (error instanceof Error) {
-      return <span>Error: {error.message}</span>;
-    }
-    return <span>An unknown error occured</span>;
-  }
-
-  if (!data) {
-    return <span>Data is missing</span>;
+    throw new Error(error instanceof Error ? error.message : "Unkown error ");
   }
 
   return (

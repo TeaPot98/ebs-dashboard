@@ -1,0 +1,12 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.error-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $danger;
+  gap: 24px;
+
+  @include box(100%, 100%);
+}

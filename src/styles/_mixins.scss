@@ -33,3 +33,12 @@
     @content;
   }
 }
+
+@mixin set-color($color) {
+  color: $color;
+  &:hover,
+  &:visited,
+  &:focus {
+    color: $color;
+  }
+}

@@ -39,29 +39,12 @@ export const PostForm = ({ formData }: PostFormProps) => {
         }
   );
 
-  const editMutation = useMutation(
-    (postInfo: models.Post) => api.posts.edit(postInfo),
+  const mutation = useMutation(
+    (postInfo: models.Post) =>
+      postId ? api.posts.edit(postInfo) : api.posts.create(postInfo),
     {
-      onError: (error) => {
-        if (error instanceof Error) {
-          setErrorMessage(error.message);
-        }
-        console.error(error);
-      },
-      onSuccess: (data) => {
-        navigate("/posts");
-      },
-    }
-  );
-
-  const createMutation = useMutation(
-    (postInfo: models.Post) => api.posts.create(postInfo),
-    {
-      onError: (error) => {
-        if (error instanceof Error) {
-          setErrorMessage(error.message);
-        }
-        console.error(error);
+      onError: (error: Error) => {
+        setErrorMessage(error.message);
       },
       onSuccess: (data) => {
         navigate("/posts");
@@ -71,11 +54,8 @@ export const PostForm = ({ formData }: PostFormProps) => {
 
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
-    if (postId) {
-      editMutation.mutate({ ...formState, id: postId });
-    } else {
-      createMutation.mutate(formState);
-    }
+
+    mutation.mutate(postId ? { ...formState, id: postId } : formState);
 
     console.log("New Post created !");
   };
@@ -133,13 +113,8 @@ export const PostForm = ({ formData }: PostFormProps) => {
         onChange={handleChange}
       />
       <span>{errorMessage}</span>
-      <Button
-        onClick={handleSubmit}
-        disabled={editMutation.isLoading || createMutation.isLoading}
-      >
-        {editMutation.isLoading || createMutation.isLoading
-          ? "Submitting..."
-          : "Submit"}
+      <Button onClick={handleSubmit} disabled={mutation.isLoading}>
+        {mutation.isLoading ? "Submitting..." : "Submit"}
       </Button>
     </form>
   );

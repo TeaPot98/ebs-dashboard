@@ -14,3 +14,4 @@ export * from "./Table";
 export * from "./LoadingSpinner";
 export * from "./Chart";
 export * from "./Dashboard";
+export * from "./ErrorBoundary";

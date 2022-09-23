@@ -22,11 +22,8 @@ export const LoginForm = () => {
     (userCredentials: models.UserCredentials) =>
       api.users.login(userCredentials),
     {
-      onError: (error) => {
-        if (error instanceof Error) {
-          setErrorMessage(error.message);
-        }
-        console.error(error);
+      onError: (error: Error) => {
+        setErrorMessage(error.message);
       },
       onSuccess: (data) => {
         setUser(data[0]);

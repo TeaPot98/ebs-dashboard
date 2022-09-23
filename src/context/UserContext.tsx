@@ -47,10 +47,13 @@ export const UserContextProvider = ({ children }: React.PropsWithChildren) => {
   }
 
   if (isError) {
-    if (error instanceof Error) {
-      return <div>Error: {error.message}</div>;
-    }
-    return <span>An unknown error occured</span>;
+    throw new Error(
+      error instanceof Error ? error.message : "An error occured"
+    );
+    // if (error instanceof Error) {
+    //   return <div>Error: {error.message}</div>;
+    // }
+    // return <span>An unknown error occured</span>;
   }
 
   return (

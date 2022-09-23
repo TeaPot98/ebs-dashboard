@@ -29,11 +29,8 @@ export const RegistrationForm = () => {
   const mutation = useMutation(
     (userInfo: models.UserRegistration) => api.users.register(userInfo),
     {
-      onError: (error) => {
-        if (error instanceof Error) {
-          setErrorMessage(error.message);
-        }
-        console.error(error);
+      onError: (error: Error) => {
+        setErrorMessage(error.message);
       },
       onSuccess: (data) => {
         setUser(data);
