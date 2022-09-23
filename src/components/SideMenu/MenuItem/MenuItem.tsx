@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { Link, useLocation } from "react-router-dom";
 
 import "./MenuItem.scss";
@@ -19,9 +20,9 @@ export const MenuItem = ({
   return (
     <Link to={route} onClick={onClick}>
       <li
-        className={`menu-item ${
-          route === location.pathname && "menu-item--active"
-        }`}
+        className={`menu-item ${classNames({
+          "menu-item--active": route === location.pathname,
+        })}`}
       >
         <img alt="" src={icon} />
         {children}
