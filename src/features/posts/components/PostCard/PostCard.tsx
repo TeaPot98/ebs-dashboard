@@ -8,6 +8,7 @@ import models from "models";
 
 import { Button, ConfirmationModal, UserAvatar } from "components";
 import "./PostCard.scss";
+import { Icon } from "ebs-design";
 
 interface PostCardProps {
   post: models.Post;
@@ -51,10 +52,11 @@ export const PostCard = ({
               setRemoveModalOpen(true);
             }}
           >
-            <img
+            {/* <img
               alt=""
               src="https://cdn-icons-png.flaticon.com/512/542/542724.png"
-            />
+            /> */}
+            <Icon type="error" className="btn__icon" />
           </Button>
         </div>
         <div>

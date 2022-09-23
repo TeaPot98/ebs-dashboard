@@ -8,6 +8,7 @@ import { HamburgerButton } from "components/HamburgerButton/HamburgerButton";
 import "./SideMenu.scss";
 import { UserContext } from "context/UserContext";
 import { Roles } from "utils";
+import { Icon } from "ebs-design";
 
 export const SideMenu = () => {
   const { user } = useContext(UserContext);
@@ -33,26 +34,29 @@ export const SideMenu = () => {
       </div>
       <ul className="menu__body">
         <MenuItem
-          icon="https://cdn-icons-png.flaticon.com/512/2948/2948037.png"
+          // icon="https://cdn-icons-png.flaticon.com/512/2948/2948037.png"
           route="/dashboard"
           onClick={() => setOpen(false)}
         >
+          <Icon className=".menu-item__icon" type="apps" />
           Dashboard
         </MenuItem>
         {user!.role === Roles.Administrator && (
           <MenuItem
-            icon="https://cdn-icons-png.flaticon.com/512/615/615075.png"
+            // icon="https://cdn-icons-png.flaticon.com/512/615/615075.png"
             route="/users"
             onClick={() => setOpen(false)}
           >
+            <Icon className=".menu-item__icon" type="users" />
             Users
           </MenuItem>
         )}
         <MenuItem
-          icon="https://cdn-icons-png.flaticon.com/512/3131/3131446.png"
+          // icon="https://cdn-icons-png.flaticon.com/512/3131/3131446.png"
           route="/posts"
           onClick={() => setOpen(false)}
         >
+          <Icon className=".menu-item__icon" type="edit" />
           Posts
         </MenuItem>
       </ul>
