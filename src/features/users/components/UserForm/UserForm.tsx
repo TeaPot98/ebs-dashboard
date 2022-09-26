@@ -102,7 +102,7 @@ export const UserForm = ({ user, onSubmit = () => {} }: UserFormProps) => {
         ))}
       </Select>
       <span className="form__error">{errorMessage}</span>
-      <Button disabled={mutation.isLoading}>
+      <Button submit disabled={mutation.isLoading}>
         {mutation.isLoading ? "Submitting..." : "Submit"}
       </Button>
     </form>

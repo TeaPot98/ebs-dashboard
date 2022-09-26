@@ -2,6 +2,8 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 
+import { Modal, Space } from "ebs-design";
+
 import { PostsContext } from "features/posts/pages/Posts";
 import api from "api";
 import models from "models";
@@ -28,8 +30,8 @@ export const PostCard = ({
       className={`post ${classNames(className)}`}
       onClick={(event) => {
         if (!className?.includes("details")) {
-          // event.stopPropagation();
-          // console.log("Open details");
+          event.stopPropagation();
+          console.log("Open details");
           navigate(`/posts/${post.id}`);
         }
       }}
@@ -42,10 +44,6 @@ export const PostCard = ({
               navigate(`/posts/${post.id}/edit`);
             }}
           >
-            {/* <img
-              alt=""
-              src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png"
-            /> */}
             <Icon type="edit" style={{ width: "20px", height: "20px" }} />
           </Button>
           <Button
@@ -55,10 +53,6 @@ export const PostCard = ({
               setRemoveModalOpen(true);
             }}
           >
-            {/* <img
-              alt=""
-              src="https://cdn-icons-png.flaticon.com/512/542/542724.png"
-            /> */}
             <Icon type="error" style={{ width: "20px", height: "20px" }} />
           </Button>
         </div>
@@ -86,21 +80,36 @@ export const PostCard = ({
           </span>
         </span>
       </div>
-      <ConfirmationModal
+      <Modal
         title="Remove post"
         open={removeModalOpen}
         onClose={() => setRemoveModalOpen(false)}
-        onAccept={async () => {
-          console.log("Post removed");
-          await api.posts.remove(post.id.toString());
-          refetch();
-          setRemoveModalOpen(false);
-        }}
       >
-        Are your sure you want to remove
-        <b> "{post.title}" </b>
-        from posts?
-      </ConfirmationModal>
+        <Modal.Content>
+          Are your sure you want to remove
+          <b> "{post.title}" </b>
+          from posts?
+        </Modal.Content>
+        <Modal.Footer>
+          <Space justify="space-between">
+            <Button onClick={() => setRemoveModalOpen(false)}>Cancel</Button>
+            <Button
+              color="danger"
+              onClick={async (event: React.SyntheticEvent) => {
+                event.stopPropagation();
+                console.log("Post removed");
+
+                await api.posts.remove(post.id.toString());
+
+                refetch();
+                setRemoveModalOpen(false);
+              }}
+            >
+              Accept
+            </Button>
+          </Space>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

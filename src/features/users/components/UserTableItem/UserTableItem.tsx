@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Icon, Modal } from "ebs-design";
+import { Icon, Modal, Space } from "ebs-design";
 
 import models from "models";
 import { UsersContext } from "features/users/pages/Users";
@@ -46,50 +46,54 @@ export const UserTableItem = ({ user }: UserTableItemProps) => {
               <Icon type="error" style={{ width: "16px", height: "16px" }} />
             </Button>
           )}
-          {/* {editModalOpen && ( */}
-          <></>
-          {/* // <Modal open={editModalOpen} onClose={() => setEditModalOpen(false)}>
-            //   <Modal.Header>
-            //     <Modal.Title>Edit user</Modal.Title>
-            //     <Button onClick={() => setEditModalOpen(false)}>Close</Button>
-            //   </Modal.Header>
-            //   <Modal.Content>
-            //     <UserForm */}
-          {/* //       user={user}
-            //       onSubmit={() => { */}
-          {/* //         refetch();
-            //         setEditModalOpen(false);
-            //       }}
-            //     />
-            //   </Modal.Content>
-            // </Modal> */}
-          {/* // )} */}
           <Modal
             open={editModalOpen}
             // defaultOpen={true}
             title="Edit User"
             onClose={() => setEditModalOpen(false)}
           >
-            <div>Some content of modal</div>
+            <Modal.Content>
+              <UserForm
+                user={user}
+                onSubmit={() => {
+                  refetch();
+                  setEditModalOpen(false);
+                }}
+              />
+            </Modal.Content>
           </Modal>
-          <ConfirmationModal
+          <Modal
             title="Remove user"
             open={removeModalOpen}
             onClose={() => setRemoveModalOpen(false)}
-            onAccept={async () => {
-              console.log("User removed");
-              await api.users.remove(user.id.toString());
-              refetch();
-              setRemoveModalOpen(false);
-            }}
           >
-            Are your sure you want to remove
-            <b>
-              {" "}
-              "{user.name} {user.surname}"{" "}
-            </b>
-            from users?
-          </ConfirmationModal>
+            <Modal.Content>
+              Are your sure you want to remove
+              <b>
+                {" "}
+                "{user.name} {user.surname}"{" "}
+              </b>
+              from users?
+            </Modal.Content>
+            <Modal.Footer>
+              <Space justify="space-between">
+                <Button onClick={() => setRemoveModalOpen(false)}>
+                  Cancel
+                </Button>
+                <Button
+                  color="danger"
+                  onClick={async () => {
+                    console.log("User removed");
+                    await api.users.remove(user.id.toString());
+                    refetch();
+                    setRemoveModalOpen(false);
+                  }}
+                >
+                  Accept
+                </Button>
+              </Space>
+            </Modal.Footer>
+          </Modal>
         </div>
       </td>
     </tr>
