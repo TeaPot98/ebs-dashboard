@@ -1,12 +1,13 @@
 {
   "posts": [
     {
-      "title": "10 Tips To Be More Productive",
+      "title": "10 Tips To Not Be More Productive",
       "description": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
       "category": "General",
       "imageUrl": "https://images.unsplash.com/photo-1661956602868-6ae368943878?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
       "date": "2022-09-19T11:16:56.648Z",
       "author": {
+        "id": 2,
         "name": "Vlad",
         "surname": "Trifautan"
       },
@@ -31,12 +32,12 @@
       "category": "Healthcare",
       "imageUrl": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
       "date": "2022-09-19T11:51:05.421Z",
+      "id": 4,
       "author": {
         "id": 2,
         "name": "Vlad",
         "surname": "Trifautan"
-      },
-      "id": 4
+      }
     },
     {
       "title": "Finding New Ideas",
@@ -106,15 +107,15 @@
     {
       "title": "All You Need To Know About Astrophotography",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-      "category": "General",
+      "category": "Nature",
       "imageUrl": "https://images.unsplash.com/photo-1434873740857-1bc5653afda8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=689&q=80",
       "date": "2022-09-18T00:00:00.000Z",
+      "id": 13,
       "author": {
         "id": 4,
         "name": "Alexandru",
         "surname": "Ion"
-      },
-      "id": 13
+      }
     }
   ],
   "users": [
@@ -151,6 +152,15 @@
       "gender": "Male",
       "role": "Moderator",
       "id": 5
+    },
+    {
+      "name": "Grivei",
+      "surname": "Grivei",
+      "email": "grivei@gmail.com",
+      "password": "123dfsaf",
+      "gender": "Male",
+      "role": "Moderator",
+      "id": 6
     }
   ]
 }

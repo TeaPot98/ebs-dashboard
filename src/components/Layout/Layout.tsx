@@ -6,11 +6,11 @@ import { Icon, Layout, Sidebar, AvatarInline } from "ebs-design";
 import { UserContext } from "context/UserContext";
 // import { TopBar, SideMenu, Container } from "components";
 import "./Layout.scss";
-import { UserAvatar } from "components/UserAvatar";
+// import { UserAvatar } from "components/UserAvatar";
 import { Button, Container } from "components";
 
 const MyLayout = () => {
-  const { user } = useContext(UserContext);
+  const { user, logOut } = useContext(UserContext);
   const navigate = useNavigate();
 
   return (
@@ -26,7 +26,7 @@ const MyLayout = () => {
             type="regular"
             size="small"
           />
-          <Button type="primary" color="danger" onClick={() => {}}>
+          <Button type="primary" color="danger" onClick={() => logOut()}>
             {/* <Icon type="edit" /> */}
             Log Out
           </Button>

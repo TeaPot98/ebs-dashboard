@@ -2,23 +2,19 @@ import React, { useContext, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
-import { Input } from "ebs-design";
+import { Input, Form, useForm } from "ebs-design";
 
 import api from "api";
 import { UserContext } from "context/UserContext";
-import useSetState from "hooks/useSetState";
 import models from "models";
 
 import { Button } from "components";
 
 export const LoginForm = () => {
+  const [form] = useForm();
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
   const [errorMessage, setErrorMessage] = useState("");
-  const [login, setLogin] = useSetState({
-    email: "",
-    password: "",
-  });
 
   const mutation = useMutation(
     (userCredentials: models.UserCredentials) =>
@@ -34,9 +30,7 @@ export const LoginForm = () => {
     }
   );
 
-  const handleLogin = async (event: React.SyntheticEvent) => {
-    event.preventDefault();
-
+  const handleLogin = async (login: models.UserCredentials) => {
     mutation.mutate({
       email: login.email,
       password: login.password,
@@ -44,28 +38,17 @@ export const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleLogin} className="form">
+    <Form form={form} className="form" onFinish={handleLogin}>
       <div className="form__header">
         <h4>Welcome back!</h4>
         <p>Login to your account</p>
       </div>
-      <Input
-        id="email"
-        name="email"
-        value={login.email}
-        onChange={(value) => setLogin({ email: value })}
-        placeholder="Email Address"
-        required
-      />
-      <Input
-        id="password"
-        name="password"
-        value={login.password}
-        onChange={(value) => setLogin({ password: value })}
-        type="password"
-        placeholder="Password"
-        required
-      />
+      <Form.Field name="email" label="Email" rules={[{ required: true }]}>
+        <Input placeholder="Email Address" required />
+      </Form.Field>
+      <Form.Field name="password" label="Password" rules={[{ required: true }]}>
+        <Input type="password" placeholder="Password" required />
+      </Form.Field>
       <div className="form__footer">
         <span className="form__error">{errorMessage}</span>
         <p>
@@ -75,6 +58,6 @@ export const LoginForm = () => {
           Login
         </Button>
       </div>
-    </form>
+    </Form>
   );
 };

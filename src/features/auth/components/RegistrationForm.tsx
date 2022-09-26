@@ -1,32 +1,20 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
-import { Checkbox, Select, Input } from "ebs-design";
+import { Checkbox, Select, Input, Form, useForm } from "ebs-design";
 
 import models from "models";
 import api from "api";
 import { UserContext } from "context/UserContext";
-import useSetState from "hooks/useSetState";
 
 import { Button } from "components";
 
-const initialState = {
-  name: "",
-  surname: "",
-  email: "",
-  password: "",
-  passConfirmation: "",
-  gender: "Select gender",
-  role: "",
-  // agreement: false,
-};
-
 export const RegistrationForm = () => {
+  const [form] = useForm();
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
   const [errorMessage, setErrorMessage] = useState("");
-  const [register, setRegister] = useSetState(initialState);
   const [agreement, setAgreement] = useState(false);
 
   const mutation = useMutation(
@@ -42,11 +30,7 @@ export const RegistrationForm = () => {
     }
   );
 
-  const handleRegistration = async (
-    event: React.FormEvent<HTMLFormElement>
-  ) => {
-    event.preventDefault();
-
+  const handleRegistration = async (register: models.UserRegistration) => {
     mutation.mutate({
       name: register.name,
       surname: register.surname,
@@ -58,85 +42,45 @@ export const RegistrationForm = () => {
   };
 
   return (
-    <form className="form" onSubmit={handleRegistration}>
+    <Form form={form} className="form" onFinish={handleRegistration}>
       <div className="form__header">
         <h4>Get Started</h4>
         <p>Create your free account</p>
       </div>
-      <Input
-        id="name"
-        name="name"
-        onChange={(value) => setRegister({ name: value })}
-        value={register.name}
-        placeholder="Name"
-        required
-      />
-      <Input
-        id="surname"
-        name="surname"
-        onChange={(value) => setRegister({ surname: value })}
-        value={register.surname}
-        placeholder="Surname"
-        required
-      />
-      <Input
-        id="email"
-        name="email"
-        onChange={(value) => setRegister({ email: value })}
-        value={register.email}
-        type="email"
-        placeholder="Email address"
-        required
-      />
-      {/* <Select
-        id="gender"
-        name="gender"
-        value={register.gender}
-        onChange={handleChange}
-        labelText="Gender"
-      >
-        <Select.Option value="None">None</Select.Option>
-        <Select.Option value="Male">Male</Select.Option>
-        <Select.Option value="Female">Female</Select.Option>
-      </Select> */}
-      <Select
-        id="gender"
-        // name="gender"
-        value={register.gender}
-        onChange={(value) => setRegister({ gender: value })}
-        // labelText="Gender"
-      >
-        <Select.Options>
-          <Select.Options.Item value="None">None</Select.Options.Item>
-          <Select.Options.Item value="Male">Male</Select.Options.Item>
-          <Select.Options.Item value="Female">Female</Select.Options.Item>
-        </Select.Options>
-      </Select>
-      <Input
-        id="password"
-        name="password"
-        onChange={(value) => setRegister({ password: value })}
-        value={register.password}
-        type="password"
-        placeholder="Create a password"
-        required
-      />
-      <Input
-        id="passConfirmation"
+      <Form.Field name="name" label="Name" rules={[{ required: true }]}>
+        <Input placeholder="Name" />
+      </Form.Field>
+      <Form.Field name="surname" label="Surname" rules={[{ required: true }]}>
+        <Input placeholder="Surname" />
+      </Form.Field>
+      <Form.Field name="email" label="Email" rules={[{ required: true }]}>
+        <Input type="email" placeholder="Email address" />
+      </Form.Field>
+      <Form.Field name="gender" label="Gender">
+        <Select>
+          <Select.Options>
+            <Select.Options.Item value="None">None</Select.Options.Item>
+            <Select.Options.Item value="Male">Male</Select.Options.Item>
+            <Select.Options.Item value="Female">Female</Select.Options.Item>
+          </Select.Options>
+        </Select>
+      </Form.Field>
+      <Form.Field name="password" label="Password" rules={[{ required: true }]}>
+        <Input type="password" placeholder="Create a password" />
+      </Form.Field>
+      <Form.Field
         name="passConfirmation"
-        onChange={(value) => setRegister({ passConfirmation: value })}
-        value={register.passConfirmation}
-        type="password"
-        placeholder="Confirm your password"
-        required
-      />
+        label="Password Confirmation"
+        rules={[{ required: true }]}
+      >
+        <Input type="password" placeholder="Confirm your password" />
+      </Form.Field>
       <Checkbox
         id="agreement"
         name="agreement"
         checked={agreement}
         onChange={setAgreement}
         text="I agree with personal data processing"
-        // required
       />
       <div className="form__footer">
         <span className="form__error">{errorMessage}</span>
@@ -152,6 +96,6 @@ export const RegistrationForm = () => {
           Sign Up
         </Button>
       </div>
-    </form>
+    </Form>
   );
 };
