@@ -20,7 +20,7 @@ export const Button = ({
     <EbsButton
       {...props}
       onClick={onClick}
-      buttonClass={`btn btn--${color} ${classNames(className)}`}
+      className={`btn btn--${color} ${classNames(className)}`}
     >
       {children}
     </EbsButton>

@@ -133,7 +133,7 @@ export const RegistrationForm = () => {
         <p>
           Already have an account ? <a href="/login">Login</a>
         </p>
-        <Button submit loading={mutation.isLoading}>
+        <Button submit type="primary" loading={mutation.isLoading}>
           Sign Up
         </Button>
       </div>

@@ -1,11 +1,12 @@
 import { useState, useContext } from "react";
+import { Icon, Modal } from "ebs-design";
 
 import models from "models";
 import { UsersContext } from "features/users/pages/Users";
 import api from "api";
 import { UserContext } from "context/UserContext";
 
-import { Button, ConfirmationModal, Modal } from "components";
+import { Button, ConfirmationModal } from "components";
 import { UserForm } from "../UserForm/UserForm";
 import "../UserCard/UserCard.scss";
 
@@ -30,36 +31,47 @@ export const UserTableItem = ({ user }: UserTableItemProps) => {
       <td>
         <div className="user-card__buttons">
           <Button onClick={() => setEditModalOpen(true)}>
-            <img
+            {/* <img
               alt=""
               src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png"
-            />
+            /> */}
+            <Icon type="edit" style={{ width: "16px", height: "16px" }} />
           </Button>
           {user.id !== loggedUser.user?.id && (
             <Button color="danger" onClick={() => setRemoveModalOpen(true)}>
-              <img
+              {/* <img
                 alt=""
                 src="https://cdn-icons-png.flaticon.com/512/542/542724.png"
-              />
+              /> */}
+              <Icon type="error" style={{ width: "16px", height: "16px" }} />
             </Button>
           )}
-          {editModalOpen && (
-            <Modal open={editModalOpen} onClose={() => setEditModalOpen(false)}>
-              <Modal.Header>
-                <Modal.Title>Edit user</Modal.Title>
-                <Button onClick={() => setEditModalOpen(false)}>Close</Button>
-              </Modal.Header>
-              <Modal.Content>
-                <UserForm
-                  user={user}
-                  onSubmit={() => {
-                    refetch();
-                    setEditModalOpen(false);
-                  }}
-                />
-              </Modal.Content>
-            </Modal>
-          )}
+          {/* {editModalOpen && ( */}
+          <></>
+          {/* // <Modal open={editModalOpen} onClose={() => setEditModalOpen(false)}>
+            //   <Modal.Header>
+            //     <Modal.Title>Edit user</Modal.Title>
+            //     <Button onClick={() => setEditModalOpen(false)}>Close</Button>
+            //   </Modal.Header>
+            //   <Modal.Content>
+            //     <UserForm */}
+          {/* //       user={user}
+            //       onSubmit={() => { */}
+          {/* //         refetch();
+            //         setEditModalOpen(false);
+            //       }}
+            //     />
+            //   </Modal.Content>
+            // </Modal> */}
+          {/* // )} */}
+          <Modal
+            open={editModalOpen}
+            // defaultOpen={true}
+            title="Edit User"
+            onClose={() => setEditModalOpen(false)}
+          >
+            <div>Some content of modal</div>
+          </Modal>
           <ConfirmationModal
             title="Remove user"
             open={removeModalOpen}

@@ -75,7 +75,7 @@ export const LoginForm = () => {
         <p>
           Don't have an account ? <a href="/register">Sign Up</a>
         </p>
-        <Button submit loading={mutation.isLoading}>
+        <Button submit type="primary" loading={mutation.isLoading}>
           Login
         </Button>
       </div>

@@ -32,6 +32,7 @@ export const Users = () => {
       <ContainerHeader>
         <h2>Users</h2>
         <Button
+          type="primary"
           onClick={() => {
             setUserModalOpen(true);
           }}

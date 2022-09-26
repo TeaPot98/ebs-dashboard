@@ -2,50 +2,47 @@
 @import "styles/mixins";
 
 .btn {
-  color: white;
-  border-radius: 8px;
-  border: 0px;
-  padding: 8px;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  img {
-    height: 16px;
-    filter: invert(100%);
-  }
-
-  &--primary {
-    // background-color: #5570f1;
-    background-color: $primary;
-
-    @include hover-states {
-      background-color: $primary_accent;
-    }
-  }
-
   &--danger {
-    background-color: $danger;
+    border-color: $danger !important;
+    color: $danger !important;
 
-    @include hover-states {
-      background-color: $danger_accent;
-    }
-  }
-
-  &--icon {
-    background-color: white;
-    padding: 4px;
-    max-height: 30px;
-
-    @include hover-states {
-      background-color: whitesmoke;
+    button {
+      color: $danger !important;
     }
 
-    img {
-      filter: none;
-      // max-width: 28px;
-      max-height: 24px;
+    svg {
+      color: $danger !important;
+    }
+
+    &:hover {
+      // border-color: $danger !important;
+      background-color: $danger !important;
+      color: white !important;
+
+      button {
+        color: white !important;
+      }
+
+      svg {
+        color: white !important;
+      }
+    }
+
+    &.ebs-button--primary {
+      background-color: $danger !important;
+      color: white;
+
+      button {
+        color: white !important;
+      }
+
+      svg {
+        color: white !important;
+      }
+
+      @include hover-states {
+        background-color: $danger_accent !important;
+      }
     }
   }
 }

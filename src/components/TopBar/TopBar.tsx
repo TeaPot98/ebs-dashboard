@@ -19,7 +19,7 @@ export const TopBar = () => {
             <span>
               {user.name} {user.surname}
             </span>
-            <Button color="danger" type="primary" onClick={logOut}>
+            <Button type="primary" color="danger" onClick={logOut}>
               {/* <Icon type="edit" /> */}
               Log Out
             </Button>
