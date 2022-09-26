@@ -6,7 +6,7 @@ import { UsersContext } from "features/users/pages/Users";
 import api from "api";
 import { UserContext } from "context/UserContext";
 
-import { Button, ConfirmationModal } from "components";
+import { Button } from "components";
 import { UserForm } from "../UserForm/UserForm";
 import "../UserCard/UserCard.scss";
 

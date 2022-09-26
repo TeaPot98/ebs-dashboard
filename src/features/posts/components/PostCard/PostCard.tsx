@@ -2,13 +2,13 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 
-import { Modal, Space } from "ebs-design";
+import { Avatar, Modal, Space } from "ebs-design";
 
 import { PostsContext } from "features/posts/pages/Posts";
 import api from "api";
 import models from "models";
 
-import { Button, ConfirmationModal, UserAvatar } from "components";
+import { Button } from "components";
 import "./PostCard.scss";
 import { Icon } from "ebs-design";
 
@@ -72,7 +72,7 @@ export const PostCard = ({
         <p className="post__description">{post.description}</p>
       </div>
       <div className="post__footer">
-        <UserAvatar name={post.author.name} surname={post.author.surname} />
+        <Avatar alt={`${post.author.name} ${post.author.surname}`} />
         <span className="post__author">
           By{" "}
           <span>
