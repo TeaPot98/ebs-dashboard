@@ -1,5 +1,5 @@
 * {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
 
 html {
@@ -87,10 +87,10 @@ a {
 
 .posts {
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 8px;
-  gap: 8px;
+  // display: grid;
+  // grid-template-columns: 1fr 1fr;
+  // padding: 8px;
+  // gap: 8px;
 }
 
 .back-button {
