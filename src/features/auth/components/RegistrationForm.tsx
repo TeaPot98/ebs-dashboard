@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import { Checkbox } from "ebs-design";
 
 import models from "models";
 import api from "api";
 import { UserContext } from "context/UserContext";
 import useSetState from "hooks/useSetState";
 
-import { Button, Checkbox, Input, Select } from "components";
+import { Button, Input, Select } from "components";
 
 const initialState = {
   name: "",
@@ -17,7 +18,7 @@ const initialState = {
   passConfirmation: "",
   gender: "",
   role: "",
-  agreement: false,
+  // agreement: false,
 };
 
 export const RegistrationForm = () => {
@@ -25,6 +26,7 @@ export const RegistrationForm = () => {
   const { setUser } = useContext(UserContext);
   const [errorMessage, setErrorMessage] = useState("");
   const [register, setRegister] = useSetState(initialState);
+  const [agreement, setAgreement] = useState(false);
 
   const mutation = useMutation(
     (userInfo: models.UserRegistration) => api.users.register(userInfo),
@@ -123,17 +125,22 @@ export const RegistrationForm = () => {
       <Checkbox
         id="agreement"
         name="agreement"
-        checked={register.agreement}
-        onChange={handleChange}
-        labelText="I agree with personal data processing"
-        required
+        checked={agreement}
+        onChange={setAgreement}
+        text="I agree with personal data processing"
+        // required
       />
       <div className="form__footer">
         <span className="form__error">{errorMessage}</span>
         <p>
           Already have an account ? <a href="/login">Login</a>
         </p>
-        <Button submit type="primary" loading={mutation.isLoading}>
+        <Button
+          submit
+          type="primary"
+          loading={mutation.isLoading}
+          disabled={!agreement}
+        >
           Sign Up
         </Button>
       </div>
