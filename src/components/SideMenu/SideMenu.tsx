@@ -25,7 +25,7 @@ export const SideMenu = () => {
           />
           <h1>Metrix</h1>
         </div>
-        <Button id="close-menu-btn" type="icon" onClick={() => setOpen(false)}>
+        <Button id="close-menu-btn" color="icon" onClick={() => setOpen(false)}>
           <img
             alt=""
             src="https://cdn-icons-png.flaticon.com/512/130/130882.png"
@@ -38,7 +38,11 @@ export const SideMenu = () => {
           route="/dashboard"
           onClick={() => setOpen(false)}
         >
-          <Icon className=".menu-item__icon" type="apps" />
+          <Icon
+            // className=".menu-item__icon"
+            type="apps"
+            style={{ width: "20px", height: "20px" }}
+          />
           Dashboard
         </MenuItem>
         {user!.role === Roles.Administrator && (
@@ -47,7 +51,11 @@ export const SideMenu = () => {
             route="/users"
             onClick={() => setOpen(false)}
           >
-            <Icon className=".menu-item__icon" type="users" />
+            <Icon
+              // className=".menu-item__icon"
+              type="users"
+              style={{ width: "20px", height: "20px" }}
+            />
             Users
           </MenuItem>
         )}
@@ -56,7 +64,11 @@ export const SideMenu = () => {
           route="/posts"
           onClick={() => setOpen(false)}
         >
-          <Icon className=".menu-item__icon" type="edit" />
+          <Icon
+            // className=".menu-item__icon"
+            type="edit"
+            style={{ width: "20px", height: "20px" }}
+          />
           Posts
         </MenuItem>
       </ul>

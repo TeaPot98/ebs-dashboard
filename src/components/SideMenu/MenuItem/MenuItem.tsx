@@ -24,7 +24,7 @@ export const MenuItem = ({
           "menu-item--active": route === location.pathname,
         })}`}
       >
-        <img alt="" src={icon} />
+        {/* <img alt="" src={icon} /> */}
         {children}
       </li>
     </Link>

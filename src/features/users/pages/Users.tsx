@@ -31,7 +31,13 @@ export const Users = () => {
     <>
       <ContainerHeader>
         <h2>Users</h2>
-        <Button onClick={() => setUserModalOpen(true)}>+ Add new user</Button>
+        <Button
+          onClick={() => {
+            setUserModalOpen(true);
+          }}
+        >
+          + Add new user
+        </Button>
         {userModalOpen && (
           <Modal open={userModalOpen} onClose={() => setUserModalOpen(false)}>
             <Modal.Header>

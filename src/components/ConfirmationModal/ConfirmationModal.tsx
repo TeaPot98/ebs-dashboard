@@ -22,7 +22,7 @@ export const ConfirmationModal = ({
       <Modal.Content>{children}</Modal.Content>
       <Modal.Footer>
         <Button onClick={onClose}>Cancel</Button>
-        <Button type="danger" onClick={onAccept}>
+        <Button color="danger" onClick={onAccept}>
           Accept
         </Button>
       </Modal.Footer>

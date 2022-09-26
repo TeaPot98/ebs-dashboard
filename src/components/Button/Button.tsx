@@ -1,20 +1,28 @@
 import classNames from "classnames";
+import { Button as EbsButton } from "ebs-design";
+import { ButtonProps as EbsButtonProps } from "ebs-design/dist/components/atoms/Button/Button";
 
 import "./Button.scss";
 
-interface ButtonProps {
-  type?: "primary" | "danger" | "icon";
+export interface ButtonProps extends Omit<EbsButtonProps, "onClick"> {
+  color?: "primary" | "danger" | "icon";
+  onClick?: any; // !!! To change later
 }
 
 export const Button = ({
-  type = "primary",
+  color = "primary",
   children,
   className,
+  onClick,
   ...props
-}: ButtonProps & Omit<JSX.IntrinsicElements["button"], "type">) => {
+}: ButtonProps) => {
   return (
-    <button {...props} className={`btn btn--${type} ${classNames(className)}`}>
+    <EbsButton
+      {...props}
+      onClick={onClick}
+      buttonClass={`btn btn--${color} ${classNames(className)}`}
+    >
       {children}
-    </button>
+    </EbsButton>
   );
 };

@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Icon } from "ebs-design";
 
 import { UserContext } from "context/UserContext";
 
@@ -18,7 +19,8 @@ export const TopBar = () => {
             <span>
               {user.name} {user.surname}
             </span>
-            <Button type="danger" onClick={logOut}>
+            <Button color="danger" type="primary" onClick={logOut}>
+              {/* <Icon type="edit" /> */}
               Log Out
             </Button>
           </>

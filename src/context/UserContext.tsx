@@ -37,6 +37,7 @@ export const UserContextProvider = ({ children }: React.PropsWithChildren) => {
   };
 
   const logOut = () => {
+    console.log("Logged out");
     localStorage.removeItem("userId");
     navigate("/login");
     userId = "";

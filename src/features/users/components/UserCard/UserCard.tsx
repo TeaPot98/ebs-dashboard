@@ -22,7 +22,7 @@ export const UserCard = () => {
         >
           A form for editing user
         </Modal>
-        <Button type="danger" onClick={() => setRemoveModalOpen(true)}>
+        <Button color="danger" onClick={() => setRemoveModalOpen(true)}>
           Remove
         </Button>
         <ConfirmationModal

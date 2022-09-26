@@ -36,7 +36,7 @@ export const UserTableItem = ({ user }: UserTableItemProps) => {
             />
           </Button>
           {user.id !== loggedUser.user?.id && (
-            <Button type="danger" onClick={() => setRemoveModalOpen(true)}>
+            <Button color="danger" onClick={() => setRemoveModalOpen(true)}>
               <img
                 alt=""
                 src="https://cdn-icons-png.flaticon.com/512/542/542724.png"

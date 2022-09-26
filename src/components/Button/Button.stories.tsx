@@ -16,5 +16,5 @@ Primary.args = {
 export const Danger = Template.bind({});
 Danger.args = {
   children: "Don't Press!",
-  type: "danger",
+  color: "danger",
 };

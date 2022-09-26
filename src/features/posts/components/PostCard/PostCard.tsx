@@ -28,6 +28,8 @@ export const PostCard = ({
       className={`post ${classNames(className)}`}
       onClick={(event) => {
         if (!className?.includes("details")) {
+          // event.stopPropagation();
+          // console.log("Open details");
           navigate(`/posts/${post.id}`);
         }
       }}
@@ -35,19 +37,20 @@ export const PostCard = ({
       <div className="post__header">
         <div className="post__buttons">
           <Button
-            onClick={(event) => {
+            onClick={(event: React.SyntheticEvent) => {
               event.stopPropagation();
               navigate(`/posts/${post.id}/edit`);
             }}
           >
-            <img
+            {/* <img
               alt=""
               src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png"
-            />
+            /> */}
+            <Icon type="edit" style={{ width: "20px", height: "20px" }} />
           </Button>
           <Button
-            type="danger"
-            onClick={(event) => {
+            color="danger"
+            onClick={(event: React.SyntheticEvent) => {
               event.stopPropagation();
               setRemoveModalOpen(true);
             }}
@@ -56,7 +59,7 @@ export const PostCard = ({
               alt=""
               src="https://cdn-icons-png.flaticon.com/512/542/542724.png"
             /> */}
-            <Icon type="error" className="btn__icon" />
+            <Icon type="error" style={{ width: "20px", height: "20px" }} />
           </Button>
         </div>
         <div>
