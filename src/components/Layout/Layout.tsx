@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Icon, Layout, Sidebar } from "ebs-design";
+import { Icon, Layout, Sidebar, AvatarInline } from "ebs-design";
 
 import { UserContext } from "context/UserContext";
 // import { TopBar, SideMenu, Container } from "components";
@@ -19,10 +19,13 @@ const MyLayout = () => {
         <Layout.Topbar.Toggler />
         <Layout.Topbar.Title>Metrix</Layout.Topbar.Title>
         <Layout.Topbar.RightSide>
-          <UserAvatar name={user!.name} surname={user!.surname} />
-          <span>
-            {user!.name} {user!.surname}
-          </span>
+          <AvatarInline
+            alt={`${user!.name} ${user!.surname}`}
+            description={`${user!.role}`}
+            status="active"
+            type="regular"
+            size="small"
+          />
           <Button type="primary" color="danger" onClick={() => {}}>
             {/* <Icon type="edit" /> */}
             Log Out
