@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { Select } from "ebs-design";
+import { Select, DatePicker } from "ebs-design";
 
 import api from "api";
 
@@ -107,11 +107,9 @@ export const PostForm = ({ formData }: PostFormProps) => {
         onChange={handleChange}
         placeholder="Image URL"
       />
-      <DateInput
-        id="postDate"
-        name="date"
-        value={formatDate(formState.date)}
-        onChange={handleChange}
+      <DatePicker
+        value={formState.date}
+        onChange={(value) => setFormState({ date: value })}
       />
       <span>{errorMessage}</span>
       <Button
