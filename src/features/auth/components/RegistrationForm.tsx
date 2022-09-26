@@ -1,14 +1,15 @@
 import React, { useContext, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { Checkbox } from "ebs-design";
+
+import { Checkbox, Select } from "ebs-design";
 
 import models from "models";
 import api from "api";
 import { UserContext } from "context/UserContext";
 import useSetState from "hooks/useSetState";
 
-import { Button, Input, Select } from "components";
+import { Button, Input } from "components";
 
 const initialState = {
   name: "",
@@ -16,7 +17,7 @@ const initialState = {
   email: "",
   password: "",
   passConfirmation: "",
-  gender: "",
+  gender: "Select gender",
   role: "",
   // agreement: false,
 };
@@ -93,7 +94,7 @@ export const RegistrationForm = () => {
         placeholder="Email address"
         required
       />
-      <Select
+      {/* <Select
         id="gender"
         name="gender"
         value={register.gender}
@@ -103,6 +104,19 @@ export const RegistrationForm = () => {
         <Select.Option value="None">None</Select.Option>
         <Select.Option value="Male">Male</Select.Option>
         <Select.Option value="Female">Female</Select.Option>
+      </Select> */}
+      <Select
+        id="gender"
+        // name="gender"
+        value={register.gender}
+        onChange={(value) => setRegister({ gender: value })}
+        // labelText="Gender"
+      >
+        <Select.Options>
+          <Select.Options.Item value="None">None</Select.Options.Item>
+          <Select.Options.Item value="Male">Male</Select.Options.Item>
+          <Select.Options.Item value="Female">Female</Select.Options.Item>
+        </Select.Options>
       </Select>
       <Input
         id="password"

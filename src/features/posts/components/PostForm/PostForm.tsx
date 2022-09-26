@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 
+import { Select } from "ebs-design";
+
 import api from "api";
 
 import { UserContext } from "context/UserContext";
@@ -11,7 +13,7 @@ import models from "models";
 
 import { TextArea } from "components/TextArea/TextArea";
 import { DateInput } from "components/DateInput/DateInput";
-import { Input, Button, Select } from "components";
+import { Input, Button } from "components";
 
 interface PostFormProps {
   formData: models.Post | null;
@@ -87,17 +89,16 @@ export const PostForm = ({ formData }: PostFormProps) => {
       />
       <Select
         id="category"
-        name="category"
         value={formState.category}
-        onChange={handleChange}
-        labelText="Category"
-        required
+        onChange={(value) => setFormState({ category: value })}
       >
-        {Object.entries(Categories).map(([_, cat]) => (
-          <Select.Option key={cat} value={cat}>
-            {cat}
-          </Select.Option>
-        ))}
+        <Select.Options>
+          {Object.entries(Categories).map(([_, cat]) => (
+            <Select.Options.Item key={cat} value={cat}>
+              {cat}
+            </Select.Options.Item>
+          ))}
+        </Select.Options>
       </Select>
       <Input
         id="imageUrl"
@@ -113,7 +114,11 @@ export const PostForm = ({ formData }: PostFormProps) => {
         onChange={handleChange}
       />
       <span>{errorMessage}</span>
-      <Button onClick={handleSubmit} disabled={mutation.isLoading}>
+      <Button
+        type="primary"
+        onClick={handleSubmit}
+        disabled={mutation.isLoading}
+      >
         {mutation.isLoading ? "Submitting..." : "Submit"}
       </Button>
     </form>

@@ -1,13 +1,15 @@
 import { useState, useContext } from "react";
 import { useMutation } from "@tanstack/react-query";
 
+import { Select } from "ebs-design";
+
 import api from "api";
 import { UserContext } from "context/UserContext";
 import models from "models";
 import useSetState from "hooks/useSetState";
 import { Roles } from "utils";
 
-import { Select, Input, Button } from "components";
+import { Input, Button } from "components";
 
 interface UserFormProps {
   user?: models.User;
@@ -76,33 +78,29 @@ export const UserForm = ({ user, onSubmit = () => {} }: UserFormProps) => {
       />
       <Select
         id="gender"
-        name="gender"
         value={userForm.gender}
-        onChange={(event) => setUserForm({ gender: event.target.value })}
-        labelText="Gender"
-        required
+        onChange={(value) => setUserForm({ gender: value })}
       >
-        <Select.Option value="None">None</Select.Option>
-        <Select.Option value="Male">Male</Select.Option>
-        <Select.Option value="Female">Female</Select.Option>
+        <Select.Options.Item value="None">None</Select.Options.Item>
+        <Select.Options.Item value="Male">Male</Select.Options.Item>
+        <Select.Options.Item value="Female">Female</Select.Options.Item>
       </Select>
       <Select
         id="role"
-        name="role"
         value={userForm.role}
-        onChange={(event) => setUserForm({ role: event.target.value })}
-        labelText="Role"
-        required
+        onChange={(value) => setUserForm({ role: value })}
         disabled={loggedUser.user?.id === user?.id}
       >
-        {Object.entries(Roles).map(([_, role]) => (
-          <Select.Option key={role} value={role}>
-            {role}
-          </Select.Option>
-        ))}
+        <Select.Options>
+          {Object.entries(Roles).map(([_, role]) => (
+            <Select.Options.Item key={role} value={role}>
+              {role}
+            </Select.Options.Item>
+          ))}
+        </Select.Options>
       </Select>
       <span className="form__error">{errorMessage}</span>
-      <Button submit disabled={mutation.isLoading}>
+      <Button type="primary" submit disabled={mutation.isLoading}>
         {mutation.isLoading ? "Submitting..." : "Submit"}
       </Button>
     </form>
