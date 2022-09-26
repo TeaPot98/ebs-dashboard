@@ -1,33 +1,48 @@
 import models from "models";
 
-import { UserTableItem } from "../UserTableItem/UserTableItem";
-import { Table } from "components";
+import { Table } from "ebs-design";
+import { UserTableButtons } from "./UserTableButtons";
+import { User } from "models/user";
 
 interface UserTableProps {
   users: models.User[];
 }
 
+const columns = [
+  {
+    title: "ID",
+    dataIndex: "id",
+  },
+  {
+    title: "Name",
+    dataIndex: "name",
+  },
+  {
+    title: "Surname",
+    dataIndex: "surname",
+  },
+  {
+    title: "Email",
+    dataIndex: "email",
+  },
+  {
+    title: "Gender",
+    dataIndex: "gender",
+  },
+  {
+    title: "Role",
+    dataIndex: "role",
+  },
+  {
+    title: "Actions",
+    render: (user: User) => <UserTableButtons user={user} />,
+  },
+];
+
 export const UserTable = ({ users }: UserTableProps) => {
   return (
     <>
-      <Table cellSpacing="0">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Email</th>
-            <th>Gender</th>
-            <th>Role</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => (
-            <UserTableItem key={user.id} user={user} />
-          ))}
-        </tbody>
-      </Table>
+      <Table data={users} columns={columns} />
     </>
   );
 };
