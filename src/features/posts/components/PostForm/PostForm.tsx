@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { Select, DatePicker } from "ebs-design";
+import { Select, DatePicker, Input } from "ebs-design";
 
 import api from "api";
 
@@ -13,7 +13,7 @@ import models from "models";
 
 import { TextArea } from "components/TextArea/TextArea";
 import { DateInput } from "components/DateInput/DateInput";
-import { Input, Button } from "components";
+import { Button } from "components";
 
 interface PostFormProps {
   formData: models.Post | null;
@@ -75,7 +75,7 @@ export const PostForm = ({ formData }: PostFormProps) => {
         id="title"
         name="title"
         value={formState.title}
-        onChange={handleChange}
+        onChange={(value) => setFormState({ title: value })}
         placeholder="Title"
         required
       />
@@ -104,7 +104,7 @@ export const PostForm = ({ formData }: PostFormProps) => {
         id="imageUrl"
         name="imageUrl"
         value={formState.imageUrl}
-        onChange={handleChange}
+        onChange={(value) => setFormState({ imageUrl: value })}
         placeholder="Image URL"
       />
       <DatePicker

@@ -2,14 +2,14 @@ import React, { useContext, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
-import { Checkbox, Select } from "ebs-design";
+import { Checkbox, Select, Input } from "ebs-design";
 
 import models from "models";
 import api from "api";
 import { UserContext } from "context/UserContext";
 import useSetState from "hooks/useSetState";
 
-import { Button, Input } from "components";
+import { Button } from "components";
 
 const initialState = {
   name: "",
@@ -57,12 +57,6 @@ export const RegistrationForm = () => {
     });
   };
 
-  const handleChange = ({ target }: any) => {
-    setRegister({
-      [target.name]: target.type === "checkbox" ? target.checked : target.value,
-    });
-  };
-
   return (
     <form className="form" onSubmit={handleRegistration}>
       <div className="form__header">
@@ -72,7 +66,7 @@ export const RegistrationForm = () => {
       <Input
         id="name"
         name="name"
-        onChange={handleChange}
+        onChange={(value) => setRegister({ name: value })}
         value={register.name}
         placeholder="Name"
         required
@@ -80,7 +74,7 @@ export const RegistrationForm = () => {
       <Input
         id="surname"
         name="surname"
-        onChange={handleChange}
+        onChange={(value) => setRegister({ surname: value })}
         value={register.surname}
         placeholder="Surname"
         required
@@ -88,7 +82,7 @@ export const RegistrationForm = () => {
       <Input
         id="email"
         name="email"
-        onChange={handleChange}
+        onChange={(value) => setRegister({ email: value })}
         value={register.email}
         type="email"
         placeholder="Email address"
@@ -121,7 +115,7 @@ export const RegistrationForm = () => {
       <Input
         id="password"
         name="password"
-        onChange={handleChange}
+        onChange={(value) => setRegister({ password: value })}
         value={register.password}
         type="password"
         placeholder="Create a password"
@@ -130,7 +124,7 @@ export const RegistrationForm = () => {
       <Input
         id="passConfirmation"
         name="passConfirmation"
-        onChange={handleChange}
+        onChange={(value) => setRegister({ passConfirmation: value })}
         value={register.passConfirmation}
         type="password"
         placeholder="Confirm your password"

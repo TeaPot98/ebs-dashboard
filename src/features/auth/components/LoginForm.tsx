@@ -2,12 +2,14 @@ import React, { useContext, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
+import { Input } from "ebs-design";
+
 import api from "api";
 import { UserContext } from "context/UserContext";
 import useSetState from "hooks/useSetState";
 import models from "models";
 
-import { Button, Input } from "components";
+import { Button } from "components";
 
 export const LoginForm = () => {
   const navigate = useNavigate();
@@ -41,12 +43,6 @@ export const LoginForm = () => {
     });
   };
 
-  const handleChange = ({ target }: { target: HTMLInputElement }) => {
-    setLogin({
-      [target.name]: target.value,
-    });
-  };
-
   return (
     <form onSubmit={handleLogin} className="form">
       <div className="form__header">
@@ -57,7 +53,7 @@ export const LoginForm = () => {
         id="email"
         name="email"
         value={login.email}
-        onChange={handleChange}
+        onChange={(value) => setLogin({ email: value })}
         placeholder="Email Address"
         required
       />
@@ -65,7 +61,7 @@ export const LoginForm = () => {
         id="password"
         name="password"
         value={login.password}
-        onChange={handleChange}
+        onChange={(value) => setLogin({ password: value })}
         type="password"
         placeholder="Password"
         required

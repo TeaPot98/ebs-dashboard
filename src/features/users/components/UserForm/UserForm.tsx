@@ -81,9 +81,11 @@ export const UserForm = ({ user, onSubmit = () => {} }: UserFormProps) => {
         value={userForm.gender}
         onChange={(value) => setUserForm({ gender: value })}
       >
-        <Select.Options.Item value="None">None</Select.Options.Item>
-        <Select.Options.Item value="Male">Male</Select.Options.Item>
-        <Select.Options.Item value="Female">Female</Select.Options.Item>
+        <Select.Options>
+          <Select.Options.Item value="None">None</Select.Options.Item>
+          <Select.Options.Item value="Male">Male</Select.Options.Item>
+          <Select.Options.Item value="Female">Female</Select.Options.Item>
+        </Select.Options>
       </Select>
       <Select
         id="role"
