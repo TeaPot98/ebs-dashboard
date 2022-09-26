@@ -152,15 +152,6 @@
       "gender": "Male",
       "role": "Moderator",
       "id": 5
-    },
-    {
-      "name": "Grivei",
-      "surname": "Grivei",
-      "email": "grivei@gmail.com",
-      "password": "123dfsaf",
-      "gender": "Male",
-      "role": "Moderator",
-      "id": 6
     }
   ]
 }

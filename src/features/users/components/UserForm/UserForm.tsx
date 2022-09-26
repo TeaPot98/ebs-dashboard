@@ -1,10 +1,9 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 
 import { Select, Input, Form, useForm } from "ebs-design";
 
 import api from "api";
-import { UserContext } from "context/UserContext";
 import models from "models";
 import { Roles } from "utils";
 
@@ -17,7 +16,6 @@ interface UserFormProps {
 
 export const UserForm = ({ user, onSubmit = () => {} }: UserFormProps) => {
   const [form] = useForm();
-  const loggedUser = useContext(UserContext);
   const [errorMessage, setErrorMessage] = useState("");
 
   const mutation = useMutation(
