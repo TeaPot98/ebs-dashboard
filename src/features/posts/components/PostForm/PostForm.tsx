@@ -2,17 +2,15 @@ import { useContext, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { Select, DatePicker, Input } from "ebs-design";
+import { Select, DatePicker, Input, Textarea } from "ebs-design";
 
 import api from "api";
 
 import { UserContext } from "context/UserContext";
-import { Categories, formatDate } from "utils";
+import { Categories } from "utils";
 import useSetState from "hooks/useSetState";
 import models from "models";
 
-import { TextArea } from "components/TextArea/TextArea";
-import { DateInput } from "components/DateInput/DateInput";
 import { Button } from "components";
 
 interface PostFormProps {
@@ -62,13 +60,6 @@ export const PostForm = ({ formData }: PostFormProps) => {
     console.log("New Post created !");
   };
 
-  const handleChange = ({ target }: any) => {
-    setFormState({
-      [target.name]:
-        target.type === "date" ? new Date(target.value) : target.value,
-    });
-  };
-
   return (
     <form className="form" onSubmit={handleSubmit}>
       <Input
@@ -79,11 +70,11 @@ export const PostForm = ({ formData }: PostFormProps) => {
         placeholder="Title"
         required
       />
-      <TextArea
+      <Textarea
         id="description"
         name="description"
         value={formState.description}
-        onChange={handleChange}
+        onChange={(value) => setFormState({ description: value })}
         placeholder="Description"
         required
       />
